@@ -21,8 +21,8 @@ Cada exercício inclui **passos detalhados**, **cálculos claros** e **resultado
 
 | Exercício | Conceito | Fórmula | Script |
 |-----------|----------|---------|--------|
-| 1 | Energia relativística | \(E = \frac{mc^2}{\sqrt{1 - v^2/c^2}}\) | [`sr_mass_energy.py`](sr_mass_energy.py) |
-| 2 | Dilatação do tempo | \(\Delta t = \Delta t_0 \cdot \gamma\), \(\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}\) | [`sr_time_dilation.py`](sr_time_dilation.py) |
+| 1 | Energia relativística | `E = mc² / sqrt(1 - v²/c²)` | [`sr_mass_energy.py`](sr_mass_energy.py) |
+| 2 | Dilatação do tempo | `Δt = Δt₀ * γ, γ = 1 / sqrt(1 - v²/c²)` | [`sr_time_dilation.py`](sr_time_dilation.py) |
 | 3 | Energia de fissão | Energia por fissão × número de fissões | [`sr_fission_energy_hiroshima.py`](sr_fission_energy_hiroshima.py) |
 
 > **Nota:** As fórmulas de SR são **exatas** no espaço-tempo plano. Conceitos chave: fator de Lorentz, energia relativística e equivalência massa-energia.
@@ -33,8 +33,8 @@ Cada exercício inclui **passos detalhados**, **cálculos claros** e **resultado
 
 | Exercício | Conceito | Fórmula aproximada | Script |
 |-----------|----------|-----------------|--------|
-| 1 | Desvio da luz pela gravidade | \(\theta \approx \frac{4GM}{c^2R}\) | [`gr_light_deflection.py`](gr_light_deflection.py) |
-| 2 | Dilatação gravitacional do tempo | \(\Delta t_s \approx \Delta t \left(1 - \frac{\Phi}{c^2}\right)\) | [`gr_gravitational_time.py`](gr_gravitational_time.py) |
+| 1 | Desvio da luz pela gravidade | `θ ≈ 4GM / (c²R)` | [`gr_light_deflection.py`](gr_light_deflection.py) |
+| 2 | Dilatação gravitacional do tempo | `Δt_s ≈ Δt * (1 - Φ / c²)` | [`gr_gravitational_time.py`](gr_gravitational_time.py) |
 
 > **Nota:** As fórmulas de GR são **aproximações de campo fraco**. GR envolve a curvatura do espaço-tempo e é naturalmente mais complexo que SR.
 
