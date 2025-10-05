@@ -1,0 +1,226 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\begin{document}
+
+\section*{Exercício – Lagrangiano de um bloco preso a uma mola em plano inclinado}
+
+\textbf{Enunciado:}  
+Um bloco de massa $m = 2\,\mathrm{kg}$ está preso a uma mola de constante elástica $k = 50\,\mathrm{N/m}$ em um plano inclinado de $30^\circ$.  
+Considerando $\sin(30^\circ) = 0.5$ e $g = 9.8\,\mathrm{m/s^2}$, deseja-se:
+
+1. Analisar a hipótese de movimento $x(t) = 0.1\,t^2$ (m).  
+2. Calcular as energias cinética e potenciais.  
+3. Determinar a Lagrangiana $L = T - V$.  
+4. Verificar se a equação de Euler–Lagrange é satisfeita.  
+5. Recalcular aplicando a condição inicial do ponto de equilíbrio $x(0) = -0.196$ m e $\dot{x}(0) = 0$.
+
+---
+
+\section*{Dados iniciais}
+
+\begin{align*}
+m &= 2\,\mathrm{kg} \\
+k &= 50\,\mathrm{N/m} \\
+\theta &= 30^\circ \quad \Rightarrow \quad \sin\theta = 0.5 \\
+g &= 9.8\,\mathrm{m/s^2}
+\end{align*}
+
+Hipótese de teste: $x(t) = 0.1\,t^2$ (m)  
+Tempos para avaliar: $t = 0,\,1,\,2,\,3$
+
+---
+
+\section*{Velocidade}
+
+\[
+\dot{x}(t) = \frac{d}{dt}(0.1t^2) = 0.2t
+\]
+
+\begin{align*}
+t_0 &: 0.2(0) = 0 \\
+t_1 &: 0.2(1) = 0.2 \\
+t_2 &: 0.2(2) = 0.4 \\
+t_3 &: 0.2(3) = 0.6
+\end{align*}
+
+---
+
+\section*{Aceleração}
+
+\[
+\ddot{x}(t) = \frac{d}{dt}(0.2t) = 0.2
+\]
+
+\begin{align*}
+t_0 &: 0.2 \\ 
+t_1 &: 0.2 \\ 
+t_2 &: 0.2 \\ 
+t_3 &: 0.2
+\end{align*}
+
+---
+
+\section*{Energia Cinética}
+
+\[
+T = \frac{1}{2} m \dot{x}^2
+\]
+
+\begin{align*}
+t_0 &: \tfrac{1}{2}(2)(0)^2 = 0 \\
+t_1 &: \tfrac{1}{2}(2)(0.2)^2 = 0.04 \\
+t_2 &: \tfrac{1}{2}(2)(0.4)^2 = 0.16 \\
+t_3 &: \tfrac{1}{2}(2)(0.6)^2 = 0.36
+\end{align*}
+
+---
+
+\section*{Energia Potencial Gravitacional}
+
+\[
+V_g = m g \sin\theta \; x(t)
+\]
+
+\begin{align*}
+t_0 &: 2(9.8)(0.5)(0.1 \cdot 0^2) = 0 \\
+t_1 &: 2(9.8)(0.5)(0.1 \cdot 1^2) = 0.98 \\
+t_2 &: 2(9.8)(0.5)(0.1 \cdot 2^2) = 3.92 \\
+t_3 &: 2(9.8)(0.5)(0.1 \cdot 3^2) = 8.82
+\end{align*}
+
+---
+
+\section*{Energia Potencial da Mola}
+
+\[
+V_s = \frac{1}{2} k (x(t))^2
+\]
+
+\begin{align*}
+t_0 &: \tfrac{1}{2}(50)(0.1 \cdot 0^2)^2 = 0 \\
+t_1 &: \tfrac{1}{2}(50)(0.1 \cdot 1^2)^2 = 0.25 \\
+t_2 &: \tfrac{1}{2}(50)(0.1 \cdot 2^2)^2 = 4.00 \\
+t_3 &: \tfrac{1}{2}(50)(0.1 \cdot 3^2)^2 = 20.25
+\end{align*}
+
+---
+
+\section*{Energia Potencial Total}
+
+\[
+V = V_g + V_s
+\]
+
+\begin{align*}
+t_0 &: 0 + 0 = 0 \\
+t_1 &: 0.98 + 0.25 = 1.23 \\
+t_2 &: 3.92 + 4.00 = 7.92 \\
+t_3 &: 8.82 + 20.25 = 29.07
+\end{align*}
+
+---
+
+\section*{Lagrangiana}
+
+\[
+L = T - V
+\]
+
+\begin{align*}
+t_0 &: 0 - 0 = 0 \\
+t_1 &: 0.04 - 1.23 = -1.19 \\
+t_2 &: 0.16 - 7.92 = -7.76 \\
+t_3 &: 0.36 - 29.07 = -28.71
+\end{align*}
+
+---
+
+\section*{Equação de Euler–Lagrange}
+
+\[
+L = \tfrac{1}{2}m\dot{x}^2 - \left(m g \sin\theta\, x + \tfrac{1}{2}k x^2\right)
+\]
+
+A equação de movimento resultante é:
+
+\[
+m \ddot{x} + kx + m g \sin\theta = 0
+\]
+
+Substituindo $x(t) = 0.1t^2$ e $\ddot{x} = 0.2$, observa-se que o termo não se anula, logo a hipótese não satisfaz a equação.
+
+---
+
+\section*{Condição de Equilíbrio Estático}
+
+Devido à presença do termo gravitacional, o equilíbrio não ocorre em $x = 0$, mas sim em:
+\[
+x_{eq} = - \frac{m g \sin\theta}{k} = -\frac{9.8}{50} = -0.196\,\mathrm{m}
+\]
+
+Vamos aplicar a condição inicial $x(0) = -0.196$ e $\dot{x}(0) = 0$ e revalidar os termos.
+
+---
+
+\section*{Nova avaliação (condição inicial $x(0)=-0.196$)}
+
+\begin{align*}
+x(t) &= -0.196 \quad \text{(constante)} \\
+\dot{x}(t) &= 0 \\
+\ddot{x}(t) &= 0
+\end{align*}
+
+\textbf{Energia Cinética:}
+\[
+T = \tfrac{1}{2} m \dot{x}^2 = 0
+\]
+
+\textbf{Potencial Gravitacional:}
+\[
+V_g = m g \sin\theta\, x = 2(9.8)(0.5)(-0.196) = -1.9208
+\]
+
+\textbf{Potencial da Mola:}
+\[
+V_s = \tfrac{1}{2} k x^2 = \tfrac{1}{2}(50)(-0.196)^2 = 0.9604
+\]
+
+\textbf{Energia Potencial Total:}
+\[
+V = V_g + V_s = -1.9208 + 0.9604 = -0.9604
+\]
+
+\textbf{Lagrangiana:}
+\[
+L = T - V = 0 - (-0.9604) = 0.9604
+\]
+
+---
+
+\section*{Verificação da Equação de Movimento}
+
+\[
+m\ddot{x} + kx + m g \sin\theta = 0
+\]
+
+Substituindo $x=-0.196$, $\ddot{x}=0$:
+\[
+2(0) + 50(-0.196) + 2(9.8)(0.5) = -9.8 + 9.8 = 0
+\]
+
+\textbf{Resultado:}  
+A equação é exatamente satisfeita (resíduo = 0).  
+Logo, $x(t) = -0.196$ é uma solução estática estável, com energia constante no tempo.
+
+---
+
+\section*{Conclusão}
+
+A hipótese inicial $x(t)=0.1t^2$ não satisfaz a equação de movimento, pois o termo da força resultante não se anula.  
+Ao aplicar a condição de equilíbrio $x(0)=-0.196$ e $\dot{x}(0)=0$, obtém-se uma solução estacionária ($x(t)$ constante) que satisfaz exatamente a equação de Euler–Lagrange e a equação de movimento.
+
+\end{document}
