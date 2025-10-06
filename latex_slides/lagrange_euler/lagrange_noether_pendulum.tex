@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Exemplo Prático: Pêndulo Simples, Euler-Lagrange e Noether}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Sistema: Pêndulo Simples}
+
+Um pêndulo simples consiste em uma massa $m$ suspensa por um fio de comprimento $l$, oscilando sob a gravidade $g$.  
+A coordenada generalizada é o ângulo $\theta(t)$ que a corda forma com a vertical.
+
+\subsection*{1.1 Energia Cinética}
+\[
+T = \frac{1}{2} m (l \dot{\theta})^2 = \frac{1}{2} m l^2 \dot{\theta}^2
+\]
+
+\subsection*{1.2 Energia Potencial}
+Tomando o ponto mais baixo como zero de energia potencial:
+\[
+V = m g l (1 - \cos\theta)
+\]
+
+\subsection*{1.3 Lagrangiana}
+\[
+L = T - V = \frac{1}{2} m l^2 \dot{\theta}^2 - m g l (1 - \cos\theta)
+\]
+
+---
+
+\section*{2. Ação e discretização}
+
+A ação ao longo do intervalo $[t_1, t_2]$:
+\[
+S[\theta(t)] = \int_{t_1}^{t_2} L(\theta, \dot{\theta}) \, dt
+\]
+
+Discretizando para cálculos aproximados com $n$ passos de duração $\Delta t$:
+\[
+S \approx \sum_{i=1}^{n} L_i \Delta t
+\]
+
+\textbf{Intuição:} cada $L_i$ representa o "momento instantâneo do sistema" naquele passo de tempo, multiplicado pelo intervalo $\Delta t$.  
+
+---
+
+\section*{3. Equação de Euler-Lagrange}
+
+Condição de ação estacionária:
+\[
+\frac{d}{dt} \frac{\partial L}{\partial \dot{\theta}} - \frac{\partial L}{\partial \theta} = 0
+\]
+
+\subsection*{3.1 Derivadas simbólicas}
+\[
+\frac{\partial L}{\partial \dot{\theta}} = m l^2 \dot{\theta}, \quad 
+\frac{d}{dt} \frac{\partial L}{\partial \dot{\theta}} = m l^2 \ddot{\theta}
+\]
+
+\[
+\frac{\partial L}{\partial \theta} = - m g l \sin\theta
+\]
+
+\subsection*{3.2 Equação de movimento}
+\[
+m l^2 \ddot{\theta} + m g l \sin\theta = 0
+\quad \Rightarrow \quad
+\ddot{\theta} + \frac{g}{l} \sin\theta = 0
+\]
+
+---
+
+\section*{4. Aplicação de Noether (identificando simetria)}
+
+\subsection*{4.1 Transformações infinitesimais}
+Para descobrir se alguma quantidade física se conserva:
+
+\begin{enumerate}
+    \item Testamos uma pequena mudança na coordenada ou no tempo:
+\[
+    \theta(t) \to \theta(t) + \epsilon, \quad t \to t + \delta t
+\]
+    
+    \item Calculamos a Lagrangiana perturbada:
+\[
+    L_{\text{perturbada}} = L(\theta+\epsilon, \dot{\theta}+\dot{\epsilon}, t+\delta t)
+\]
+    
+    \item Calculamos a variação da Lagrangiana:
+\[
+    \delta L = L_{\text{perturbada}} - L
+\]
+    
+    \item Se $\delta L = 0$ (ou não depende explicitamente do tempo), há simetria e, pelo Teorema de Noether, existe uma quantidade conservada:
+\[
+    Q = \frac{\partial L}{\partial \dot{\theta}} \delta \theta
+\]
+\end{enumerate}
+
+\subsection*{4.2 Passo simbólico}
+Para uma pequena mudança $\delta t$:
+\[
+\theta(t) \to \theta(t+\delta t) \approx \theta(t) + \dot{\theta}\, \delta t
+\]
+
+\[
+L(\theta, \dot{\theta}, t) \to L(\theta + \dot{\theta} \delta t, \dot{\theta} + \ddot{\theta} \delta t, t+\delta t)
+\]
+
+Expandindo em série de Taylor e descartando ordens superiores:
+\[
+\delta L \approx \frac{\partial L}{\partial \theta} \dot{\theta}\delta t + \frac{\partial L}{\partial \dot{\theta}} \ddot{\theta} \delta t + \frac{\partial L}{\partial t}\delta t
+= \left(\frac{d}{dt} \frac{\partial L}{\partial \dot{\theta}} - \frac{\partial L}{\partial \theta} + \frac{\partial L}{\partial t}\right) \delta t
+\]
+
+Como $\frac{d}{dt} \frac{\partial L}{\partial \dot{\theta}} - \frac{\partial L}{\partial \theta} = 0$ pela Euler-Lagrange, então:
+\[
+\delta L = \frac{\partial L}{\partial t} \delta t
+\]
+
+\textbf{Conclusão simbólica:} se $L$ não depende explicitamente do tempo, $\delta L = 0$ e a energia é conservada.
+
+---
+
+\section*{5. Cálculos numéricos}
+
+Valores usados:
+\[
+m = 1 \text{ kg},\quad l = 1 \text{ m},\quad g = 9.8 \text{ m/s²},\quad \theta = 30^\circ = \pi/6, \quad \dot{\theta} = 1 \text{ rad/s}
+\]
+
+\subsection*{5.1 Energia Cinética}
+\[
+T = \frac{1}{2} m l^2 \dot{\theta}^2 = 0.5 \text{ J}
+\]
+
+\subsection*{5.2 Energia Potencial}
+\[
+V = m g l (1 - \cos\theta) = 1 \cdot 9.8 \cdot 1 \cdot (1 - \cos(\pi/6)) 
+\approx 1 \cdot 9.8 \cdot (1 - 0.866) \approx 1.31 \text{ J}
+\]
+
+\subsection*{5.3 Lagrangiana e energia total}
+\[
+L = T - V = 0.5 - 1.31 = -0.81 \text{ J}, \quad
+E = T + V = 0.5 + 1.31 = 1.81 \text{ J}
+\]
+
+\subsection*{5.4 Diferença}
+\[
+E - L = 1.81 - (-0.81) = 2.62 \approx 2V
+\]
+
+\textbf{Intuição numérica:} mostramos que a energia total é maior que a Lagrangiana pela quantidade $2V$, confirmando a relação simbólica $E - L = 2V$.
+
+---
+
+\section*{6. Passo a passo para identificar simetria}
+
+\begin{enumerate}
+    \item Perturbamos a coordenada $\theta \to \theta + \epsilon$ ou o tempo $t \to t + \delta t$.
+    \item Calculamos $\delta L$ de forma simbólica ou numérica.
+    \item Se $\delta L = 0$ ou não depende de $t$, temos simetria.
+    \item Pelo Teorema de Noether, existe uma quantidade conservada $Q = \frac{\partial L}{\partial \dot{\theta}} \delta \theta$.
+    \item Para o pêndulo simples, $\delta L$ não depende explicitamente do tempo, logo a energia total $E$ se conserva.
+\end{enumerate}
+
+---
+
+\section*{7. Resumo do exemplo destrinchado}
+
+\begin{itemize}
+    \item Sistema: pêndulo simples, coordenada $\theta(t)$
+    \item Lagrangiana: $L = \frac{1}{2} m l^2 \dot{\theta}^2 - m g l (1 - \cos\theta)$
+    \item Equação de Euler-Lagrange: $\ddot{\theta} + \frac{g}{l} \sin\theta = 0$
+    \item Teste de simetria: perturbar $\theta$ ou $t$, calcular $\delta L$
+    \item Quantidade conservada: $Q = \frac{\partial L}{\partial \dot{\theta}} \delta \theta$ ou energia $E$ para simetria temporal
+    \item Valores numéricos: $T = 0.5$ J, $V \approx 1.31$ J, $L = -0.81$ J, $E = 1.81$ J, $E-L \approx 2V \approx 2.62$ J
+\end{itemize}
+
+\end{document}

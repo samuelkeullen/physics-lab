@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{hyperref}
+
+\title{Onda Linear e Superposição}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+Ondas aparecem em diversos contextos da física, como som, luz e vibrações em cordas. 
+Este documento apresenta de forma intuitiva o conceito de \textbf{onda linear} e \textbf{superposição} de ondas, com fórmulas matemáticas e um exemplo prático.
+
+\section{Onda Linear}
+Uma onda linear simples pode ser descrita por:
+
+\begin{equation}
+y(x,t) = A \sin(kx - \omega t + \phi)
+\end{equation}
+
+\noindent onde:
+\begin{itemize}
+    \item $A$ → amplitude (tamanho da onda),
+    \item $k$ → número de onda (relaciona-se ao comprimento de onda $\lambda$ por $k = \frac{2\pi}{\lambda}$),
+    \item $\omega$ → frequência angular (relaciona-se ao período $T$ por $\omega = \frac{2\pi}{T}$),
+    \item $\phi$ → fase inicial,
+    \item $x$ → posição,
+    \item $t$ → tempo.
+\end{itemize}
+
+\subsection*{Intuição}
+Podemos desmembrar a fórmula como:
+\[
+y(x,t) = A \cdot \sin(kx - \omega t + \phi)
+\]
+- $kx$ representa a posição ao longo do espaço,  
+- $\omega t$ representa a evolução temporal da onda,  
+- $\phi$ ajusta a fase inicial da oscilação.  
+
+\section{Superposição de Ondas}
+Quando duas ou mais ondas se encontram, a \textbf{superposição} determina que a onda resultante é a soma das ondas individuais:
+
+\begin{equation}
+y_{\text{total}}(x,t) = A_1 \sin(k_1 x - \omega_1 t + \phi_1) + A_2 \sin(k_2 x - \omega_2 t + \phi_2)
+\end{equation}
+
+O esquema é o mesmo da onda linear, porém agora consideramos a contribuição de múltiplas ondas.
+
+\subsection*{Exemplo Prático}
+Considerando:
+\[
+\text{onda 1: } A_1 = 2, k_1 = 1, \omega_1 = 3, \phi_1 = 0
+\]
+\[
+\text{onda 2: } A_2 = 1, k_2 = 1, \omega_2 = 3, \phi_2 = \frac{\pi}{2}
+\]
+
+Queremos calcular $y_{\text{total}}$ em $x=0.5$ e $t=1$.
+
+\subsubsection*{Passo 1: Argumentos das funções seno}
+\[
+\text{onda 1: } k_1 x - \omega_1 t + \phi_1 = 1 \cdot 0.5 - 3 \cdot 1 + 0 = -2.5
+\]
+\[
+\text{onda 2: } k_2 x - \omega_2 t + \phi_2 = 1 \cdot 0.5 - 3 \cdot 1 + \frac{\pi}{2} \approx -0.9292
+\]
+
+\subsubsection*{Passo 2: Valores das ondas}
+\[
+y_1 = A_1 \sin(-2.5) \approx 2 \cdot (-0.598) = -1.196
+\]
+\[
+y_2 = A_2 \sin(-0.9292) \approx 1 \cdot (-0.801) = -0.801
+\]
+
+\subsubsection*{Passo 3: Superposição}
+\[
+y_{\text{total}} = y_1 + y_2 \approx -1.196 + (-0.801) = -1.997
+\]
+
+\section{Conclusão e Relações com Mecânica Analítica}
+A análise de ondas lineares e sua superposição está relacionada com princípios fundamentais da física teórica:
+
+\begin{itemize}
+    \item \textbf{Lagrange}: A onda pode ser derivada de uma função Lagrangiana, considerando energia cinética e potencial do sistema.
+    \item \textbf{Euler}: As equações de Euler-Lagrange fornecem a equação de movimento para campos de onda contínuos.
+    \item \textbf{Noether}: A simetria do sistema (por exemplo, invariância temporal ou espacial) leva a leis de conservação, como energia ou momento.
+\end{itemize}
+
+Portanto, mesmo conceitos aparentemente simples como ondas e superposição possuem uma conexão profunda com a formulação teórica da mecânica clássica e da física de campos.
+
+\end{document}
