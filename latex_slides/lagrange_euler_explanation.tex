@@ -1,0 +1,175 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\geometry{margin=2cm}
+
+\title{Lagrange e Equações de Euler–Lagrange \\ \small{Resumo Teórico e Aplicações}}
+\author{Estudo Pessoal de Física Avançada}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução}
+O formalismo de Lagrange é uma reformulação elegante da mecânica clássica.
+Em vez de tratar forças diretamente (como faz Newton com $F = ma$), 
+Lagrange descreve o movimento de um sistema a partir de suas \textbf{energias} e \textbf{restrições}.
+
+A grande vantagem é que ele permite resolver problemas complexos com coordenadas não-cartesianas,
+sistemas com restrições e, futuramente, se generaliza facilmente para a Relatividade e a Mecânica Quântica.
+
+\section*{1. Conceitos Fundamentais}
+
+\subsection*{1.1 Lagrangiana}
+A Lagrangiana é definida como:
+\[
+L = T - V
+\]
+onde:
+\begin{itemize}
+    \item $T$ é a energia cinética do sistema;
+    \item $V$ é a energia potencial.
+\end{itemize}
+
+\noindent
+\textbf{Forma expandida:}
+\[
+L(q_i, \dot{q_i}, t) = \frac{1}{2} m \dot{q_i}^2 - V(q_i)
+\]
+Essa expressão depende das coordenadas generalizadas $q_i$, suas derivadas temporais $\dot{q_i}$, e do tempo $t$.
+
+---
+
+\subsection*{1.2 Equação de Euler–Lagrange}
+A condição para que o caminho físico seja aquele realmente seguido pelo sistema é obtida do \textbf{princípio da ação estacionária}:
+\[
+\delta S = 0, \quad \text{onde } S = \int_{t_1}^{t_2} L \, dt
+\]
+A partir dessa condição, obtém-se a equação de Euler–Lagrange:
+\[
+\frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q_i}} \right) - \frac{\partial L}{\partial q_i} = 0
+\]
+
+\noindent
+\textbf{Forma destrinchada:}
+\[
+\underbrace{\frac{\partial L}{\partial \dot{q_i}}}_{\text{momento conjugado}} 
+\quad \xrightarrow{d/dt} \quad
+\underbrace{\frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q_i}} \right)}_{\text{variação temporal do momento}} 
+\quad - \quad
+\underbrace{\frac{\partial L}{\partial q_i}}_{\text{variação espacial da Lagrangiana}} = 0
+\]
+O resultado expressa o equilíbrio dinâmico do sistema.
+
+---
+
+\section*{2. Exemplos Fundamentais}
+
+\subsection*{2.1 Partícula Livre}
+Para uma partícula de massa $m$ movendo-se livremente:
+\[
+L = \frac{1}{2} m \dot{x}^2
+\]
+Aplicando Euler–Lagrange:
+\[
+\frac{d}{dt}\left( m \dot{x} \right) - 0 = 0 \Rightarrow m \ddot{x} = 0
+\]
+\textbf{Interpretação:} A aceleração é nula, portanto o movimento é retilíneo uniforme.
+Esse é o caso mais simples — e é o ponto de partida para relatividade.
+
+---
+
+\subsection*{2.2 Massa em Mola (Oscilador Harmônico)}
+Para uma mola ideal com constante $k$:
+\[
+L = \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2
+\]
+Aplicando Euler–Lagrange:
+\[
+m \ddot{x} + kx = 0
+\]
+\textbf{Forma padrão:}
+\[
+\ddot{x} + \omega^2 x = 0, \quad \text{onde } \omega = \sqrt{\frac{k}{m}}
+\]
+O sistema oscila harmonicamente — solução:
+\[
+x(t) = A \cos(\omega t + \phi)
+\]
+
+---
+
+\subsection*{2.3 Pêndulo Simples}
+Para um pêndulo de massa $m$ e comprimento $l$:
+\[
+L = \frac{1}{2} m l^2 \dot{\theta}^2 - mgl(1 - \cos\theta)
+\]
+Aplicando Euler–Lagrange:
+\[
+m l^2 \ddot{\theta} + mgl \sin\theta = 0
+\]
+ou
+\[
+\ddot{\theta} + \frac{g}{l}\sin\theta = 0
+\]
+Para pequenos ângulos ($\sin\theta \approx \theta$):
+\[
+\ddot{\theta} + \frac{g}{l}\theta = 0
+\]
+que é novamente o \textbf{oscilador harmônico simples}.
+
+---
+
+\section*{3. Interpretação Física e Conservações}
+
+\subsection*{3.1 Quando o tempo não aparece explicitamente em $L$:}
+\[
+\frac{\partial L}{\partial t} = 0 \Rightarrow E = \dot{q_i}\frac{\partial L}{\partial \dot{q_i}} - L = \text{constante}
+\]
+\textbf{Interpretação:} Conservação da energia total.
+
+\subsection*{3.2 Quando uma coordenada $q_i$ não aparece em $L$:}
+\[
+\frac{\partial L}{\partial q_i} = 0 \Rightarrow \frac{d}{dt}\left( \frac{\partial L}{\partial \dot{q_i}} \right) = 0
+\]
+\textbf{Interpretação:} Conservação do momento conjugado (momento linear ou angular, dependendo do sistema).
+
+---
+
+\section*{4. Perguntas Conceituais e Respostas}
+
+\begin{enumerate}
+    \item \textbf{O que representa fisicamente a Lagrangiana $L = T - V$?}\\
+    Representa a diferença entre a energia de movimento e a energia de restrição do sistema. Minimizar a ação associada a $L$ gera as equações de movimento.
+
+    \item \textbf{Por que usamos coordenadas generalizadas $q_i$?}\\
+    Porque sistemas com restrições têm menos graus de liberdade do que o espaço 3D total; $q_i$ descreve apenas o essencial.
+
+    \item \textbf{O que ocorre se $L$ não depende de $t$ explicitamente?}\\
+    A energia total é conservada.
+
+    \item \textbf{O que ocorre se $L$ não depende de uma coordenada $q_i$?}\\
+    O momento conjugado correspondente é conservado.
+
+    \item \textbf{Como Lagrange se relaciona com Newton?}\\
+    Ambos produzem as mesmas equações de movimento; Lagrange o faz via energia e coordenadas generalizadas, sem lidar com forças diretamente.
+\end{enumerate}
+
+---
+
+\section*{5. Conclusão}
+O formalismo de Lagrange e as equações de Euler–Lagrange formam o \textbf{núcleo conceitual} de toda a física moderna:
+\begin{itemize}
+    \item Na \textbf{Relatividade}, a Lagrangiana incorpora o espaço-tempo de Minkowski;
+    \item Na \textbf{Mecânica Quântica}, ela se transforma em uma densidade de campo na formulação de Feynman;
+    \item E com o \textbf{Teorema de Noether}, conecta simetrias a leis de conservação.
+\end{itemize}
+
+Estudar Lagrange é o primeiro passo sólido rumo à Física Teórica Moderna.
+
+\end{document}

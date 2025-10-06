@@ -1,0 +1,114 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Introdução a Lagrange e Euler-Lagrange}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Objetivo}
+Este documento tem como objetivo apresentar de forma intuitiva e detalhada os conceitos de Lagrange e Euler-Lagrange, preparando para estudos em física avançada, como mecânica clássica, relatividade e mecânica quântica.
+
+\section{A Lagrangiana}
+
+A \textbf{Lagrangiana} de um sistema é definida como:
+
+\begin{equation}
+L = T - V
+\end{equation}
+
+onde:
+
+\begin{itemize}
+    \item $T$ é a \textbf{energia cinética}, ou seja, a energia associada ao movimento. 
+    É aquela energia que mede \textit{"quanto o sistema está se movendo"}.
+    \[
+    T = \frac{1}{2} m \dot{q}^2 \quad \text{ou} \quad T = \frac{1}{2} I \dot{\theta}^2 \text{ para rotações}
+    \]
+    \textbf{Intuição:} AHHH! Energia cinética em física avançada é basicamente isso: medir a liberdade e inércia do sistema.
+
+    \item $V$ é a \textbf{energia potencial}, relacionada às forças conservativas que limitam ou restringem o movimento:
+    \[
+    V = m g h \quad \text{(gravidade)}, \qquad V = \frac{1}{2} k x^2 \quad \text{(mola)}
+    \]
+    \textbf{Intuição:} Essa é a energia que “puxa” o sistema de volta, regula seu movimento e define a tendência de equilíbrio.
+\end{itemize}
+
+Portanto, a Lagrangiana mede o \textit{conflito dinâmico} entre movimento livre e restrição. O caminho físico real é aquele que torna a ação
+\begin{equation}
+S = \int L \, dt
+\end{equation}
+\textbf{estacionária} (\(\delta S = 0\)).
+
+\subsection{Resumo Intuitivo}
+\begin{itemize}
+    \item $T$: quer manter o movimento, representa inércia e liberdade.
+    \item $V$: quer trazer de volta, representa restrição e equilíbrio.
+    \item $L = T - V$: mede o conflito entre liberdade e restrição. O sistema escolhe naturalmente o caminho de mínima ação.
+\end{itemize}
+
+\section{Equações de Euler-Lagrange}
+
+A partir da Lagrangiana, as equações de movimento de um sistema podem ser obtidas por:
+
+\begin{equation}
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}_i}\right) - \frac{\partial L}{\partial q_i} = 0
+\end{equation}
+
+onde \(q_i\) são as coordenadas generalizadas do sistema.
+
+\subsection{Exemplo 1: Pêndulo Simples}
+
+\begin{itemize}
+    \item Comprimento: $l = 0.5 \, m$
+    \item Ângulo inicial: $\theta_0 = 10^\circ$
+    \item Gravidade: $g = 9.81 \, m/s^2$
+\end{itemize}
+
+A Lagrangiana é:
+\[
+L = T - V = \frac{1}{2} m l^2 \dot{\theta}^2 - m g l (1 - \cos\theta)
+\]
+
+Aplicando Euler-Lagrange:
+\[
+\frac{d}{dt} \left(\frac{\partial L}{\partial \dot{\theta}}\right) - \frac{\partial L}{\partial \theta} = 0
+\]
+\[
+m l^2 \ddot{\theta} + m g l \sin\theta = 0
+\]
+
+\subsection{Exemplo 2: Massa em Mola}
+
+\begin{itemize}
+    \item Massa: $m$
+    \item Constante elástica: $k$
+\end{itemize}
+
+Lagrangiana:
+\[
+L = \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2
+\]
+
+Euler-Lagrange:
+\[
+m \ddot{x} + k x = 0
+\]
+
+\section{Perguntas e respostas rápidas}
+
+\textbf{1. É normal aplicar Lagrange apenas com exemplos no começo?}\\
+Sim. Inicialmente, o foco é entender o procedimento e interpretar fisicamente as equações. Com o tempo, ao estudar Noether e sistemas mais complexos, sua intuição se solidifica.
+
+\textbf{2. O pêndulo é um oscilador harmônico?}\\
+Aproximadamente, para pequenos ângulos, sim. A aproximação linear (\(\sin\theta \approx \theta\)) faz com que se comporte como um oscilador harmônico.
+
+\textbf{3. Preciso estudar partículas antes de Noether?}\\
+Não é estritamente necessário. Sistemas como pêndulos ou massas em molas são suficientes para desenvolver intuição inicial.
+
+\end{document}

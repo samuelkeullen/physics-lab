@@ -1,0 +1,161 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, siunitx}
+
+\title{Pendulo Simples: Período Exato e Aproximado}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Enunciado}
+
+Um pêndulo simples tem comprimento \(l = 0.5\,\text{m}\) e é solto com ângulo inicial \(\theta_0 = 10^\circ\), sem velocidade inicial (\(\dot{\theta}_0 = 0\)). Utilize \(g = 9.81\,\text{m/s}^2\).
+
+\begin{enumerate}
+    \item Determine a equação do movimento usando Lagrangiana / Euler–Lagrange.
+    \item Faça a aproximação de pequeno ângulo e calcule o período \(T_\text{aprox}\).
+    \item Calcule o período exato \(T_\text{exato}\) usando a série para \(K(k)\) e estime o erro percentual da aproximação linear.
+    \item Avalie se a hipótese de pequeno ângulo é aceitável (\(<1\%\) de erro).
+\end{enumerate}
+
+\section*{a) Equação do movimento via Lagrangiana}
+
+A energia cinética do pêndulo é:
+\[
+T = \frac{1}{2} m (l \dot{\theta})^2 = \frac{1}{2} m l^2 \dot{\theta}^2
+\]
+
+A energia potencial é:
+\[
+V = m g l (1 - \cos\theta)
+\]
+
+A Lagrangiana é:
+\[
+L = T - V = \frac{1}{2} m l^2 \dot{\theta}^2 - m g l (1 - \cos\theta)
+\]
+
+Aplicando a equação de Euler-Lagrange:
+\[
+\frac{d}{dt} \frac{\partial L}{\partial \dot{\theta}} - \frac{\partial L}{\partial \theta} = 0
+\]
+
+\[
+\frac{d}{dt} (m l^2 \dot{\theta}) + m g l \sin\theta = 0
+\]
+
+\[
+\boxed{\ddot{\theta} + \frac{g}{l} \sin\theta = 0}
+\]
+
+---
+
+\section*{b) Aproximação de pequeno ângulo}
+
+Para \(\theta \ll 1\), \(\sin\theta \approx \theta\):
+\[
+\ddot{\theta} + \frac{g}{l} \theta = 0
+\]
+
+Período aproximado:
+\[
+T_\text{aprox} = 2 \pi \sqrt{\frac{l}{g}}
+\]
+
+\textbf{Cálculo:}
+\[
+\frac{l}{g} = \frac{0.5}{9.81} \approx 0.05097
+\]
+\[
+\sqrt{\frac{l}{g}} = \sqrt{0.05097} \approx 0.22576
+\]
+\[
+T_\text{aprox} = 2 \pi \cdot 0.22576 \approx 1.4185\,\text{s}
+\]
+
+---
+
+\section*{c) Período exato via série de \(K(k)\)}
+
+\subsection*{Passo 1: Conversão para radianos}
+
+\[
+\theta_0 = 10^\circ \cdot \frac{\pi}{180} \approx 0.17453\,\text{rad}
+\]
+
+Dividindo por 2:
+\[
+\frac{\theta_0}{2} = 0.08725
+\]
+
+\subsection*{Passo 2: Cálculo de \(k\)}
+
+\[
+k = \sin\left(\frac{\theta_0}{2}\right) \approx \sin(0.08725) \approx 0.0871
+\]
+
+\[
+k^2 = 0.0075
+\]
+
+\subsection*{Passo 3: Série de \(K(k)\)}
+
+\[
+K(k) = \frac{\pi}{2} \left( 1 + \frac{1}{4} k^2 + \frac{9}{64} k^4 + \frac{25}{256} k^6 + \frac{1225}{16384} k^8 \right)
+\]
+
+\textbf{Cálculo detalhado:}
+\[
+\frac{1}{4} k^2 = 0.25 \cdot 0.0075 = 0.001875
+\]
+\[
+\frac{9}{64} k^4 = 0.140625 \cdot (0.0075)^2 = 7.91 \times 10^{-6}
+\]
+\[
+\frac{25}{256} k^6 = 0.09765625 \cdot (0.0075)^3 \approx 4.11 \times 10^{-8}
+\]
+\[
+\frac{1225}{16384} k^8 \approx 0.0748 \cdot (0.0075)^4 \approx 2.36 \times 10^{-10}
+\]
+
+Soma:
+\[
+1 + 0.001875 + 7.91\times10^{-6} + 4.11 \times 10^{-8} + 2.36\times10^{-10} \approx 1.00187795
+\]
+
+\[
+K(k) \approx \frac{\pi}{2} \cdot 1.00187795 \approx 1.5737
+\]
+
+---
+
+\subsection*{Passo 4: Período exato}
+
+\[
+T_\text{exato} = 4 \sqrt{\frac{l}{g}} K(k)
+\]
+
+\[
+4 \cdot 0.22576 \cdot 1.5737 \approx 1.421\,\text{s}
+\]
+
+---
+
+\section*{d) Comparação e validação da hipótese de pequeno ângulo}
+
+\textbf{Diferença em segundos:}
+\[
+\Delta T = T_\text{exato} - T_\text{aprox} = 1.421 - 1.4185 \approx 0.0025\,\text{s}
+\]
+
+\textbf{Erro percentual:}
+\[
+\text{Erro} = \frac{\Delta T}{T_\text{exato}} \cdot 100 \approx \frac{0.0025}{1.421} \cdot 100 \approx 0.16\%
+\]
+
+\textbf{Conclusão:}  
+O erro é menor que 1\%, logo a aproximação de pequeno ângulo é aceitável para \(\theta_0 = 10^\circ\).
+
+\end{document}
