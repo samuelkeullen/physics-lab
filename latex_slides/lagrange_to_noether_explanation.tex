@@ -1,0 +1,166 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+
+\title{Lagrangiana, Euler-Lagrange e Noether: Um Guia Destrinchado}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Lagrange}
+
+Em um momento do sistema, calculamos a Lagrangiana:
+
+\[
+L = T - V
+\]
+
+onde $T$ é a energia cinética e $V$ é a energia potencial naquele instante. Cada $L$ representa o \emph{momento do sistema} naquele instante.
+
+\section*{2. Ação}
+
+Para avaliar um caminho completo do sistema, integramos $L$ ao longo do tempo:
+
+\[
+S = \int_{t_1}^{t_2} L(q, \dot{q}, t) \, dt
+\]
+
+Discretizando:
+
+\[
+S \approx (L_1 \cdot \Delta t) + (L_2 \cdot \Delta t) + \dots + (L_n \cdot \Delta t)
+\]
+
+Cada $L_i$ é a Lagrangiana naquele instante, e $\Delta t$ é o intervalo de tempo.
+
+\section*{3. Perturbação da trajetória}
+
+Criamos uma pequena perturbação na trajetória:
+
+\[
+q(t) \to q(t) + \delta q(t)
+\]
+
+Isso altera $T$ e $V$, gerando um Lagrangiano perturbado $L(q+\delta q, \dot{q}+\dot{\delta q})$ e uma ação perturbada $S[q+\delta q]$.
+
+Comparando com a ação original:
+
+\[
+\delta S = S[q + \delta q] - S[q]
+\]
+
+Intuição prática: imagine desenhar um caminho e empurrar levemente com o dedo. Se a ação não muda, você está no caminho natural do sistema.
+
+\section*{4. Condição do caminho físico (Euler-Lagrange)}
+
+O caminho físico faz a ação ser estacionária:
+
+\[
+\delta S = 0
+\]
+
+Isso leva à equação de Euler-Lagrange:
+
+\[
+\frac{d}{dt} \frac{\partial L}{\partial \dot{q}} - \frac{\partial L}{\partial q} = 0
+\]
+
+Resolvendo, obtemos $q(t)$, a trajetória real do sistema.
+
+\section*{5. Simetria e Noether}
+
+Se o sistema possui simetria, ou seja, se a Lagrangiana é invariante sob uma transformação:
+
+\[
+L(q, \dot{q}, t) \text{ invariante}
+\]
+
+então, pelo Teorema de Noether, existe uma quantidade conservada.
+
+A forma geral da quantidade conservada é:
+
+\[
+Q = \sum_i \frac{\partial L}{\partial \dot{q}_i} \delta q_i
+\]
+
+onde $\delta q_i$ representa a mudança infinitesimal da coordenada $q_i$ associada à simetria.
+
+\subsection*{Como testar simetria na prática}
+
+Para descobrir se energia, momento linear ou angular é conservado:
+
+\begin{enumerate}
+    \item Escolha a transformação que deseja testar (tempo, espaço, rotação).  
+    \item Crie a Lagrangiana perturbada aplicando a transformação infinitesimal:  
+    \[
+    q_i \to q_i + \delta q_i
+    \]  
+    \item Calcule a variação da ação:  
+    \[
+    \delta S = \int_{t_1}^{t_2} \big( L(q_i + \delta q_i, \dot{q}_i + \dot{\delta q}_i) - L(q_i, \dot{q}_i) \big) dt
+    \]  
+    \item Se $\delta S = 0$, a Lagrangiana é invariante e existe uma quantidade conservada $Q$.  
+\end{enumerate}
+
+\subsection*{Exemplo prático de simetria}
+
+\begin{itemize}
+    \item Se $L$ não depende do tempo, a simetria temporal garante que a energia total é conservada: $E = T + V$.  
+    \item Se $L$ não depende de uma coordenada espacial $x$, a simetria de translação garante que o momento linear é conservado.  
+    \item Se $L$ é invariante sob rotações, o momento angular é conservado.
+\end{itemize}
+
+Intuição: se o sistema "não sente" a transformação, existe algo que permanece constante ao longo do tempo. Noether identifica exatamente essa quantidade.
+
+\section*{6. Energia que sobra}
+
+A energia total do sistema, quando existe simetria temporal, é:
+
+\[
+E = T + V
+\]
+
+Comparando com a Lagrangiana:
+
+\[
+L = T - V
+\]
+
+a diferença instantânea é:
+
+\[
+E - L = (T + V) - (T - V) = 2V
+\]
+
+Intuição prática:
+
+\begin{itemize}
+    \item $E = T + V$ é a energia total que realmente se conserva ao longo do tempo.  
+    \item $L$ define a ação e a trajetória correta do sistema.  
+    \item A diferença $E - L = 2V$ mostra matematicamente como a energia potencial contribui para a relação entre energia total e Lagrangiana em cada instante.  
+\end{itemize}
+
+\section*{7. Resumo mental}
+
+\begin{itemize}
+    \item $L = T - V$ → momento do sistema
+    \item $\int L dt$ → ação
+    \item Perturbação $q(t) \to q(t)+\delta q$ → $L$ perturbado → $\delta S$
+    \item $\delta S = 0$ → Euler-Lagrange → caminho físico real
+    \item Simetria → Noether → quantidade conservada:
+    \[
+    Q = \sum_i \frac{\partial L}{\partial \dot{q}_i} \delta q_i
+    \]
+    \item Energia conservada: $E = T + V$, diferença $E - L = 2V$
+\end{itemize}
+
+\section*{8. Observação sobre perturbação e simetria}
+
+Se a Lagrangiana perturbada não muda a ação ($\delta S = 0$), a Lagrangiana é simétrica para aquela transformação. Isso garante, por Noether, que existe uma quantidade física constante. A simetria prática do sistema identifica exatamente qual grandeza se conserva.
+
+\end{document}

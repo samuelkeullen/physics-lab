@@ -8,7 +8,7 @@
 \geometry{margin=2cm}
 
 \title{Lagrange e Equações de Euler–Lagrange \\ \small{Resumo Teórico e Aplicações}}
-\author{Estudo Pessoal de Física Avançada}
+\author{Samuel Keullen Sales}
 \date{\today}
 
 \begin{document}
@@ -89,6 +89,25 @@ Para uma mola ideal com constante $k$:
 \[
 L = \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2
 \]
+
+% --- Notas de memorização para energia cinética e potencial ---
+\textbf{Notas para memorizar:}
+\begin{itemize}
+    \item \textbf{Energia Cinética ($T$)}:
+        \begin{itemize}
+            \item Massa em mola: $T = \frac{1}{2} m \dot{x}^2$ 
+                → energia do movimento da massa ao longo do eixo da mola. 
+                Pense: \textit{quanto mais rápido se move, maior T}.
+        \end{itemize}
+    \item \textbf{Energia Potencial ($V$)}:
+        \begin{itemize}
+            \item Massa em mola: $V = \frac{1}{2} k x^2$ 
+                → energia armazenada na mola devido à deformação. 
+                Pense: \textit{quanto mais a mola é comprimida/esticada, maior V}.
+        \end{itemize}
+\end{itemize}
+\textbf{Resumo prático:} $T$ mede “energia de movimento” (liberdade), $V$ mede “energia de restrição” (força restauradora). O sistema oscila equilibrando essas duas energias.
+
 Aplicando Euler–Lagrange:
 \[
 m \ddot{x} + kx = 0
@@ -109,6 +128,25 @@ Para um pêndulo de massa $m$ e comprimento $l$:
 \[
 L = \frac{1}{2} m l^2 \dot{\theta}^2 - mgl(1 - \cos\theta)
 \]
+
+% --- Notas de memorização para energia cinética e potencial ---
+\textbf{Notas para memorizar:}
+\begin{itemize}
+    \item \textbf{Energia Cinética ($T$)}:
+        \begin{itemize}
+            \item Pêndulo: $T = \frac{1}{2} m l^2 \dot{\theta}^2$ 
+                → energia associada à velocidade angular da massa. 
+                Pense: \textit{quanto mais rápido o pêndulo balança, maior T}.
+        \end{itemize}
+    \item \textbf{Energia Potencial ($V$)}:
+        \begin{itemize}
+            \item Pêndulo: $V = m g l (1 - \cos\theta)$ 
+                → energia armazenada devido à altura relativa da massa. 
+                Pense: \textit{quanto mais alto o pêndulo sobe, maior V}.
+        \end{itemize}
+\end{itemize}
+\textbf{Resumo prático:} $T$ mede “energia de movimento” (liberdade), $V$ mede “energia de restrição” (força restauradora). O sistema oscila equilibrando essas duas energias.
+
 Aplicando Euler–Lagrange:
 \[
 m l^2 \ddot{\theta} + mgl \sin\theta = 0
