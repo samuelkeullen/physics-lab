@@ -1,0 +1,449 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Transformações de Lorentz}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+%\tableofcontents
+%\newpage
+
+% Conteúdo principal começa aqui
+\section{Transformações de Lorentz e Dilatação do Tempo}
+
+\subsection{Notação e conceitos básicos}
+
+\begin{itemize}
+    \item $c$: velocidade da luz
+    \item $\Delta t$: tempo medido pelo observador externo
+    \item $\Delta \tau$: tempo próprio (no referencial do objeto)
+    \item $\Delta x, \Delta y, \Delta z$: coordenadas espaciais
+    \item $\Delta s$: intervalo espaço-temporal
+\end{itemize}
+
+As transformações de Lorentz substituem as transformações de Galileu porque, na relatividade, a velocidade da luz $c$ é a mesma para todos os observadores, independentemente do movimento relativo.
+
+Como consequência, o intervalo espaço-temporal entre dois eventos,
+\begin{equation}
+    \Delta s^2 = c^2 \Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2,
+\end{equation}
+é \textbf{invariante}, ou seja, todos os observadores medem o mesmo valor, mesmo que seus tempos e posições individuais sejam diferentes.
+
+No referencial próprio de uma partícula ou objeto (onde ele está \emph{parado} espacialmente), o intervalo reduz-se a
+\begin{equation}
+    \Delta s^2 = c^2 \Delta \tau^2.
+\end{equation}
+
+Cada partícula ou objeto “viaja” no espaço-tempo com uma \emph{velocidade total} igual a $c$. O que muda entre observadores é como essa velocidade se distribui entre deslocamento espacial e avanço no tempo, gerando os efeitos de dilatação do tempo e contração do espaço.
+
+Essa interdependência entre espaço e tempo é a razão pela qual falamos em \emph{espaço-tempo}, em vez de tratá-los separadamente como na física clássica.
+
+\subsubsection*{Resumo intuitivo}
+\begin{itemize}
+    \item Luz constante $\rightarrow$ intervalo fixo $\rightarrow$ mistura de espaço e tempo $\rightarrow$ espaço-tempo.
+    \item Movendo-se rápido: parte da “velocidade do espaço-tempo” vai para o espaço, sobra menos para o tempo $\rightarrow$ relógios em movimento parecem andar devagar.
+\end{itemize}
+
+\subsection{O Relógio de Luz: dilatação do tempo}
+
+Considere dois espelhos, um em cima e outro embaixo, separados por uma distância $L$.
+
+\paragraph{Tempo próprio do relógio (no referencial do próprio relógio)} 
+\begin{equation}
+    \Delta \tau = \frac{2L}{c}.
+\end{equation}
+
+Exemplo numérico: $L = 2$ m
+\begin{equation}
+    \Delta \tau = \frac{2 \cdot 2}{3\times10^8} \approx 1.33 \times 10^{-8}\text{ s}.
+\end{equation}
+
+\paragraph{Tempo medido por um observador externo}  
+O relógio se desloca horizontalmente junto com o trem. A luz percorre uma trajetória diagonal, maior que o caminho vertical. Como a velocidade da luz $c$ é constante, o tempo medido pelo observador externo aumenta. Esta diferença está ligada à invariância do intervalo $\Delta s$:
+\begin{equation}
+    \Delta s^2 = c^2 \Delta t^2 - \Delta x^2 - \Delta y^2 - \Delta z^2 = c^2 \Delta \tau^2.
+\end{equation}
+
+\subsubsection*{Medindo a trajetória diagonal}
+
+Distâncias envolvidas:
+\begin{itemize}
+    \item Vertical: $L$
+    \item Horizontal: deslocamento do trem durante metade do ciclo (subida): $x = v \Delta t / 2$
+    \item Hipotenusa (trajetória da luz): $d = \sqrt{L^2 + x^2} = \sqrt{L^2 + (v \Delta t / 2)^2}$
+\end{itemize}
+
+A luz percorre essa diagonal à velocidade $c$:
+\begin{equation}
+    c \frac{\Delta t}{2} = \sqrt{L^2 + \left(\frac{v \Delta t}{2}\right)^2}.
+\end{equation}
+
+Isolando $\Delta t$:
+\begin{align}
+    c^2 \frac{(\Delta t)^2}{4} &= L^2 + v^2 \frac{(\Delta t)^2}{4} \\
+    (c^2 - v^2)\frac{(\Delta t)^2}{4} &= L^2 \\
+    \Delta t &= \frac{2 L}{\sqrt{c^2 - v^2}} = \frac{\Delta \tau}{\sqrt{1 - v^2/c^2}}.
+\end{align}
+
+\subsubsection*{Exemplo numérico}
+
+Velocidade do trem: $v = 0.8 c$  
+Tempo próprio: $\Delta \tau \approx 1.33 \times 10^{-8}$ s  
+Tempo medido pelo observador externo:
+\begin{equation}
+    \Delta t = \frac{1.33 \times 10^{-8}}{\sqrt{1 - 0.8^2}} \approx 2.22 \times 10^{-8}\text{ s}.
+\end{equation}
+
+Resultado: O tempo medido pelo observador externo é maior que o tempo próprio do relógio, confirmando a dilatação do tempo.
+
+\subsubsection*{Fórmulas gerais}
+
+\paragraph{Forma completa:}
+\begin{align*}
+\Delta \tau &= \frac{2 L}{c} \\
+\Delta t &= \frac{\Delta \tau}{\sqrt{1 - v^2 / c^2}}
+\end{align*}
+
+\paragraph{Forma adimensional simplificada:}
+\begin{align*}
+\beta &= \frac{v}{c} \\
+\Delta t &= \frac{\Delta \tau}{\sqrt{1 - \beta^2}}
+\end{align*}
+
+\subsubsection*{Aplicação com exemplo}
+
+\begin{itemize}
+    \item $L = 2$ m
+    \item $v = 0.8 c$
+\end{itemize}
+
+\paragraph{Cálculos completos:}
+\begin{align*}
+2L &= 4 \\
+c^2 &= 9 \times 10^{16} \\
+v^2 &= 5.76 \times 10^{16} \\
+c^2 - v^2 &= 3.24 \times 10^{16} \\
+\sqrt{c^2 - v^2} &= 1.8 \times 10^8 \\
+\Delta \tau &= \frac{4}{3\times 10^8} \approx 1.33 \times 10^{-8} \\
+\Delta t &= \frac{1.33 \times 10^{-8}}{0.6} \approx 2.22 \times 10^{-8}
+\end{align*}
+
+\paragraph{Forma adimensional:}
+\begin{align*}
+\beta &= 0.8 \\
+\Delta t &= \frac{1.33 \times 10^{-8}}{\sqrt{1 - 0.8^2}} \approx 2.22 \times 10^{-8}
+\end{align*}
+
+Conclusão: O relógio em movimento anda mais devagar em relação ao observador externo.
+
+\section{Simultaneidade Relativa}
+
+\subsection{Conceito}
+
+Na física clássica, o tempo é considerado absoluto: todos os observadores concordam sobre a simultaneidade de eventos.  
+
+Na relatividade restrita, isso não é mais verdade: dois eventos que são simultâneos em um referencial $S$ podem \textbf{não ser simultâneos} em outro referencial $S'$ que se move com velocidade $v$ em relação ao primeiro.
+
+Em outras palavras, a simultaneidade relativa explica que, mesmo que eventos sejam simultâneos em um referencial específico, eles podem ocorrer em momentos diferentes em outro referencial com velocidade relativa distinta.
+
+\subsection{Consequências práticas}
+
+\begin{itemize}
+    \item Não existe um tempo universal, como descrito por Galileu. O tempo depende das coordenadas e do tempo próprio de cada referencial, considerando a velocidade da luz como limite.
+    \item Eventos simultâneos em um referencial podem ocorrer em ordens diferentes em outro, mas apenas para eventos separados por distâncias espaciais maiores que a luz pode percorrer.
+    \item Essa relatividade da simultaneidade explica paradoxos aparentes, como o \emph{paradoxo dos gêmeos}, sem violar a causalidade: eventos dentro do cone de luz mantêm a ordem causal.
+\end{itemize}
+
+\subsection{Exemplo prático: o trem e os relâmpagos}
+
+Considere a clássica situação:
+
+\begin{itemize}
+    \item Um trem se move rapidamente sobre os trilhos.
+    \item Dois relâmpagos atingem simultaneamente as extremidades do trem (frente e traseira).
+    \item Um observador na plataforma vê os dois relâmpagos ao mesmo tempo.
+    \item Um observador dentro do trem, que se move na direção da frente do trem, verá primeiro o relâmpago da frente e depois o da traseira.
+\end{itemize}
+
+\paragraph{Explicação:}  
+A luz do relâmpago da frente percorre menos distância até o observador dentro do trem. Ou seja, para ele, os eventos não são simultâneos, mesmo que para a pessoa na plataforma parecessem.  
+
+\emph{Conclusão:} A simultaneidade depende do referencial do observador.
+
+\subsection{Ligação com as fórmulas de Lorentz}
+
+Considere dois eventos em $S$:
+\[
+t_1 = t_2 \quad \text{e} \quad x_1 \neq x_2
+\]
+
+No referencial $S'$, em movimento relativo, a transformação de Lorentz altera os tempos dos eventos:
+\[
+t_1' \neq t_2'
+\]
+
+Portanto, segundo a simultaneidade relativa, eventos simultâneos em $S$ não são simultâneos em $S'$, especialmente se estão separados por distâncias grandes o suficiente para a luz não alcançá-los instantaneamente.
+
+\emph{Resumo:} A noção de "ao mesmo tempo" depende do referencial do observador e está diretamente relacionada às transformações de Lorentz.
+
+\section{Derivação Conceitual das Transformações de Lorentz}
+
+\subsection{Premissas Básicas}
+
+\subsubsection{1. Linearidade}
+
+Começamos assumindo a forma mais geral possível, linear, para a transformação entre dois referenciais inerciais $S$ e $S'$:
+
+\[
+x' = A x + B t, \quad t' = D x + E t
+\]
+
+Onde os coeficientes possuem interpretações físicas:
+
+\begin{itemize}
+    \item $A$: fator de escala espacial, indica como as distâncias se transformam entre referenciais.
+    \item $B$: mistura tempo-espaço, mostra quanto o tempo em $S$ afeta a posição em $S'$.
+    \item $D$: mistura espaço-tempo, mostra quanto a posição em $S$ afeta o tempo em $S'$.
+    \item $E$: fator de escala temporal, indica como o tempo se dilata ou contrai entre os referenciais.
+\end{itemize}
+
+Esses coeficientes ainda são desconhecidos, mas serão determinados pelas condições físicas a seguir.
+
+\subsubsection{2. Coincidência das Origens}
+
+Quando os dois referenciais coincidem no instante inicial:
+\[
+S: x = 0, \ t = 0 \quad \Rightarrow \quad S': x' = 0, \ t' = 0
+\]
+
+Essa condição garante que não há deslocamento espacial nem atraso temporal inicial entre as origens.
+
+\subsubsection{3. Constância da Velocidade da Luz}
+
+A luz deve se propagar com a mesma velocidade $c$ em qualquer referencial inercial:
+
+\[
+x = c t \quad \Rightarrow \quad x' = c t'
+\]
+
+Essa exigência força espaço e tempo a se misturarem nas transformações, pois $x$ e $t$ não podem mais ser tratados como independentes.
+
+\subsection{Aplicação da Condição da Luz}
+
+Considerando a luz se movendo nos sentidos positivo e negativo:
+
+\[
+\text{Sentido positivo: } x = c t, \quad x' = c t' 
+\]
+\[
+\text{Sentido negativo: } x = -c t, \quad x' = -c t'
+\]
+
+Substituindo nas equações gerais $x' = A x + B t$ e $t' = D x + E t$, obtemos:
+
+\[
+A = E, \quad B = c^2 D
+\]
+
+\begin{itemize}
+    \item $A = E$: espaço e tempo se escalam pelo mesmo fator, refletindo a simetria entre medidas espaciais e temporais.
+    \item $B = c^2 D$: a mistura entre tempo e espaço depende de $c^2$, conectando as unidades de tempo e distância.
+\end{itemize}
+
+\subsection{Introduzindo a Velocidade Relativa $v$}
+
+A origem de $S'$ se move com velocidade $v$ vista de $S$, ou seja, $x = v t \implies x' = 0$.  
+
+Substituindo em $x' = A x + B t$:
+
+\[
+0 = A (v t) + B t \quad \Rightarrow \quad B = - A v
+\]
+
+Portanto, o coeficiente $B$ depende da velocidade relativa entre os referenciais, mostrando explicitamente como a transformação muda com $v$.
+
+\section{Montando as Equações Reduzidas}
+
+\subsection{Transformações em termos de $A$ e $v$}
+
+Com as relações determinadas anteriormente:
+\[
+B = -A v, \quad E = A, \quad D = \frac{B}{c^2} = -\frac{A v}{c^2},
+\]
+
+as transformações de Lorentz para uma dimensão ficam:
+
+\[
+x' = A (x - v t), \quad t' = A \left(t - \frac{v}{c^2} x \right)
+\]
+
+\begin{itemize}
+    \item $x' = A (x - v t)$: transforma posições, descontando o deslocamento relativo $v t$.
+    \item $t' = A \left(t - \frac{v}{c^2} x \right)$: transforma tempos, mostrando que o tempo depende da posição $x$, introduzindo a simultaneidade relativa.
+    \item O termo $\frac{v}{c^2} x$ é o fator de mistura espaço-tempo, que faz o tempo "inclinar" com o espaço.
+\end{itemize}
+
+\subsection{Determinando o fator $A = \gamma$}
+
+Usamos a invariância do intervalo espaço-temporal:
+
+\[
+x'^2 - c^2 t'^2 = x^2 - c^2 t^2
+\]
+
+Substituindo $x'$ e $t'$ e simplificando:
+
+\[
+A^2 \left(1 - \frac{v^2}{c^2}\right) = 1 \quad \Rightarrow \quad A = \frac{1}{\sqrt{1 - v^2/c^2}} = \gamma
+\]
+
+O fator $\gamma$, conhecido como \textbf{fator de Lorentz}, controla efeitos relativísticos:
+
+\begin{itemize}
+    \item Quanto maior $v$, maior $\gamma$; quando $v \to c$, $\gamma \to \infty$.
+    \item Para $v \ll c$, $\gamma \approx 1$, recuperando as transformações de Galileu.
+\end{itemize}
+
+\subsection{Fórmulas finais (1D)}
+
+\[
+x' = \gamma (x - v t), \quad t' = \gamma \left(t - \frac{v}{c^2} x \right)
+\]
+
+\[
+x = \gamma (x' + v t'), \quad t = \gamma \left(t' + \frac{v}{c^2} x' \right)
+\]
+
+\begin{itemize}
+    \item $x', t'$: coordenadas e tempo medidos no referencial em movimento $S'$.
+    \item $x, t$: coordenadas e tempo no referencial estacionário $S$.
+    \item A simetria entre as formas direta e inversa mostra que o movimento relativo é recíproco.
+\end{itemize}
+
+\subsection{Interpretação geométrica e física}
+
+\begin{itemize}
+    \item As equações representam uma rotação no espaço-tempo de Minkowski, onde o tempo e o espaço se "misturam".
+    \item As linhas de simultaneidade de $S'$ não são horizontais em $S$, ilustrando a simultaneidade relativa.
+    \item O intervalo 
+    \[
+    s^2 = c^2 t^2 - x^2
+    \] 
+    permanece invariante, garantindo a preservação da causalidade.
+\end{itemize}
+
+\subsection{Resumo}
+
+Ao exigir linearidade, coincidência das origens e constância da velocidade da luz, o espaço e o tempo devem se misturar.  
+Essa mistura leva naturalmente às transformações de Lorentz e explica:
+
+\begin{itemize}
+    \item Dilatação do tempo
+    \item Contração do comprimento
+    \item Simultaneidade relativa
+\end{itemize}
+
+Tudo controlado pelo fator $\gamma$.
+
+\section{Conceito do Fator de Lorentz e Transformações de Lorentz}
+
+\subsection{Determinando o fator $\gamma$}
+
+Usando a invariância do intervalo espaço-temporal:
+\[
+x'^2 - c^2 t'^2 = x^2 - c^2 t^2
+\]
+
+Substituindo as expressões lineares e simplificando:
+\[
+A^2 \left(1 - \frac{v^2}{c^2}\right) = 1 \quad \Rightarrow \quad A = \frac{1}{\sqrt{1 - v^2/c^2}} = \gamma
+\]
+
+\begin{itemize}
+    \item $\gamma$ é o \textbf{fator de Lorentz}, responsável pela dilatação do tempo e contração do comprimento.
+    \item Quanto maior $v$, maior $\gamma$.
+    \item Quando $v \to c$, $\gamma \to \infty$.
+    \item Para $v \ll c$, $\gamma \approx 1$, recuperando as transformações de Galileu.
+\end{itemize}
+
+\subsection{Fórmulas finais (1D)}
+
+\textbf{Diretas:}
+\[
+x' = \gamma (x - v t), \quad t' = \gamma \left(t - \frac{v}{c^2} x \right)
+\]
+
+\textbf{Inversas:}
+\[
+x = \gamma (x' + v t'), \quad t = \gamma \left(t' + \frac{v}{c^2} x' \right)
+\]
+
+\textbf{Legenda:}
+\begin{itemize}
+    \item $x'$: coordenada de um evento no referencial em movimento $S'$
+    \item $t'$: tempo medido por relógio no referencial em movimento $S'$
+    \item $x, t$: medidas no referencial estacionário $S$
+    \item A simetria direta/inversa mostra que o movimento relativo é recíproco
+\end{itemize}
+
+\subsection{Exemplo prático – cálculo passo a passo}
+
+Evento no referencial $S$:
+\[
+x = 6.0 \times 10^8 \text{ m}, \quad t = 3.0 \text{ s}
+\]
+
+Referencial $S'$ movendo com $v = 0.8\,c$.
+
+\textbf{Calcular $\gamma$:}
+\[
+\gamma = \frac{1}{\sqrt{1 - v^2/c^2}} = \frac{1}{\sqrt{1 - 0.8^2}} = \frac{1}{\sqrt{0.36}} \approx 1.6667
+\]
+
+\textbf{Aplicar fórmulas:}
+
+\[
+x' = \gamma (x - v t), \quad v = 0.8 \, c = 2.4 \times 10^8 \text{ m/s}
+\]
+\[
+x' = 1.6667 \, (6.0 \times 10^8 - 2.4 \times 10^8 \cdot 3) = 1.6667 \, (-1.2 \times 10^8) \approx -2.0 \times 10^8 \text{ m}
+\]
+
+\[
+t' = \gamma \left(t - \frac{v}{c^2} x \right) = 1.6667 \left(3 - \frac{2.4 \times 10^8 \cdot 6.0 \times 10^8}{(3.0 \times 10^8)^2} \right)
+\]
+\[
+t' = 1.6667 (3 - 1.6) = 1.6667 \cdot 1.4 \approx 2.33 \text{ s}
+\]
+
+\textbf{Resultado final:}
+
+\[
+\begin{array}{c|c|c}
+\text{Referencial} & x \,(\text{m}) & t \,(\text{s}) \\
+\hline
+S & 6.0 \times 10^8 & 3.0 \\
+S' & -2.0 \times 10^8 & 2.33
+\end{array}
+\]
+
+→ O evento ocorre antes e atrás no sistema em movimento — mistura espaço-tempo confirmada.
+
+\subsection{Resumo e interpretação}
+
+\begin{itemize}
+    \item As transformações de Lorentz preservam a velocidade da luz e o intervalo espaço-temporal.
+    \item Espaço e tempo se misturam: $x$ influencia $t'$ e $t$ influencia $x'$.
+    \item O fator $\gamma$ determina dilatação do tempo e contração do comprimento.
+    \item Para velocidades baixas ($v \ll c$), $\gamma \approx 1$, recuperando a física clássica.
+\end{itemize}
+
+\end{document}
