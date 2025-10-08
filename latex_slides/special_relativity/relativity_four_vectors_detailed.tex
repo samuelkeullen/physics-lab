@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\title{Resumo Detalhado de 4-Vetores na Relatividade Especial}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1. Introdução}
+Este documento detalha os conceitos de transformações de Lorentz, 4-vetores, energia e momento (4-momento) e 4-força na relatividade especial. Inclui explicações formais, interpretações, fórmulas destrinchadas, legendas e exemplos práticos.
+
+\section*{2. 4-Vetores}
+Um 4-vetor é um objeto covariante sob transformações de Lorentz. Os principais 4-vetores são:
+\begin{align*}
+X^\mu &= (ct, \mathbf{x}) && \text{4-posição}\\
+U^\mu &= \frac{dX^\mu}{d\tau} = \gamma (c, \mathbf{v}) && \text{4-velocidade}\\
+P^\mu &= m U^\mu = (E/c, \mathbf{p}) && \text{4-momento}\\
+F^\mu &= \frac{dP^\mu}{d\tau} && \text{4-força}
+\end{align*}
+\textbf{Observação:} O 4-vetor posição é independente, o 4-momento depende do momento 3D e da massa, e a 4-força depende do 4-momento. O 4-velocidade tem magnitude $c$ no tempo próprio.
+
+\section*{3. Energia e Momento (4-Momento)}
+\subsection*{3.1 Forma científica}
+\begin{align}
+P^\mu &= \left(\frac{E}{c}, \mathbf{p}\right) && \text{4-momento, componente temporal = energia, espacial = momento}\\
+E &= \gamma m c^2 && \text{Energia total, incluindo repouso}\\
+\mathbf{p} &= \gamma m \mathbf{v} && \text{Momento 3D relativístico}\\
+\gamma &= \frac{1}{\sqrt{1 - v^2/c^2}} && \text{Fator de Lorentz}\\
+E^2 &= (pc)^2 + (mc^2)^2 && \text{Relação fundamental energia-momento, invariância relativística}
+\end{align}
+
+\subsection*{3.2 Forma destrinchada}
+\begin{itemize}
+    \item \textbf{Energia de repouso:} $E_0 = mc^2$ (partícula em repouso)
+    \item \textbf{Energia cinética relativística:} $E_k = (\gamma - 1)mc^2$
+    \item \textbf{Momento 3D:} $\mathbf{p} = \gamma m \mathbf{v}$
+    \item \textbf{Verificação da relação:} $E^2 - (pc)^2 = (mc^2)^2$
+\end{itemize}
+
+\subsection*{3.3 Exemplo prático}
+\textbf{Dado:} $m = 1~\mathrm{kg}$, $v = 0.6c$
+\begin{enumerate}
+    \item Fator de Lorentz: $\gamma = 1/\sqrt{1-0.6^2} = 1.25$
+    \item Energia total: $E = \gamma m c^2 \approx 1.125 \times 10^{17}~\mathrm{J}$
+    \item Momento: $\mathbf{p} = \gamma m v = 0.75 c \approx 2.25 \times 10^8~\mathrm{kg\,m/s}$
+    \item Verificação: $E^2 = (pc)^2 + (mc^2)^2 \approx 1.125 \times 10^{17}~\mathrm{J}$
+\end{enumerate}
+
+\section*{4. 4-Força}
+\subsection*{4.1 Forma científica}
+\begin{align}
+F^\mu &= \frac{dP^\mu}{d\tau} && \text{4-força como derivada do 4-momento pelo tempo próprio}\\
+\mathbf{F} &= \frac{d\mathbf{p}}{dt} && \text{Componentes espaciais, força clássica}
+\end{align}
+
+\subsection*{4.2 Interpretação}
+A 4-força depende do 4-momento, garantindo covariância. Componentes espaciais se reduzem à força clássica em referenciais comuns.
+
+\section*{5. Relação Hierárquica dos 4-Vetores}
+\begin{itemize}
+    \item 4-posição $X^\mu$: independente
+    \item 4-velocidade $U^\mu = dX^\mu/d\tau$: derivada da posição
+    \item 4-momento $P^\mu = m U^\mu$: depende da 4-velocidade e massa
+    \item 4-força $F^\mu = dP^\mu/d\tau$: depende do 4-momento
+\end{itemize}
+Ou seja: $X^\mu \to U^\mu \to P^\mu \to F^\mu$.
+
+\section*{6. Outros 4-Vetores (Revisão rápida)}
+\begin{align*}
+X^\mu &= (ct, \mathbf{x}) && \text{4-posição}\\
+U^\mu &= \gamma(c, \mathbf{v}) && \text{4-velocidade}\\
+P^\mu &= m U^\mu && \text{4-momento}\\
+F^\mu &= dP^\mu/d\tau && \text{4-força}
+\end{align*}
+
+\end{document}

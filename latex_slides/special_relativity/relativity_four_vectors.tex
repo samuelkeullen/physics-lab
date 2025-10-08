@@ -1,0 +1,86 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+
+\title{4-Vetores na Relatividade Especial}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{História}
+A noção de \textbf{4-vetores} surge naturalmente da reformulação da física feita por \textbf{Albert Einstein} em 1905 com a \textit{Teoria da Relatividade Especial}.  
+A formalização matemática desse conceito foi realizada por \textbf{Hermann Minkowski} em 1907-1908, ao introduzir o \textit{espaço-tempo de Minkowski}, unificando espaço e tempo em uma entidade geométrica de quatro dimensões.  
+
+Minkowski percebeu que as grandezas físicas relativísticas (posição, velocidade, momento, energia) deveriam ser representadas como vetores nesse espaço-tempo, preservando invariantes sob as transformações de Lorentz.
+
+\section{Definição}
+Um \textbf{4-vetor} é um objeto matemático de quatro componentes que se transforma de maneira bem definida sob \textit{transformações de Lorentz}:
+
+\begin{equation}
+A^{\mu} = (A^0, A^1, A^2, A^3) = (A^0, \vec{A})
+\end{equation}
+
+\noindent onde:
+\begin{itemize}
+    \item $A^0$ é a componente temporal (tempo ou energia);
+    \item $\vec{A} = (A^1, A^2, A^3)$ é o vetor espacial tridimensional.
+\end{itemize}
+
+Exemplo fundamental: o 4-vetor posição:
+\begin{equation}
+x^\mu = (ct, x, y, z)
+\end{equation}
+
+O \textbf{invariante de Lorentz} associado é:
+\begin{equation}
+s^2 = c^2 t^2 - x^2 - y^2 - z^2
+\end{equation}
+
+\section{Aplicações}
+Os 4-vetores permitem formular as leis da física de forma \textbf{covariante}, ou seja, com a mesma forma em todos os referenciais inerciais.  
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Quantidade & Símbolo & Componentes & Invariante & Significado físico \\
+\hline
+4-posição & $x^\mu$ & $(ct, x, y, z)$ & $s^2 = c^2 t^2 - r^2$ & Evento no espaço-tempo \\
+4-velocidade & $u^\mu$ & $\frac{dx^\mu}{d\tau}$ & $u^\mu u_\mu = c^2$ & Velocidade no espaço-tempo \\
+4-momento & $p^\mu$ & $(E/c, \vec{p})$ & $p^\mu p_\mu = m^2 c^2$ & Energia e momento unificados \\
+4-força & $F^\mu$ & $\frac{dp^\mu}{d\tau}$ & - & Generalização da 2ª lei de Newton \\
+\hline
+\end{tabular}
+\end{center}
+
+Exemplo de leis invariantes:
+\begin{equation}
+p^\mu p_\mu = m^2 c^2 \quad \text{ou} \quad F^\mu = \frac{dp^\mu}{d\tau}
+\end{equation}
+
+\section{Ligação com as Transformações de Lorentz}
+Os 4-vetores são construídos para preservar suas relações invariantes sob transformações de Lorentz:
+
+\begin{equation}
+x'^\mu = \Lambda^\mu{}_\nu x^\nu
+\end{equation}
+
+\noindent onde $\Lambda^\mu{}_\nu$ é a matriz de transformação de Lorentz.  
+
+O produto escalar de 4-vetores é \textbf{invariante}:
+\begin{equation}
+A^\mu B_\mu = A'^\mu B'_\mu
+\end{equation}
+
+Isso garante que a estrutura do espaço-tempo seja mantida, independentemente do referencial — é a essência da Relatividade Especial.
+
+\section{Explicação Intuitiva}
+De maneira intuitiva, podemos pensar nos 4-vetores como o \textbf{DNA da Relatividade}: eles carregam consigo a estrutura fundamental do espaço-tempo, de forma que as leis da física sejam as mesmas em todos os referenciais.  
+Assim como o DNA contém as instruções essenciais de um organismo, os 4-vetores contêm as informações essenciais de posição, velocidade, energia e momento, preservando invariantes que definem a realidade relativística.
+
+\end{document}
