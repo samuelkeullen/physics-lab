@@ -1,0 +1,134 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Transformações de Lorentz e Invariância Espaço-Temporal na Prática}
+\author{Samuel Keullen Passos}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+%\tableofcontents
+%\newpage
+
+\section{Exercício Prático: Aplicação das Transformações de Lorentz}
+
+Neste exercício, aplicamos o fator de Lorentz para comprovar a \textbf{distorção do espaço-tempo} e verificar a \textbf{invariância do intervalo espaço-temporal} entre dois referenciais inerciais distintos.
+
+\subsection{Dados iniciais}
+
+\begin{itemize}
+  \item Referencial $S$: $x = 6.0\times10^{8}\ \mathrm{m}$, \quad $t = 3.0\ \mathrm{s}$
+  \item Constante da luz: $c = 3.0\times10^{8}\ \mathrm{m/s}$, \quad $c^2 = 9.0\times10^{16}\ \mathrm{m^2/s^2}$
+  \item Referencial $S'$: $v = 0.8c = 2.4\times10^{8}\ \mathrm{m/s}$
+\end{itemize}
+
+\subsection{Fator de Lorentz}
+\[
+\gamma = \frac{1}{\sqrt{1 - 0.8^2}} = \frac{1}{\sqrt{0.36}} \approx 1.6667
+\]
+
+\section{Cálculos no Referencial $S'$}
+
+\subsection{Cálculo da coordenada $x'$}
+
+\textbf{Fórmula:}
+\[
+x' = \gamma (x - v t)
+\]
+
+\textbf{Destrinchando:}
+\[
+x' = 1.6667 \times (6.0\times10^{8} - 2.4\times10^{8} \times 3)
+\]
+\[
+x' = 1.6667 \times (6.0\times10^{8} - 7.2\times10^{8})
+\]
+\[
+x' = 1.6667 \times (-1.2\times10^{8}) \approx -2.0\times10^{8}\ \mathrm{m}
+\]
+
+\subsection{Cálculo do tempo $t'$}
+
+\textbf{Fórmula:}
+\[
+t' = \gamma \left(t - \frac{v}{c^2}{x}\right)
+\]
+
+\textbf{Mais precisamente:}
+\[
+t' = \gamma \left(t - \frac{v \cdot x}{c^2}\right)
+\]
+
+\textbf{Destrinchando:}
+\[
+t' = 1.6667 \times \left(3 - \frac{2.4\times10^{8} \times 6.0\times10^{8}}{9.0\times10^{16}}\right)
+\]
+\[
+t' = 1.6667 \times (3 - \frac{1.44\times10^{17}}{9.0\times10^{16}})
+\]
+\[
+t' = 1.6667 \times (3 - 1.6)
+\]
+\[
+t' = 1.6667 \times 1.4 \approx 2.33\ \mathrm{s}
+\]
+
+\subsection{Resultados}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Referencial & $x\ (\mathrm{m})$ & $t\ (\mathrm{s})$ \\
+\hline
+$S$ & $6.0\times10^8$ & $3.0$ \\
+\hline
+$S'$ & $-2.0\times10^8$ & $2.33$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Verificando a Invariância do Intervalo Espaço-Temporal}
+
+\textbf{Definição:}
+\[
+I \equiv c^2 t^2 - x^2
+\]
+
+\subsection{No referencial $S$}
+\[
+c^2 t^2 = 9.0\times10^{16} \times 3^2 = 9.0\times10^{16}\times9 = 8.1\times10^{17}
+\]
+\[
+x^2 = (6.0\times10^{8})^2 = 3.6\times10^{17}
+\]
+\[
+I_S = 8.1\times10^{17} - 3.6\times10^{17} = 4.5\times10^{17}
+\]
+
+\subsection{No referencial $S'$}
+\[
+c^2 t'^2 = 9.0\times10^{16} \times (2.3333)^2 = 9.0\times10^{16} \times 5.4444 = 4.89\times10^{17}
+\]
+\[
+x'^2 = (-2.0\times10^8)^2 = 4.0\times10^{16}
+\]
+\[
+I_{S'} = 4.89\times10^{17} - 4.0\times10^{16} = 4.49\times10^{17}
+\]
+
+\textbf{Resultado:}  
+Apesar de pequenas diferenças numéricas devido a arredondamento, o intervalo é praticamente o mesmo:
+\[
+I_S = I_{S'} \approx 4.5\times10^{17}
+\]
+
+\section{Conclusão}
+O exercício mostra que, embora $x'$ e $t'$ variem entre os referenciais $S$ e $S'$, o valor do intervalo espaço-temporal permanece invariante.  
+Isso confirma a consistência das transformações de Lorentz e demonstra, na prática, a preservação da estrutura do espaço-tempo conforme a Relatividade Restrita.
+
+\end{document}

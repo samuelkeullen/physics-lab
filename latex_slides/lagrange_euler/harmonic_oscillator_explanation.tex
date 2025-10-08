@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Entendendo Osciladores Harmônicos: Pêndulo e Mola}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução}
+
+Este documento apresenta uma explicação didática sobre o comportamento energético de dois exemplos clássicos de osciladores harmônicos:  
+o pêndulo simples e o sistema massa-mola. O objetivo é compreender como energia cinética e energia potencial se alternam durante a oscilação, utilizando conceitos de Lagrangiana.
+
+\section{Sistema Massa–Mola}
+
+A Lagrangiana para um sistema massa–mola é dada por:
+\[
+L = T - V
+\]
+onde:
+\[
+T = \frac{1}{2} m \dot{x}^2, \quad V = \frac{1}{2} k x^2
+\]
+Assim:
+\[
+L(x, \dot{x}, t) = \frac{1}{2} m \dot{x}^2 - \frac{1}{2} k x^2
+\]
+
+\subsection*{Interpretação energética}
+
+\begin{itemize}
+    \item \textbf{Posição máxima:} o deslocamento \(x\) é máximo, \(\dot{x} = 0\).  
+    Energia cinética \(T = 0\) e energia potencial \(V\) é máxima. A energia armazenada na mola gera a força restauradora.
+    
+    \item \textbf{Ponto de equilíbrio:} \(x = 0\), \(\dot{x}\) é máximo.  
+    Energia cinética \(T\) é máxima e energia potencial \(V = 0\). Toda a energia está associada ao movimento.
+\end{itemize}
+
+Essa alternância constante entre \(T\) e \(V\) caracteriza o movimento harmônico simples.
+
+\section{Pêndulo Simples}
+
+Para pequenas amplitudes, a Lagrangiana do pêndulo é:
+\[
+L = \frac{1}{2} m l^2 \dot{\theta}^2 - m g l (1 - \cos\theta)
+\]
+onde:
+\[
+\theta \ \text{é o ângulo de deslocamento}, \quad l \ \text{comprimento do pêndulo}.
+\]
+
+\subsection*{Interpretação energética}
+
+\begin{itemize}
+    \item \textbf{Posição máxima:} \(\theta\) máximo, \(\dot{\theta} = 0\).  
+    Energia cinética \(T = 0\), energia potencial \(V\) máxima.  
+    A gravidade fornece a força restauradora para iniciar o movimento.
+    
+    \item \textbf{Ponto de equilíbrio:} \(\theta = 0\), \(\dot{\theta}\) máximo.  
+    Energia cinética \(T\) máxima, energia potencial \(V \approx 0\).  
+    A velocidade permite que o pêndulo ultrapasse o ponto de equilíbrio e continue a oscilação.
+\end{itemize}
+
+Assim, no pêndulo, a energia alterna entre cinética e potencial, mantendo o movimento harmônico.
+
+\section{Conclusão}
+
+Tanto no sistema massa–mola quanto no pêndulo simples, a oscilação é caracterizada por uma troca periódica entre energia cinética e energia potencial.  
+Esse balanço harmônico é a razão pela qual chamamos esses sistemas de \emph{osciladores harmônicos}, sendo que sua descrição através da Lagrangiana fornece uma poderosa ferramenta para análise.
+
+\end{document}
