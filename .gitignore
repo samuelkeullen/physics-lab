@@ -211,3 +211,5 @@ latex_slides/*.aux
 latex_slides/*.fdb_latexmk
 latex_slides/*.fls
 latex_slides/*.synctex.gz
+
+theory/
