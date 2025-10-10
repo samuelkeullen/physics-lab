@@ -1,0 +1,157 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\title{Espaço-Tempo na Relatividade}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1. Origem da Ideia}
+
+Antes de Einstein, acreditava-se que o \textbf{espaço} e o \textbf{tempo} eram entidades separadas e absolutas, conforme a física de Newton.  
+O espaço era o palco fixo onde os corpos se moviam, e o tempo fluía igualmente para todos os observadores.
+
+Com o avanço das equações de Maxwell, percebeu-se que a \textbf{velocidade da luz} $c$ é a mesma para todos os observadores.  
+Essa constância levou Einstein, em 1905, a propor a \textbf{Relatividade Especial}, onde espaço e tempo se unem em uma entidade única: o \textbf{espaço-tempo}.
+
+Poucos anos depois, Hermann Minkowski formalizou matematicamente essa ideia:
+\begin{quote}
+``A partir de agora, o espaço em si e o tempo em si estão condenados a desaparecer, e apenas uma união dos dois conservará uma realidade independente.''
+\end{quote}
+
+\section*{2. Espaço-Tempo: Conceito e Estrutura}
+
+O espaço-tempo é uma estrutura de \textbf{quatro dimensões}, composta por três espaciais e uma temporal:
+\[
+x^{\mu} = (ct, x, y, z)
+\]
+onde $\mu = 0,1,2,3$.
+
+Cada ponto do espaço-tempo representa um \textbf{evento}, algo que ocorre em determinado lugar e instante.  
+A trajetória de uma partícula nesse espaço quadridimensional é chamada de \textbf{linha de mundo}.
+
+\section*{3. Métrica de Minkowski}
+
+Para medir “distâncias” entre eventos no espaço-tempo, utilizamos o \textbf{tensor métrico} $g_{\mu\nu}$, que no espaço-tempo plano (sem gravidade) é:
+\[
+g_{\mu\nu} =
+\begin{pmatrix}
+-1 & 0 & 0 & 0 \\
+0 & +1 & 0 & 0 \\
+0 & 0 & +1 & 0 \\
+0 & 0 & 0 & +1
+\end{pmatrix}
+\]
+
+O \textbf{intervalo espaço-temporal} é definido por:
+\[
+ds^2 = g_{\mu\nu}\, dx^{\mu} dx^{\nu} = -c^2 dt^2 + dx^2 + dy^2 + dz^2
+\]
+
+\textbf{Legenda:}
+\begin{itemize}
+    \item $ds^2$ — intervalo invariante entre dois eventos;
+    \item $g_{\mu\nu}$ — métrica de Minkowski;
+    \item $dx^{\mu}$ — pequenas variações nas coordenadas espaço-temporais.
+\end{itemize}
+
+Esse intervalo $ds^2$ é o mesmo para todos os observadores inerciais — ou seja, é \textbf{invariante de Lorentz}.
+
+\section*{4. Intuição Física}
+
+Na física clássica, todos concordam sobre o tempo e o espaço.  
+Na relatividade, esses conceitos dependem do observador, mas o \textbf{intervalo espaço-temporal} é o mesmo para todos.
+
+Isso significa que o espaço-tempo é a verdadeira “realidade geométrica”, e o espaço e o tempo são apenas projeções dessa estrutura quadridimensional.
+
+\section*{5. Espaço-Tempo Curvo}
+
+Einstein percebeu que a \textbf{gravidade} é uma manifestação da curvatura do espaço-tempo.  
+Corpos massivos \textbf{distorcem} o espaço-tempo, e outros corpos se movem seguindo o caminho mais natural — as \textbf{geodésicas}.
+
+A métrica em presença de gravidade depende da posição:
+\[
+g_{\mu\nu} = g_{\mu\nu}(x)
+\]
+e o intervalo geral é:
+\[
+ds^2 = g_{\mu\nu}(x) \, dx^{\mu} dx^{\nu}
+\]
+
+\section*{6. Exemplos}
+
+\subsection*{Exemplo 1 — Espaço-tempo plano (sem gravidade)}
+Um fóton se move de $(0,0)$ até $(ct,x)$:
+\[
+ds^2 = -c^2t^2 + x^2 = 0
+\]
+\textit{Conclusão:} a luz sempre percorre linhas de mundo nulas ($ds^2 = 0$).
+
+\subsection*{Exemplo 2 — Espaço-tempo curvo (com gravidade)}
+Próximo de uma massa $M$, a métrica é dada por (aproximação de Schwarzschild):
+\[
+ds^2 = -\left(1 - \frac{2GM}{rc^2}\right)c^2dt^2 
++ \left(1 - \frac{2GM}{rc^2}\right)^{-1}dr^2 + r^2 d\Omega^2
+\]
+onde $d\Omega^2 = d\theta^2 + \sin^2\theta\, d\phi^2$.
+
+\textit{Conclusão:} o tempo flui mais lentamente em regiões de maior gravidade.
+
+\section*{7. Tabela Resumo}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Etapa} & \textbf{Conceito} & \textbf{Transição} \\
+\hline
+Newton & Espaço e tempo absolutos & Independentes \\
+\hline
+Einstein (1905) & Espaço-tempo plano & Relatividade Especial \\
+\hline
+Einstein (1915) & Espaço-tempo curvo & Relatividade Geral \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{8. Exercícios}
+
+\textbf{Exercício 1 — Espaço-tempo plano:}\\
+Um observador vê um objeto mover-se a $0{,}6c$ durante $4\,s$.  
+Calcule o intervalo $ds^2$ entre o início e o fim do movimento.
+
+\[
+ds^2 = -c^2(4)^2 + (0{,}6c \cdot 4)^2
+\]
+
+\textit{Analise o resultado e discuta se o intervalo é tipo-tempo, tipo-luz ou tipo-espaço.}
+
+\vspace{0.4cm}
+
+\textbf{Exercício 2 — Espaço-tempo curvo:}\\
+No campo gravitacional terrestre ($\frac{2GM}{rc^2} \approx 1{,}4\times10^{-9}$), compare o tempo medido por dois relógios:
+\begin{itemize}
+    \item Um na superfície da Terra ($r = R_T$);
+    \item Outro em um satélite a $r = R_T + 2{,}0\times10^7 \, \text{m}$.
+\end{itemize}
+
+Use a componente temporal da métrica de Schwarzschild para estimar a diferença de tempo e discuta o efeito da dilatação gravitacional.
+
+\section*{Conclusão}
+
+O conceito de espaço-tempo unifica as noções de espaço e tempo em uma única estrutura geométrica.  
+Esse modelo substitui a ideia de força gravitacional por curvatura geométrica, abrindo caminho para as próximas etapas:
+\begin{itemize}
+    \item Tensor métrico geral $g_{\mu\nu}(x)$
+    \item Geodésicas (trajetórias naturais)
+    \item Tensor de curvatura de Ricci
+    \item Equações de Einstein
+\end{itemize}
+
+\end{document}

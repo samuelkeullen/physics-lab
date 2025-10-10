@@ -1,0 +1,243 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{siunitx}
+\geometry{margin=1in}
+
+\title{Tensor Métrico e Espaço-Tempo\\\large História, Intuição, Fórmulas e Exercícios}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Resumo / Objetivo}
+Este texto fornece uma visão concisa e prática do \emph{tensor métrico} \(g_{\mu\nu}\): breve história, definição e intuição, fórmulas principais com legenda, exemplos ilustrativos e dois exercícios resolvidos (um em espaço plano e outro em espaço curvo). Cada exercício apresenta a fórmula usada e um \emph{destrinche} passo a passo.
+
+\section{História (quem ``inventou'')}
+\begin{itemize}
+  \item \textbf{Carl Friedrich Gauss} desenvolveu ideias fundamentais sobre curvatura de superfícies (séc.\ XIX).
+  \item \textbf{Bernhard Riemann} (1854) formulou a noção de variedades n-dimensionais e introduziu formalmente a ideia de uma métrica \(g\) dependente da posição — a base matemática do tensor métrico.
+  \item \textbf{Hermann Minkowski} (início do séc.\ XX) mostrou que a relatividade restrita pode ser vista como geometria de um espaço-tempo 4D com métrica de assinatura $(-,+,+,+)$.
+  \item \textbf{Albert Einstein} (1915) adotou o tensor métrico \(g_{\mu\nu}\) em Relatividade Geral: \(g_{\mu\nu}\) descreve a geometria do espaço-tempo e a gravidade.
+\end{itemize}
+
+\section{O que é e para que serve}
+O \emph{tensor métrico} \(g_{\mu\nu}(x)\) é uma família de funções (componentes de uma matriz) que define o comprimento físico/intervalo entre pontos infinitesimais:
+\[
+ds^2 = g_{\mu\nu}(x)\,dx^\mu dx^\nu.
+\]
+Serve para:
+\begin{itemize}
+  \item medir distâncias e intervalos espaço-tempo;
+  \item definir produtos escalares invariantes entre vetores: \(A\cdot B = g_{\mu\nu}A^\mu B^\nu\);
+  \item levantar/abaixar índices: \(A_\mu = g_{\mu\nu}A^\nu\);
+  \item derivar conexões (Christoffel) e, daí, as geodésicas (trajetórias livres) e tensores de curvatura (Ricci, Riemann).
+\end{itemize}
+
+\section{Fórmulas principais (com legenda)}
+\subsection*{Fórmulas}
+\begin{align}
+  &ds^2 = g_{\mu\nu}\,dx^\mu dx^\nu \label{eq:intervalo}\\[4pt]
+  &A\cdot B = g_{\mu\nu}A^\mu B^\nu \\[4pt]
+  &A_\mu = g_{\mu\nu}A^\nu,\qquad A^\mu = g^{\mu\nu}A_\nu\\[4pt]
+  &g^{\mu\alpha}g_{\alpha\nu} = \delta^\mu{}_\nu\\[6pt]
+  &\Gamma^\rho_{\mu\nu} = \tfrac{1}{2}g^{\rho\sigma}\big(\partial_\mu g_{\sigma\nu}+\partial_\nu g_{\sigma\mu}-\partial_\sigma g_{\mu\nu}\big) \label{eq:christoffel}\\[6pt]
+  &\frac{d^2 x^\rho}{d\lambda^2} + \Gamma^\rho_{\mu\nu}\frac{dx^\mu}{d\lambda}\frac{dx^\nu}{d\lambda}=0 \qquad\text{(equação de geodésica)}\\[6pt]
+  &G_{\mu\nu} \equiv R_{\mu\nu}-\tfrac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^4}T_{\mu\nu}\qquad\text{(Equações de Einstein)}
+\end{align}
+
+\subsection*{Legenda (símbolos)}
+\begin{description}
+  \item[\(g_{\mu\nu}\)] componentes do tensor métrico (matriz simétrica).
+  \item[\(g^{\mu\nu}\)] inversa matricial de \(g_{\mu\nu}\).
+  \item[\(x^\mu\)] coordenadas (ex.: \(x^0=ct\) ou \(x^0=t\) conforme convenção; \(x^{1,2,3}\) espaciais).
+  \item[\(ds^2\)] intervalo infinitesimal (quadrado do ``comprimento'').
+  \item[\(\Gamma^\rho_{\mu\nu}\)] símbolos de Christoffel (conexão Levi-Civita, dependem de derivadas de \(g\)).
+  \item[\(\lambda\)] parâmetro ao longo da curva (podendo ser tempo próprio \(\tau\) para partículas massivas).
+  \item[\(R_{\mu\nu}, R\)] tensor de Ricci e escalar de curvatura (derivados de derivadas de \(\Gamma\)).
+\end{description}
+
+\section{Exercícios resolvidos (2 casos: plano e curvo) --- cada um: Fórmula, destrinche e passos}
+
+\vspace{6pt}
+\noindent\textbf{Exercício 1 — Espaço plano (Minkowski)}\\
+\textit{Enunciado:} Uma partícula viaja com velocidade \(v=0.6\,c\) ao longo do eixo \(x\). Dois eventos ocorrem no referencial do observador em $t_1=0$ e $t_2=10\ \mathrm{s}$. Calcule o tempo próprio $\tau$ medido pela partícula entre esses eventos, mostrando todos os passos onde o tensor métrico atua.
+
+\medskip
+\textbf{Fórmula usada:} \(ds^2 = g_{\mu\nu}dx^\mu dx^\nu\) e \(d\tau = \dfrac{\sqrt{-\,ds^2}}{c}\) (para trajetórias timelike, com assinatura $(-,+,+,+)$).
+
+\subsubsection*{Destrinche e passos}
+\begin{enumerate}
+  \item \textbf{Métrica de Minkowski (convenção $x^0=ct$):}
+  \[
+    g_{\mu\nu} = \mathrm{diag}(-1,\;1,\;1,\;1).
+  \]
+  Ou, explicitando \(c\) em $x^0=ct$, escreve-se $ds^2 = -c^2dt^2 + dx^2 + dy^2 + dz^2$.
+  \item \textbf{Dados:}
+  \[
+    \Delta t = t_2 - t_1 = 10\ \mathrm{s},\qquad v = 0.6\,c.
+  \]
+  \item \textbf{Deslocamento espacial ao longo de \(x\):}
+  \[
+    \Delta x = v\,\Delta t = 0.6\,c \times 10\ \mathrm{s}.
+  \]
+  Substitui \(c = 3.0\times 10^{8}\ \mathrm{m/s}\):
+  \[
+    \Delta x = 0.6 \times 3.0\times 10^{8}\ \mathrm{m/s} \times 10\ \mathrm{s}.
+  \]
+  Cálculo passo a passo:
+  \begin{align*}
+    0.6\times 3.0 &= 1.8,\\
+    1.8\times 10^{8}\ \mathrm{m/s}\times 10\ \mathrm{s} &= 1.8\times 10^{9}\ \mathrm{m}.
+  \end{align*}
+  Logo \(\Delta x = 1.8\times 10^{9}\ \mathrm{m}.\)
+  \item \textbf{Calcule \(c^2\Delta t^2\):}
+  \[
+    c^2 = (3.0\times 10^8\ \mathrm{m/s})^2 = 9.0\times 10^{16}\ \mathrm{m}^2\!/\mathrm{s}^2.
+  \]
+  \[
+    \Delta t^2 = (10\ \mathrm{s})^2 = 100\ \mathrm{s}^2.
+  \]
+  \[
+    c^2\Delta t^2 = 9.0\times 10^{16}\times 100 = 9.0\times 10^{18}\ \mathrm{m}^2.
+  \]
+  \item \textbf{Calcule \(\Delta x^2\):}
+  \[
+    \Delta x^2 = (1.8\times 10^{9}\ \mathrm{m})^2 = (1.8)^2\times 10^{18}\ \mathrm{m}^2.
+  \]
+  \[
+    (1.8)^2 = 3.24 \quad\Rightarrow\quad \Delta x^2 = 3.24\times 10^{18}\ \mathrm{m}^2.
+  \]
+  \item \textbf{Compute \(ds^2\) usando a métrica:}
+  \[
+    ds^2 = -c^2\Delta t^2 + \Delta x^2 = -9.0\times 10^{18} + 3.24\times 10^{18}.
+  \]
+  \[
+    ds^2 = -5.76\times 10^{18}\ \mathrm{m}^2.
+  \]
+  Observe o papel do tensor métrico: multiplica \(c^2\Delta t^2\) por \(g_{00}=-1\) e \(\Delta x^2\) por \(g_{11}=+1\).
+  \item \textbf{Tempo próprio:}
+  \[
+    -ds^2 = 5.76\times 10^{18}\ \mathrm{m}^2.
+  \]
+  \[
+    \sqrt{-ds^2} = \sqrt{5.76\times 10^{18}} = \sqrt{5.76}\times 10^9 = 2.4\times 10^9\ \mathrm{m}.
+  \]
+  (porque \(\sqrt{5.76}=2.4\) e \(\sqrt{10^{18}}=10^9\).)
+  \[
+    \tau = \frac{\sqrt{-ds^2}}{c} = \frac{2.4\times 10^9\ \mathrm{m}}{3.0\times 10^8\ \mathrm{m/s}}.
+  \]
+  \[
+    \frac{2.4}{3.0} = 0.8,\quad 10^9/10^8 = 10 \quad\Rightarrow\quad \tau = 0.8\times 10 = 8.0\ \mathrm{s}.
+  \]
+  \item \textbf{Resposta:} O tempo próprio medido pela partícula entre os eventos é \(\boxed{\tau = 8.0\ \mathrm{s}}\).
+\end{enumerate}
+
+\vspace{8pt}
+\noindent\textbf{Exercício 2 — Espaço curvo (superfície de esfera 2D)}\\
+\textit{Enunciado:} Considere a métrica da superfície esférica de raio \(R\) (coordenadas \((\theta,\varphi)\)):
+\[
+ds^2 = R^2\big(d\theta^2 + \sin^2\theta\,d\varphi^2\big).
+\]
+(a) Derive explicitamente os símbolos de Christoffel \(\Gamma^\theta_{\varphi\varphi}\) e \(\Gamma^\varphi_{\theta\varphi}\). (b) Calcule o comprimento \(ds\) para \(R=1\), \(\theta=\tfrac{\pi}{4}\), \(d\theta=0.1\) e \(d\varphi=0.2\). Mostre cada passo.
+
+\medskip
+\textbf{Fórmula usada:} 
+\[
+\Gamma^\rho_{\mu\nu} = \tfrac{1}{2}g^{\rho\sigma}\big(\partial_\mu g_{\sigma\nu}+\partial_\nu g_{\sigma\mu}-\partial_\sigma g_{\mu\nu}\big).
+\]
+
+\subsubsection*{Destrinche e passos (parte a: Christoffel)}
+\begin{enumerate}
+  \item \textbf{Componentes do tensor métrico (na base \((\theta,\varphi)\)):}
+  \[
+    g_{\theta\theta} = R^2,\qquad g_{\varphi\varphi} = R^2\sin^2\theta,\qquad g_{\theta\varphi}=0.
+  \]
+  \item \textbf{Componentes da inversa \(g^{\mu\nu}\):}
+  \[
+    g^{\theta\theta} = \frac{1}{R^2},\qquad g^{\varphi\varphi} = \frac{1}{R^2\sin^2\theta}.
+  \]
+  (inversa de matriz diagonal é inverso de cada elemento.)
+  \item \textbf{Calcule \(\Gamma^\theta_{\varphi\varphi}\):} usando a fórmula, os únicos termos não nulos envolvem derivadas em relação a \(\theta\):
+  \[
+    \Gamma^\theta_{\varphi\varphi} = -\tfrac{1}{2}\,g^{\theta\theta}\,\partial_\theta g_{\varphi\varphi}.
+  \]
+  (porque os outros termos são nulos devido a \(g_{\theta\varphi}=0\) e simetria).
+  \item \textbf{Derivada:}
+  \[
+    \partial_\theta g_{\varphi\varphi} = \partial_\theta\big(R^2\sin^2\theta\big) = R^2\cdot 2\sin\theta\cos\theta = 2R^2\sin\theta\cos\theta.
+  \]
+  \item \textbf{Substituindo:}
+  \[
+    \Gamma^\theta_{\varphi\varphi} = -\tfrac{1}{2}\cdot\frac{1}{R^2}\cdot\big(2R^2\sin\theta\cos\theta\big).
+  \]
+  Simplificando:
+  \[
+    \Gamma^\theta_{\varphi\varphi} = -\sin\theta\cos\theta.
+  \]
+  \item \textbf{Calcule \(\Gamma^\varphi_{\theta\varphi}\) (simétrico em \(\theta,\varphi\) nas posições \(\mu,\nu\)):}
+  \[
+    \Gamma^\varphi_{\theta\varphi} = \tfrac{1}{2}g^{\varphi\varphi}\partial_\theta g_{\varphi\varphi}.
+  \]
+  \[
+    \Gamma^\varphi_{\theta\varphi} = \tfrac{1}{2}\cdot\frac{1}{R^2\sin^2\theta}\cdot\big(2R^2\sin\theta\cos\theta\big).
+  \]
+  Simplificando:
+  \[
+    \Gamma^\varphi_{\theta\varphi} = \frac{\cos\theta}{\sin\theta} = \cot\theta.
+  \]
+  \item \textbf{Resumo simbólico:}
+  \[
+    \boxed{\Gamma^\theta_{\varphi\varphi} = -\sin\theta\cos\theta,\qquad \Gamma^\varphi_{\theta\varphi} = \cot\theta.}
+  \]
+\end{enumerate}
+
+\subsubsection*{Destrinche e passos (parte b: comprimento \(ds\) num deslocamento)}
+\begin{enumerate}
+  \item \textbf{Fórmula:}
+  \[
+    ds^2 = R^2\big(d\theta^2 + \sin^2\theta\,d\varphi^2\big).
+  \]
+  \item \textbf{Dados numéricos:} \(R=1\), \(\theta=\tfrac{\pi}{4}\), \(d\theta=0.1\), \(d\varphi=0.2\).
+  \item \textbf{Calcule \(\sin\theta\) e \(\sin^2\theta\):}
+  \[
+    \theta=\frac{\pi}{4}\quad\Rightarrow\quad \sin\theta = \frac{\sqrt{2}}{2}\approx 0.70710678.
+  \]
+  \[
+    \sin^2\theta = \left(\frac{\sqrt{2}}{2}\right)^2 = \frac{1}{2} = 0.5.
+  \]
+  \item \textbf{Calcule \(d\theta^2\) e \(d\varphi^2\):}
+  \[
+    d\theta^2 = (0.1)^2 = 0.01,\qquad d\varphi^2 = (0.2)^2 = 0.04.
+  \]
+  \item \textbf{Substitua na métrica:}
+  \[
+    ds^2 = 1^2\big(0.01 + 0.5\times 0.04\big).
+  \]
+  \[
+    0.5\times 0.04 = 0.020.
+  \]
+  \[
+    ds^2 = 0.01 + 0.020 = 0.030.
+  \]
+  \item \textbf{Comprimento físico:}
+  \[
+    ds = \sqrt{0.030} \approx 0.17320508.
+  \]
+  \item \textbf{Resposta:} \( \boxed{ds \approx 0.1732\ (\text{unidades de }R=1).} \)
+\end{enumerate}
+
+\section*{Conclusão curta}
+\begin{itemize}
+  \item O tensor métrico é o objeto central que transforma coordenadas em medidas físicas (distâncias, tempos, ângulos) e gera, via derivadas, a conexão e a curvatura.
+  \item Em espaços planos (Minkowski) a métrica é constante e os cálculos envolvidos são diretos (ex.: tempo próprio via \(ds^2\)); em espaços curvos a métrica depende de coordenadas, exigindo derivadas para obter \(\Gamma^\rho_{\mu\nu}\) e, daí, as geodésicas e tensores de curvatura.
+\end{itemize}
+
+\bigskip
+\noindent\textit{Se quiser, eu posso transformar este conteúdo em um PDF formatado com numeração de equações/figuras ou ampliar com um exercício extra (Schwarzschild) — diga que eu já gero o .tex finalizado.}
+
+\end{document}

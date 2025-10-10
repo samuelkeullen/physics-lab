@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{lipsum}
+
+\geometry{a4paper, margin=2.5cm}
+
+\title{Tensor de Ricci e Escalar de Curvatura}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{História e Motivação}
+
+O \textbf{Tensor de Ricci} foi introduzido por \textbf{Gregorio Ricci-Curbastro} e seu aluno \textbf{Tullio Levi-Civita} no final do século XIX, no contexto do desenvolvimento do cálculo tensorial, também conhecido como \textit{Ricci Calculus}.  
+O objetivo inicial era criar ferramentas matemáticas para estudar a \textbf{geometria de variedades curvas} de forma covariante, ou seja, independente do sistema de coordenadas.
+
+Mais tarde, Albert Einstein percebeu que o Tensor de Ricci era essencial para descrever \textbf{como a matéria curva o espaço-tempo} em sua teoria da \textbf{Relatividade Geral} (1915).
+
+O \textbf{Escalar de Curvatura} surge naturalmente ao se contrair o Tensor de Ricci e fornece um valor escalar que representa a curvatura global em cada ponto de uma variedade. Ele é usado nas equações de Einstein para relacionar curvatura e matéria.
+
+\section{Intuição Física}
+
+\begin{itemize}
+    \item O \textbf{Tensor de Ricci} mede a curvatura que afeta o volume de uma pequena bola de partículas em queda livre. Ele é derivado do Tensor de Riemann, resumindo as informações relevantes para volumes.
+    \item O \textbf{Escalar de Curvatura} é a média da curvatura em todas as direções. Em termos físicos:
+    \begin{itemize}
+        \item $R > 0$: espaço curvado positivamente (como uma esfera)
+        \item $R < 0$: espaço curvado negativamente (como um hiperboloide)
+        \item $R = 0$: espaço plano
+    \end{itemize}
+\end{itemize}
+
+\section{Definições Matemáticas}
+
+\subsection{Tensor de Ricci}
+
+O Tensor de Ricci $R_{\mu\nu}$ é obtido a partir do \textbf{Tensor de Riemann} $R^\rho_{\ \sigma\mu\nu}$ através da contração de um índice:
+
+\[
+R_{\mu\nu} = R^\rho_{\ \mu\rho\nu}
+\]
+
+\textbf{Legenda:}
+\begin{itemize}
+    \item $R_{\mu\nu}$: Tensor de Ricci (2 índices, simétrico)
+    \item $R^\rho_{\ \sigma\mu\nu}$: Tensor de Riemann (4 índices)
+    \item $\rho$: índice de contração (somado)
+\end{itemize}
+
+\subsection{Escalar de Curvatura}
+
+O Escalar de Curvatura $R$ é obtido contraindo o Tensor de Ricci com a métrica $g^{\mu\nu}$:
+
+\[
+R = g^{\mu\nu} R_{\mu\nu}
+\]
+
+\textbf{Legenda:}
+\begin{itemize}
+    \item $R$: Escalar de Curvatura
+    \item $g^{\mu\nu}$: Tensor métrico inverso
+    \item $R_{\mu\nu}$: Tensor de Ricci
+\end{itemize}
+
+\section{Exemplos de Aplicação}
+
+\subsection{Espaço plano (Minkowski)}
+
+Métrica em 4D:
+\[
+g_{\mu\nu} = \text{diag}(-1, 1, 1, 1)
+\]
+
+Cálculo do Tensor de Ricci e Escalar de Curvatura:
+\[
+R_{\mu\nu} = 0, \quad R = 0
+\]
+
+\textbf{Interpretação:} Espaço-tempo plano, sem curvatura.
+
+\subsection{Superfície esférica 2D}
+
+Métrica em coordenadas esféricas $(\theta, \phi)$:
+\[
+ds^2 = r^2 d\theta^2 + r^2 \sin^2\theta\, d\phi^2
+\]
+
+Cálculo do Tensor de Ricci:
+\[
+R_{\theta\theta} = 1, \quad R_{\phi\phi} = \sin^2\theta
+\]
+
+Escalar de Curvatura:
+\[
+R = \frac{2}{r^2}
+\]
+
+\textbf{Interpretação:} Espaço curvo com curvatura positiva constante; geodésicas se convergem.
+
+\section{Exercícios Resolvidos}
+
+\subsection*{Exercício 1: Espaço plano 2D}
+
+\textbf{Problema:} Calcule $R_{\mu\nu}$ e $R$ para o espaço plano 2D.
+
+\textbf{Solução passo a passo:}
+\begin{enumerate}
+    \item Métrica do espaço plano 2D: $ds^2 = dx^2 + dy^2$
+    \item Cálculo do Tensor de Riemann: todos os coeficientes $R^\rho_{\ \sigma\mu\nu} = 0$
+    \item Tensor de Ricci: $R_{\mu\nu} = R^\rho_{\ \mu\rho\nu} = 0$
+    \item Escalar de Curvatura: $R = g^{\mu\nu} R_{\mu\nu} = 0$
+\end{enumerate}
+
+\textbf{Resultado:} $R_{\mu\nu} = 0$, $R = 0$ (espaço plano)
+
+\subsection*{Exercício 2: Superfície esférica de raio $r$}
+
+\textbf{Problema:} Verifique que $R = 2/r^2$.
+
+\textbf{Solução passo a passo:}
+\begin{enumerate}
+    \item Métrica: $ds^2 = r^2 d\theta^2 + r^2 \sin^2\theta\, d\phi^2$
+    \item Tensor de Ricci:
+    \[
+    R_{\theta\theta} = 1, \quad R_{\phi\phi} = \sin^2\theta
+    \]
+    \item Escalar de Curvatura:
+    \[
+    R = g^{\theta\theta} R_{\theta\theta} + g^{\phi\phi} R_{\phi\phi}
+    \]
+    Onde $g^{\theta\theta} = 1/r^2$, $g^{\phi\phi} = 1/(r^2 \sin^2\theta)$
+    \item Substituindo:
+    \[
+    R = \frac{1}{r^2} \cdot 1 + \frac{1}{r^2 \sin^2\theta} \cdot \sin^2\theta = \frac{2}{r^2}
+    \]
+\end{enumerate}
+
+\textbf{Resultado:} Escalar de Curvatura positivo constante, indicando espaço curvo.
+
+\end{document}
