@@ -1,0 +1,246 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{bm}
+
+\geometry{margin=2.5cm}
+
+\title{Equações de Campo de Einstein e Aplicações: Schwarzschild e Kerr}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introdução e História}
+
+As equações de campo de Einstein são a base da \textbf{Relatividade Geral}, formuladas por Albert Einstein em 1915. Elas descrevem como a matéria e energia determinam a curvatura do espaço-tempo. A origem matemática da teoria encontra raízes no trabalho de \textbf{Bernhard Riemann}, que introduziu o conceito de variedades curvas no século XIX, e de outros matemáticos como \textbf{Elwin Bruno Christoffel} e \textbf{Gregorio Ricci-Curbastro}, que desenvolveram os tensores essenciais para a formulação moderna da geometria diferencial.
+
+A primeira solução exata das equações de Einstein em vácuo foi encontrada por \textbf{Karl Schwarzschild} em 1916, descrevendo o campo gravitacional esférico de uma massa estática. Décadas depois, \textbf{Roy Kerr} generalizou Schwarzschild para o caso de uma massa em rotação, resultando na famosa \textbf{métrica de Kerr}, fundamental para o estudo de buracos negros rotativos.
+
+\section*{Equações de Campo de Einstein}
+
+As equações de campo podem ser escritas na forma compacta:
+
+\begin{equation}
+G_{\mu\nu} \equiv R_{\mu\nu} - \frac{1}{2} g_{\mu\nu} R = \frac{8\pi G}{c^4} T_{\mu\nu}
+\end{equation}
+
+\noindent onde:
+\begin{itemize}
+    \item $G_{\mu\nu}$ é o \textbf{tensor de Einstein},
+    \item $R_{\mu\nu}$ é o \textbf{tensor de Ricci},
+    \item $R$ é o \textbf{escalar de Ricci},
+    \item $g_{\mu\nu}$ é o \textbf{tensor métrico},
+    \item $T_{\mu\nu}$ é o \textbf{tensor energia-momento},
+    \item $G$ é a constante gravitacional de Newton,
+    \item $c$ é a velocidade da luz.
+\end{itemize}
+
+Essa equação relaciona a geometria do espaço-tempo (lado esquerdo) com a distribuição de matéria e energia (lado direito).
+
+\section*{Visualização das Equações}
+
+Para estudo inicial, é útil expressar as métricas em coordenadas esféricas $(t, r, \theta, \phi)$:
+
+\begin{equation}
+ds^2 = g_{tt} dt^2 + g_{rr} dr^2 + g_{\theta\theta} d\theta^2 + g_{\phi\phi} d\phi^2 + 2 g_{t\phi} dt d\phi
+\end{equation}
+
+\noindent onde cada $g_{\mu\nu}$ depende da simetria do sistema estudado (esférica, rotacional, etc.).
+
+
+% ========================================================
+\section{Métrica de Schwarzschild}
+
+\subsection*{Constantes e dados}
+\begin{align*}
+G &= 6.674\times10^{-11} \quad \text{(Constante gravitacional)}\\
+c &= 3\times10^8 \quad \text{(Velocidade da luz)}\\
+M &= 1.989\times10^{30} \quad \text{(Massa do Sol)}\\
+r &= 6.96\times10^8 \quad \text{(Raio do Sol)}\\
+\theta &= \pi/2, \quad \sin\theta = 1
+\end{align*}
+
+\subsection*{Valores intermediários (arredondados)}
+\begin{align*}
+2GM &= 2.655\times10^{20}\\
+c^2 &= 9\times10^{16}\\
+r^2 &= 4.844\times10^{17}\\
+\frac{2GM}{c^2 r} &= 4.238\times10^{-6}\\
+1 - \frac{2GM}{c^2 r} &= 0.999996\\
+\left(1 - \frac{2GM}{c^2 r}\right)^{-1} &= 1.000004\\
+r^2 \sin^2\theta &= 4.844\times10^{17}
+\end{align*}
+
+\subsection*{Métrica covariante $g_{\mu\nu}$}
+\begin{align*}
+g_{tt} &= -0.999996\\
+g_{rr} &= 1.000004\\
+g_{\theta\theta} &= 4.844\times10^{17}\\
+g_{\phi\phi} &= 4.844\times10^{17}
+\end{align*}
+
+\[
+g_{\mu\nu} =
+\begin{bmatrix}
+-0.999996 & 0 & 0 & 0 \\
+0 & 1.000004 & 0 & 0 \\
+0 & 0 & 4.844\times10^{17} & 0 \\
+0 & 0 & 0 & 4.844\times10^{17}
+\end{bmatrix}
+\]
+
+\subsection*{Métrica contravariante $g^{\mu\nu}$}
+\begin{align*}
+g^{tt} &= -1.000004\\
+g^{rr} &= 0.999996\\
+g^{\theta\theta} &= 2.064\times10^{-18}\\
+g^{\phi\phi} &= 2.064\times10^{-18}
+\end{align*}
+
+\[
+g^{\mu\nu} =
+\begin{bmatrix}
+-1.000004 & 0 & 0 & 0 \\
+0 & 0.999996 & 0 & 0 \\
+0 & 0 & 2.064\times10^{-18} & 0 \\
+0 & 0 & 0 & 2.064\times10^{-18}
+\end{bmatrix}
+\]
+
+\subsection*{Conexões de Christoffel não nulas}
+\begin{align*}
+\Gamma^r_{tt} &= -3.045\times10^{-15} &
+\Gamma^r_{rr} &= 3.045\times10^{-15} \\
+\Gamma^r_{\theta\theta} &= -6.96\times10^8 &
+\Gamma^r_{\phi\phi} &= -6.96\times10^8 \\
+\Gamma^t_{tr} &= -3.045\times10^{-15} &
+\Gamma^\theta_{r\theta} &= 1.437\times10^{-9} \\
+\Gamma^\phi_{r\phi} &= 1.437\times10^{-9} &
+\Gamma^\theta_{\phi\phi} &= 0 \\
+\Gamma^\phi_{\theta\phi} &= 0
+\end{align*}
+
+\subsection*{Tensor de Ricci, Escalar e Einstein}
+\[
+R_{\mu\nu} \approx 0, \quad R \approx 0, \quad G_{\mu\nu} \approx 0
+\]
+
+\subsection*{Tensor de Riemann}
+\[
+R^r_{\theta r \theta} \approx 4.32\times10^{-16} \, \text{m}^{-2}
+\]
+
+---
+
+% ========================================================
+\section{Métrica de Kerr (equador, $\theta = \pi/2$)}
+
+\subsection*{Constantes e dados}
+\begin{align*}
+M &= 1.989\times10^{30} & G &= 6.674\times10^{-11} & c &= 3\times10^8\\
+\theta &= \pi/2, \quad \sin\theta = 1 & r &= 6.96\times10^8\\
+r_s &= 2GM/c^2 = 2949.91 & a &= 0.5 r_s = 1.47495\times10^3
+\end{align*}
+
+\subsection*{Definições e preliminares}
+\begin{align*}
+p^2 &= r^2 + a^2 \cos^2\theta = 4.844\times10^{17}\\
+\Delta &= r^2 - 2 G M r/c^2 + a^2 = 4.84416\times10^{17}
+\end{align*}
+
+\subsection*{Métrica covariante $g_{\mu\nu}$ (equador)}
+\begin{align*}
+g_{tt} &= -0.999996\\
+g_{t\phi} &= -6.251\times10^{-3}\\
+g_{rr} &= 1.0\\
+g_{\theta\theta} &= 4.844\times10^{17}\\
+g_{\phi\phi} &= 4.84416\times10^{17}
+\end{align*}
+
+\[
+g_{\mu\nu} =
+\begin{bmatrix}
+-0.999996 & 0 & 0 & -6.251\times10^{-3} \\
+0 & 1.0 & 0 & 0 \\
+0 & 0 & 4.844\times10^{17} & 0 \\
+-6.251\times10^{-3} & 0 & 0 & 4.84416\times10^{17}
+\end{bmatrix}
+\]
+
+\subsection*{Métrica contravariante $g^{\mu\nu}$}
+\begin{align*}
+g^{tt} &= -1.000004\\
+g^{t\phi} &= -1.291\times10^{-20}\\
+g^{rr} &= 1.0\\
+g^{\theta\theta} &= 2.064\times10^{-18}\\
+g^{\phi\phi} &= 2.064\times10^{-18}
+\end{align*}
+
+\[
+g^{\mu\nu} =
+\begin{bmatrix}
+-1.000004 & 0 & 0 & -1.291\times10^{-20} \\
+0 & 1.0 & 0 & 0 \\
+0 & 0 & 2.064\times10^{-18} & 0 \\
+-1.291\times10^{-20} & 0 & 0 & 2.064\times10^{-18}
+\end{bmatrix}
+\]
+
+\subsection*{Conexões de Christoffel principais (valores arredondados)}
+\begin{align*}
+\Gamma^r_{tt} &= 3.045\times10^{-15} &
+\Gamma^r_{t\phi} &= -4.486\times10^{-12} \\
+\Gamma^r_{rr} &= -3.042\times10^{-15} &
+\Gamma^r_{\theta\theta} &= -6.96\times10^8 \\
+\Gamma^r_{\phi\phi} &= -6.96\times10^8 &
+\Gamma^t_{tr} &= 3.045\times10^{-15} \\
+\Gamma^\phi_{tr} &\approx 9.27\times10^{-30} &
+\Gamma^\theta_{r\theta} &= 1.437\times10^{-9} \\
+\Gamma^\phi_{r\phi} &= 1.437\times10^{-9}
+\end{align*}
+
+\subsection*{Tensor de Riemann (exemplos)}
+\begin{align*}
+R^r_{\theta r \theta} &\approx 0\\
+R^r_{\phi r \phi} &\approx 0\\
+R^t_{r t r} &\approx -9.27\times10^{-30}
+\end{align*}
+
+\subsection*{Tensor de Ricci, Escalar e Einstein}
+\[
+R_{\mu\nu} \approx 0, \quad R \approx 0, \quad G_{\mu\nu} \approx 0
+\]
+
+\subsection*{Observações físicas e arrasto de referência}
+
+\begin{itemize}
+\item Campo quase plano (Riemann $\sim 10^{-30}$)
+\item Espaço-tempo de Kerr no equador, longe do horizonte ($r \gg r_s$)
+\item Tensor de Einstein $\approx 0$ → vácuo
+\item $g_{t\phi} \neq 0$ indica leve arrasto de referência (efeito relativístico)
+\item Correções de rotação ($a \sim 10^3\,\text{m}$) são minúsculas comparadas ao raio solar ($\sim 10^9\,\text{m}$)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Componente & Schwarzschild & Kerr (equador) \\
+\hline
+$g_{tt}$ & -0.999996 & -0.999996 \\
+$g_{rr}$ & 1.000004 & 1.0 \\
+$g_{\theta\theta}$ & $4.844\times10^{17}$ & $4.844\times10^{17}$ \\
+$g_{\phi\phi}$ & $4.844\times10^{17}$ & $4.84416\times10^{17}$ \\
+$g_{t\phi}$ & 0 & -0.006251 \\
+\hline
+\end{tabular}
+\end{center}
+
+A tabela ilustra claramente o efeito de arrasto de referência: apenas Kerr possui $g_{t\phi} \neq 0$.
+
+\end{document}
