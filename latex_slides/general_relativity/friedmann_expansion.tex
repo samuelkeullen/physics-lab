@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+\title{Exercício Avançado: Expansão do Universo com FRW}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Objetivo}
+Calcular o fator de escala \(a(t)\) e a expansão do universo usando as equações de Friedmann, derivadas da equação de campo de Einstein.
+
+\section*{Dados}
+
+\begin{itemize}
+    \item Densidade do universo: \(\rho = 1 \times 10^{-26}\, \mathrm{kg/m^3}\)
+    \item Pressão: \(p = 0\) (universo dominado por matéria)
+    \item Curvatura espacial: \(k = 0\) (plano)
+    \item Constante cosmológica: \(\Lambda = 0\)
+    \item Constante gravitacional: \(G = 6.674 \times 10^{-11}\, \mathrm{m^3/kg/s^2}\)
+    \item Velocidade da luz: \(c = 3.0 \times 10^8\, \mathrm{m/s}\)
+\end{itemize}
+
+\section*{Equações de Friedmann}
+
+\subsection*{1. Primeira equação}
+\[
+\left(\frac{\dot a}{a}\right)^2 = \frac{8 \pi G}{3} \rho - \frac{k c^2}{a^2} + \frac{\Lambda c^2}{3}
+\]
+
+Como \(k = 0\) e \(\Lambda = 0\):
+\[
+\left(\frac{\dot a}{a}\right)^2 = \frac{8 \pi G}{3} \rho
+\]
+
+\subsection*{Cálculo numérico}
+\begin{align*}
+8 \pi G \rho &= 8 \cdot 3.1416 \cdot 6.674 \times 10^{-11} \cdot 1 \times 10^{-26} \\
+&\approx 1.6755 \times 10^{-35} \\
+\frac{8 \pi G \rho}{3} &\approx 5.585 \times 10^{-36} \\
+\dot a / a &= H = \sqrt{5.585 \times 10^{-36}} \approx 7.47 \times 10^{-18}\, \mathrm{s^{-1}}
+\end{align*}
+
+\subsection*{2. Segunda equação (aceleração)}
+\[
+\frac{\ddot a}{a} = -\frac{4 \pi G}{3} \left(\rho + \frac{3p}{c^2}\right) + \frac{\Lambda c^2}{3}
+\]
+
+Com \(p = 0\) e \(\Lambda = 0\):
+\[
+\frac{\ddot a}{a} = -\frac{4 \pi G}{3} \rho
+\]
+
+\begin{align*}
+4 \pi G \rho &= 4 \cdot 3.1416 \cdot 6.674 \times 10^{-11} \cdot 1 \times 10^{-26} \approx 8.377 \times 10^{-36} \\
+\frac{4 \pi G \rho}{3} &\approx 2.792 \times 10^{-36} \\
+\frac{\ddot a}{a} &= -2.792 \times 10^{-36}\, \mathrm{s^{-2}}
+\end{align*}
+
+\subsection*{3. Fator de escala em função do tempo}
+
+Para um universo plano dominado por matéria:
+\[
+a(t) \propto t^{2/3}
+\]
+
+Exemplo: considerando idade do universo \(t_0 = 13.8\,\mathrm{Gyr} \approx 4.35 \times 10^{17}\,\mathrm{s}\)
+
+\[
+a(t = 0.5 t_0) = (0.5)^{2/3} \approx 0.63
+\]
+
+\section*{Interpretação física}
+
+\begin{itemize}
+    \item \(H = 7.47 \times 10^{-18}\, \mathrm{s^{-1}}\) indica a taxa de expansão do universo hoje.
+    \item \(\ddot a < 0\) mostra que a expansão está desacelerada (universo dominado por matéria, sem energia escura).
+    \item O fator de escala menor no passado (\(a = 0.63\)) significa que galáxias estavam mais próximas.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+\title{Exercícios Resolvidos de Relatividade Especial e Geral}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Buraco Negro Schwarzschild: Tempo Próprio}
+
+\textbf{Objetivo:} Calcular o tempo próprio de um observador próximo a \(2 r_s\).
+
+\textbf{Dados:} 
+\begin{itemize}
+    \item Massa: \(M = 10 M_\odot = 2 \times 10^{31}\,\mathrm{kg}\)
+    \item Constante gravitacional: \(G = 6.674 \times 10^{-11}\,\mathrm{m^3/kg/s^2}\)
+    \item Velocidade da luz: \(c = 3 \cdot 10^8\,\mathrm{m/s}\)
+    \item Distância radial: \(r = 2 r_s\)
+    \item Intervalo de tempo observado de longe: \(dt = 3600\,\mathrm{s}\)
+\end{itemize}
+
+\textbf{Cálculo:}  
+Raio de Schwarzschild:  
+\[
+r_s = \frac{2GM}{c^2} = \frac{2 \cdot 6.674 \times 10^{-11} \cdot 2 \times 10^{31}}{(3 \cdot 10^8)^2} \approx 29.65\,\mathrm{km}
+\]
+
+Distância do observador: \(r = 2 r_s \approx 59.3\,\mathrm{km}\)
+
+Tempo próprio:  
+\[
+d\tau = \sqrt{1 - \frac{2GM}{rc^2}} \, dt = \sqrt{1 - \frac{r_s}{r}} \cdot dt = \sqrt{0.5} \cdot 3600 \approx 2545.6\,\mathrm{s} \approx 42\,\mathrm{min}
+\]
+
+\textbf{Interpretação:} Tempo passa mais devagar próximo ao buraco negro.
+
+\section*{2. Buraco Negro Kerr: Órbita Circular}
+
+\textbf{Objetivo:} Calcular o período de uma órbita circular equatorial.
+
+\textbf{Dados:} 
+\begin{itemize}
+    \item Massa: \(M = 10 M_\odot\)
+    \item Parâmetro de rotação: \(a = 0.5 r_s \approx 14.83\,\mathrm{km}\)
+    \item Raio orbital: \(r = 3 r_s \approx 88.95\,\mathrm{km}\)
+\end{itemize}
+
+\textbf{Cálculo:}  
+Frequência angular aproximada:  
+\[
+\Omega = \frac{\sqrt{GM/r^3}}{1 + a \sqrt{GM/r^3}/c}
+\]
+
+\begin{align*}
+GM &= 6.674 \times 10^{-11} \cdot 2 \cdot 10^{31} = 1.3348 \times 10^{21}\,\mathrm{m^3/s^2} \\
+r^3 &= (88.95 \times 10^3)^3 \approx 7.04 \times 10^{14}\,\mathrm{m^3} \\
+\sqrt{GM/r^3} &\approx \sqrt{1.3348 \times 10^{21}/7.04 \times 10^{14}} \approx 1367\,\mathrm{s^{-1}} \\
+1 + a \sqrt{GM/r^3}/c &\approx 1 + 14.83 \cdot 1367 / 3 \cdot 10^8 \approx 1.00007 \\
+\Omega &\approx 1366.9\,\mathrm{s^{-1}} \\
+T &= \frac{2\pi}{\Omega} \approx 0.0046\,\mathrm{s}
+\end{align*}
+
+\textbf{Interpretação:} A órbita é extremamente rápida devido à proximidade do buraco negro.
+
+\section*{3. FRW: Distâncias de Galáxias}
+
+\textbf{Objetivo:} Calcular distância física de galáxias comoving.
+
+\textbf{Dados:} 
+\begin{itemize}
+    \item Coordenada comoving: \(\chi = 3000\,\mathrm{Mpc}\)
+    \item Fator de escala hoje: \(a_0 = 1\)
+    \item Fator de escala no passado: \(a = 0.5\)
+\end{itemize}
+
+\textbf{Cálculo:}  
+\[
+D_0 = a_0 \chi = 1 \cdot 3000 = 3000\,\mathrm{Mpc}
+\]  
+\[
+D_\mathrm{passado} = a \chi = 0.5 \cdot 3000 = 1500\,\mathrm{Mpc}
+\]
+
+\textbf{Interpretação:} Galáxias estavam mais próximas no passado.
+
+\section*{4. FRW Avançado: Equações de Friedmann}
+
+\textbf{Objetivo:} Calcular taxa de expansão \(H\) e aceleração \(\ddot a / a\).
+
+\textbf{Dados:} 
+\begin{itemize}
+    \item Densidade: \(\rho = 1 \times 10^{-26}\,\mathrm{kg/m^3}\)
+    \item Pressão: \(p = 0\)
+    \item Constante cosmológica: \(\Lambda = 0\)
+    \item Curvatura: \(k = 0\)
+\end{itemize}
+
+\textbf{Cálculo:}  
+\[
+\left(\frac{\dot a}{a}\right)^2 = \frac{8 \pi G}{3} \rho = 5.585 \times 10^{-36} \Rightarrow H \approx 7.47 \times 10^{-18}\,\mathrm{s^{-1}}
+\]  
+\[
+\frac{\ddot a}{a} = -\frac{4 \pi G}{3} \rho \approx -2.792 \times 10^{-36}\,\mathrm{s^{-2}}
+\]
+
+\[
+a(t = 0.5 t_0) = (0.5)^{2/3} \approx 0.63
+\]
+
+\textbf{Interpretação:} Expansão desacelerada, galáxias mais próximas no passado.
+
+\section*{5. Exercício Integrado: Observador viajando do buraco negro à galáxia}
+
+\textbf{Objetivo:} Integrar métricas Schwarzschild, Kerr e FRW.
+
+\begin{enumerate}
+    \item \textbf{Tempo próprio Schwarzschild:} \(d\tau \approx 2545.6\,\mathrm{s}\)
+    \item \textbf{Órbita Kerr:} \(T \approx 0.0046\,\mathrm{s}\)
+    \item \textbf{Expansão FRW:}  
+    Distância hoje: \(D_0 = 3000\,\mathrm{Mpc}\)  
+    Distância no passado: \(D_\mathrm{passado} = 1500\,\mathrm{Mpc}\)  
+    Taxa de expansão: \(H \approx 7.47 \times 10^{-18}\,\mathrm{s^{-1}}\)  
+    Aceleração: \(\ddot a / a \approx -2.792 \times 10^{-36}\,\mathrm{s^{-2}}\)
+\end{enumerate}
+
+\textbf{Interpretação:}  
+O observador experimenta \textbf{tempo dilatado localmente} (buracos negros) e \textbf{expansão global desacelerada} (universo FRW). Esta integração mostra como \textbf{RG conecta escalas locais e cosmológicas}.
+
+\end{document}
