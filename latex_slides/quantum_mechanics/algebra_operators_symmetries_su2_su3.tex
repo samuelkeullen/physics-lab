@@ -1,0 +1,176 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\geometry{margin=2.5cm}
+
+\title{Álgebra de Operadores, Simetrias e Grupos (SU(2), SU(3))}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{História e Contexto}
+A teoria de grupos foi formalizada por \textbf{Évariste Galois} (1811–1832) no contexto de equações algébricas. Sua aplicação à física começou com \textbf{Hermann Weyl} e \textbf{Eugene Wigner} no início do século XX, na descrição de simetrias em sistemas quânticos.
+
+As simetrias estão diretamente relacionadas a leis de conservação, segundo o \textbf{Teorema de Noether} (1915–1918).
+
+\subsection{Grupos SU(n)}
+\begin{itemize}
+    \item \textbf{SU(2)}: surge no estudo do spin de partículas e átomos de hidrogênio.
+    \item \textbf{SU(3)}: essencial na \textit{cromodinâmica quântica} (QCD), descrevendo a “carga de cor” das quarks.
+\end{itemize}
+
+\section{Álgebra de Operadores}
+Em mecânica quântica, a física é descrita por operadores $\hat{A}$ que atuam sobre funções de onda $\psi$:
+\[
+\hat{A} \psi = \lambda \psi
+\]
+onde $\lambda$ é o autovalor correspondente.
+
+\subsection{Propriedades dos Operadores}
+\begin{itemize}
+    \item \textbf{Comutador}:
+    \[
+    [\hat{A}, \hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}
+    \]
+    \item \textbf{Compatibilidade}: $[\hat{A},\hat{B}] = 0 \Rightarrow$ operadores compatíveis
+    \item \textbf{Identidade}: $[\hat{A}, \hat{I}] = 0$
+\end{itemize}
+
+\section{Grupos SU(n)}
+
+\subsection{Definição Formal}
+\[
+SU(n) = \{ U \in \mathbb{C}^{n\times n} \,|\, U^\dagger U = I, \, \det(U) = 1 \}
+\]
+
+\subsection{Propriedades}
+\begin{enumerate}
+    \item Grupo \textbf{unitário}: preserva normas $||\psi||^2$  
+    \item Grupo \textbf{especial}: $\det(U) = 1$  
+    \item \textbf{Não comutativo} (grupos de Lie não abelianos)
+\end{enumerate}
+
+\section{Álgebra de Lie}
+Cada grupo contínuo possui uma álgebra de Lie associada:
+\[
+[T_a, T_b] = i f_{abc} T_c
+\]
+onde $T_a$ são os geradores e $f_{abc}$ são as constantes de estrutura do grupo.
+
+\subsection{SU(2)}
+\textbf{Geradores: Pauli Matrices}
+\[
+\sigma_x = \begin{pmatrix}0 & 1\\1 & 0\end{pmatrix}, \quad
+\sigma_y = \begin{pmatrix}0 & -i\\i & 0\end{pmatrix}, \quad
+\sigma_z = \begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}
+\]
+
+\textbf{Comutadores}:
+\[
+[\sigma_i, \sigma_j] = 2 i \epsilon_{ijk} \sigma_k
+\]
+
+\textbf{Aplicações:}
+\begin{itemize}
+    \item Spin ½: $\vec{S} = \frac{\hbar}{2} \vec{\sigma}$  
+    \item Operadores de rotação: $U(\theta, \hat{n}) = \exp\left(-i \frac{\theta}{2} \hat{n} \cdot \vec{\sigma}\right)$
+\end{itemize}
+
+\subsection{SU(3)}
+\textbf{Geradores: Matrizes de Gell-Mann} ($\lambda_1, ..., \lambda_8$)
+\[
+\lambda_1 = 
+\begin{pmatrix} 0 & 1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0 \end{pmatrix}, \quad
+\lambda_2 = 
+\begin{pmatrix} 0 & -i & 0\\ i & 0 & 0\\ 0 & 0 & 0 \end{pmatrix}, \dots
+\]
+
+\textbf{Comutadores}:
+\[
+[\lambda_a, \lambda_b] = 2 i f_{abc} \lambda_c
+\]
+
+\textbf{Aplicações:}
+\begin{itemize}
+    \item Cromodinâmica Quântica (QCD)
+    \item Simetrias de sabor quark ($u,d,s$)
+\end{itemize}
+
+\section{Exemplos e Cálculos Destrinchados}
+
+\subsection{SU(2) - Spin ½}
+\[
+\hat{S}_z = \frac{\hbar}{2} \sigma_z
+\]
+\[
+\hat{S}_z \begin{pmatrix}1\\0\end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix}1\\0\end{pmatrix} = +\frac{\hbar}{2} \chi_+
+\]
+
+\textbf{Operador Raising $S_+$}:
+\[
+S_+ = \hbar \begin{pmatrix}0 & 1\\0 & 0\end{pmatrix}, \quad
+S_+ \chi_- = \hbar \chi_+
+\]
+
+\subsection{SU(3) - Comutador de Gell-Mann}
+\[
+[\lambda_1, \lambda_2] = \lambda_1 \lambda_2 - \lambda_2 \lambda_1
+\]
+
+\textbf{Passo 1: multiplicação}
+\[
+\lambda_1 \lambda_2 = \begin{pmatrix} i & 0 & 0\\ 0 & -i & 0\\ 0 & 0 & 0 \end{pmatrix}
+\]
+
+\textbf{Passo 2: multiplicação inversa}
+\[
+\lambda_2 \lambda_1 = \begin{pmatrix}-i & 0 & 0\\0 & i &0\\0 &0 &0\end{pmatrix}
+\]
+
+\textbf{Passo 3: subtração}
+\[
+[\lambda_1, \lambda_2] = 2 i \lambda_3
+\]
+
+\section{Exercício Resolvido Passo a Passo}
+
+\textbf{Exercício:} Calcule $[S_x, S_y]$ para spin ½.
+
+\begin{enumerate}
+    \item Definição dos operadores:
+    \[
+    S_x = \frac{\hbar}{2}\sigma_x, \quad S_y = \frac{\hbar}{2}\sigma_y
+    \]
+    
+    \item Comutador:
+    \[
+    [S_x, S_y] = S_x S_y - S_y S_x = \frac{\hbar^2}{4} (\sigma_x \sigma_y - \sigma_y \sigma_x)
+    \]
+    
+    \item Produto de Pauli:
+    \[
+    \sigma_x \sigma_y = i \sigma_z, \quad \sigma_y \sigma_x = -i \sigma_z
+    \]
+    
+    \item Substituindo:
+    \[
+    [S_x, S_y] = \frac{\hbar^2}{4} (2 i \sigma_z) = i \hbar S_z
+    \]
+\end{enumerate}
+
+\section{Aplicações Físicas}
+\begin{itemize}
+    \item Átomos e spin: SU(2) → Spin, acoplamento de spin, espectro de Zeeman  
+    \item Partículas elementares: SU(2) → interações fracas (W±, Z0)  
+    \item QCD: SU(3) → cores de quarks, confinamento, vetores de gauge gluônicos
+\end{itemize}
+
+\end{document}
