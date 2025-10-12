@@ -1,0 +1,160 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\title{Exemplo Resolvido: Pacote Gaussiano Livre}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercício Resolvido: Evolução de um Pacote Gaussiano Livre}
+
+Um elétron de massa $m_e = 9.109\times10^{-31}\,\text{kg}$ está inicialmente localizado em $x=0$ com uma função de onda gaussiana de largura $\sigma_0$ e número de onda central $k_0$.  
+A função de onda inicial é:
+
+\[
+\psi(x,0) = \left(\frac{1}{\pi \sigma_0^2}\right)^{1/4} e^{-x^2/(2\sigma_0^2)} e^{i k_0 x}
+\]
+
+\textbf{Dados numéricos:}
+\[
+\sigma_0 = 2.0\times10^{-10}\,\text{m}, \quad
+k_0 = 5.0\times10^9\,\text{m}^{-1}, \quad
+t = 2.0\times10^{-15}\,\text{s}, 
+\]
+\[
+\hbar = 1.054\times10^{-34}\,\text{J·s}, \quad
+m_e = 9.109\times10^{-31}\,\text{kg}.
+\]
+
+\section*{1. Função de onda inicial}
+
+\textbf{(a) Cálculo do fator de normalização:}
+
+\[
+A = \left(\frac{1}{\pi\sigma_0^2}\right)^{1/4}
+\]
+\[
+\sigma_0^2 = (2.0\times10^{-10})^2 = 4.0\times10^{-20}
+\]
+\[
+\pi\sigma_0^2 = 3.1416 \times 4.0\times10^{-20} = 1.25664\times10^{-19}
+\]
+\[
+\frac{1}{\pi\sigma_0^2} = 7.95775\times10^{18}
+\]
+\[
+A = (7.95775\times10^{18})^{1/4} = 5.320\times10^4 \quad [\text{m}^{-1/2}]
+\]
+
+\textbf{(b) Substituindo os valores:}
+
+\[
+\psi(x,0) = 5.320\times10^4 \, e^{-x^2/(8.0\times10^{-20})} e^{i(5.0\times10^9)x}
+\]
+
+\section*{2. Momento e velocidade}
+
+\textbf{(a) Momento médio:}
+\[
+p_0 = \hbar k_0
+\]
+\[
+p_0 = (1.054\times10^{-34})(5.0\times10^9) = 5.27\times10^{-25}\, \text{kg·m/s}
+\]
+
+\textbf{(b) Velocidade média:}
+\[
+v = \frac{p_0}{m_e}
+\]
+\[
+v = \frac{5.27\times10^{-25}}{9.109\times10^{-31}} = 5.7847\times10^5\, \text{m/s}
+\]
+
+\section*{3. Evolução temporal}
+
+\textbf{(a) Cálculo do fator complexo:}
+\[
+\tau = \frac{\hbar t}{2 m_e \sigma_0^2}
+\]
+\[
+\hbar t = (1.054\times10^{-34})(2.0\times10^{-15}) = 2.108\times10^{-49}
+\]
+\[
+2 m_e = 2 \times 9.109\times10^{-31} = 1.8218\times10^{-30}
+\]
+\[
+2 m_e \sigma_0^2 = (1.8218\times10^{-30})(4.0\times10^{-20}) = 7.2872\times10^{-50}
+\]
+\[
+\tau = \frac{2.108\times10^{-49}}{7.2872\times10^{-50}} = 2.892743
+\]
+\[
+i\frac{\hbar t}{2m_e\sigma_0^2} = i\,2.892743
+\]
+
+\textbf{(b) Denominador complexo:}
+\[
+1 + i\frac{\hbar t}{2m_e\sigma_0^2} = 1 + i\,2.892743
+\]
+
+\textbf{(c) Função de onda no tempo $t$:}
+\[
+\psi(x,t) = A \left(1 + i\frac{\hbar t}{2m_e\sigma_0^2}\right)^{-1/2}
+e^{-\frac{(x - vt)^2}{4\sigma_0^2(1 + i\frac{\hbar t}{2m_e\sigma_0^2})}}
+e^{i\frac{p_0x}{\hbar}} e^{-i\frac{p_0^2t}{2m_e\hbar}}
+\]
+
+Substituindo valores:
+\[
+\psi(x,t) = 5.320\times10^4 (1 + i\,2.892743)^{-1/2}
+e^{-\frac{(x - 5.7847\times10^5 t)^2}{4(4.0\times10^{-20})(1 + i\,2.892743)}}
+e^{i(5.0\times10^9)x} e^{-i\,2.8927}
+\]
+
+\section*{4. Densidade de probabilidade}
+
+\textbf{(a) Largura no tempo:}
+\[
+\sigma_t = \sigma_0 \sqrt{1 + \left(\frac{\hbar t}{2m_e\sigma_0^2}\right)^2}
+\]
+\[
+\tau^2 = (2.892743)^2 = 8.36894
+\]
+\[
+1 + \tau^2 = 9.36894
+\]
+\[
+\sqrt{1 + \tau^2} = 3.0616
+\]
+\[
+\sigma_t = (2.0\times10^{-10}) \times 3.0616 = 6.1232\times10^{-10}\,\text{m}
+\]
+
+\textbf{(b) Densidade de probabilidade:}
+\[
+P(x,t) = \frac{1}{\sqrt{2\pi}\sigma_t} e^{-\frac{(x - vt)^2}{2\sigma_t^2}}
+\]
+
+\textbf{(c) Posição central:}
+\[
+x_c = vt = (5.7847\times10^5)(2.0\times10^{-15}) = 1.1569\times10^{-9}\,\text{m}
+\]
+
+\section*{5. Interpretação física}
+
+\textbf{(a) Largura do pacote:}  
+A largura $\sigma_t$ aumenta com o tempo devido à dispersão quântica. Isso ocorre porque diferentes componentes de momento do pacote se propagam com velocidades ligeiramente diferentes, resultando em um espalhamento gradual da função de onda.
+
+\textbf{(b) Posição média:}  
+A posição média $\langle x \rangle = x_c(t)$ se move com velocidade constante $v = p_0/m_e$, ou seja, o centro do pacote segue a trajetória clássica de uma partícula livre.
+
+\section*{Conclusão}
+
+Com o passar do tempo, o pacote gaussiano se desloca e se espalha simultaneamente.  
+O centro se move como uma partícula clássica livre, enquanto a incerteza em posição aumenta devido à dispersão quântica.
+
+\end{document}

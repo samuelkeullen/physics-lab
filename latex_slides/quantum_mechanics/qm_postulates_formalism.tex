@@ -1,0 +1,122 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\title{Postulados e Formalismo Matemático na Mecânica Quântica}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{História e Descobridores}
+A Mecânica Quântica (MQ) surgiu no início do século XX para explicar fenômenos que a mecânica clássica não conseguia, como radiação do corpo negro, efeito fotoelétrico e espectros atômicos. Contribuíram para o desenvolvimento da MQ:
+\begin{itemize}
+    \item Max Planck (quantização de energia, 1900)
+    \item Albert Einstein (efeito fotoelétrico, 1905)
+    \item Niels Bohr (modelo atômico, 1913)
+    \item Werner Heisenberg, Erwin Schrödinger, Paul Dirac (formulação moderna dos postulados e equações de movimento)
+\end{itemize}
+
+\section*{O que são os Postulados da Mecânica Quântica}
+Os postulados são regras fundamentais que descrevem o que é um estado quântico, como ele evolui no tempo e como extrair resultados de medições. Eles formam a base de toda a MQ e são verificáveis experimentalmente.
+
+\section*{Principais Postulados e Fórmulas Destrinchadas}
+\begin{enumerate}
+    \item \textbf{Estado do Sistema:} 
+    \[ |\psi\rangle \in \mathcal{H} \]
+    \textbf{Legenda:}
+    \begin{itemize}
+        \item $\mathcal{H}$: espaço de Hilbert (vetores complexos com produto interno)
+        \item $|\psi\rangle$: vetor de estado do sistema
+        \item Pode ser expandido em uma base $\{|a_i\rangle\}$ com coeficientes $c_i = \langle a_i|\psi\rangle$
+    \end{itemize}
+    
+    \item \textbf{Observáveis:}
+    \[ \hat{A} |a_i\rangle = a_i |a_i\rangle \]
+    \textbf{Legenda:}
+    \begin{itemize}
+        \item $\hat{A}$: operador linear representando uma grandeza física (posição, momento, energia)
+        \item $a_i$: valor próprio (resultado possível da medição)
+        \item $|a_i\rangle$: estado próprio (estado após a medição)
+    \end{itemize}
+    
+    \item \textbf{Evolução Temporal:} 
+    \[ i\hbar \frac{d}{dt} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle \]
+    \textbf{Legenda:}
+    \begin{itemize}
+        \item $\hat{H}$: Hamiltoniano (energia total)
+        \item $i$: unidade imaginária (fase complexa, evolução unitária)
+        \item $\hbar$: constante de Planck reduzida
+    \end{itemize}
+    
+    \item \textbf{Probabilidade de Medição:} 
+    \[ P(a_i) = |\langle a_i | \psi \rangle|^2 \]
+    \textbf{Legenda:}
+    \begin{itemize}
+        \item $\langle a_i|\psi\rangle$: amplitude de probabilidade
+        \item $|\langle a_i|\psi\rangle|^2$: probabilidade real (0 a 1)
+        \item Normalização: $\sum_i P(a_i) = 1$
+    \end{itemize}
+\end{enumerate}
+
+\section*{Formalismo Matemático}
+O formalismo é o conjunto de ferramentas que tornam os postulados operacionais:
+\begin{itemize}
+    \item $|\psi\rangle$: Ket, vetor de estado
+    \item $\langle \psi|$: Bra, transposto conjugado
+    \item $\langle \phi|\psi\rangle$: produto interno, sobreposição de estados
+    \item $\hat{A}$: operador, representa observáveis
+    \item $\hat{A}^\dagger = \hat{A}$: Hermitiano, garante resultados reais
+    \item $\hat{H}$: Hamiltoniano, define a dinâmica
+    \item $e^{-i\hat{H}t/\hbar}$: operador de evolução temporal
+\end{itemize}
+
+\section*{Exemplo Físico Completo: Pacote Gaussiano de Partícula Livre}
+\textbf{Problema:} Um elétron de massa $m_e$ se propaga livremente no vácuo com número de onda $k_0$ e posição inicial $x_0 = 0$. Determine a função de onda para $t>0$ e a densidade de probabilidade em $x$.
+
+\textbf{Passo 1: Estado Inicial}
+\[
+\psi(x,0) = \left(\frac{1}{\pi \sigma_0^2}\right)^{1/4} e^{-x^2/(2\sigma_0^2)} e^{i k_0 x}
+\]
+Legenda:
+\begin{itemize}
+    \item $\sigma_0$: largura espacial inicial
+    \item $k_0$: número de onda central, $p_0 = \hbar k_0$
+\end{itemize}
+
+\textbf{Passo 2: Evolução Temporal (Equação de Schrödinger Livre)}
+\[
+i\hbar \frac{\partial \psi}{\partial t} = -\frac{\hbar^2}{2 m_e} \frac{\partial^2 \psi}{\partial x^2}
+\]
+Solução analítica:
+\[
+\psi(x,t) = \left(\frac{1}{\pi\sigma_0^2}\right)^{1/4} \frac{1}{\sqrt{1 + i\frac{\hbar t}{2 m_e \sigma_0^2}}} 
+\exp\Bigg(- \frac{(x - v t)^2}{4\sigma_0^2 (1 + i\frac{\hbar t}{2 m_e \sigma_0^2})} + i \frac{p_0 x}{\hbar} - i \frac{p_0^2 t}{2 m_e \hbar}\Bigg)
+\]
+Legenda:
+\begin{itemize}
+    \item $v = p_0/m_e$: velocidade clássica
+    \item O denominador complexo introduz espalhamento e fase
+\end{itemize}
+
+\textbf{Passo 3: Densidade de Probabilidade}
+\[
+P(x,t) = |\psi(x,t)|^2
+\]
+Interpretação:
+\begin{itemize}
+    \item $P(x,t)$: probabilidade de localizar o elétron em $x$ no tempo $t$
+    \item Integral $\int P(x,t) dx = 1$ (normalização preservada)
+    \item O pacote de onda se desloca e se espalha ao longo do tempo
+\end{itemize}
+
+\textbf{Observações Finais:}
+\begin{itemize}
+    \item A unidade imaginária $i$ introduz fase e interferência.
+    \item O formalismo permite calcular qualquer observável e prever probabilidades.
+    \item Antes de avançar para operadores e simetrias, é essencial dominar esses conceitos e fórmulas.
+\end{itemize}
+
+\end{document}
