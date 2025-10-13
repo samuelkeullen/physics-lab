@@ -1,0 +1,117 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=2cm}
+
+\title{Exercício Resolvido: 3 Férmions em 1D com Interação}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Dados do Exercício}
+
+\begin{itemize}
+    \item Número de partículas: \(N = 3\) férmions
+    \item Comprimento da caixa: \(L = 1\,\mathrm{m}\)
+    \item Massa de cada partícula: \(m = 1\,\mathrm{kg}\)
+    \item Constante de Planck: \(h = 1\,\mathrm{Js}\)
+    \item Constante da interação: \(k = 1\,\mathrm{Js}\)
+    \item Posições: \(x_1 = 0.15\), \(x_2 = 0.30\), \(x_3 = 0.50\)
+    \item Interação: \(V(x_i - x_j) = k (x_i - x_j)^2\)
+\end{itemize}
+
+\section*{2. Funções de Onda Individuais}
+
+\[
+\psi_1(x) = \sqrt{\frac{2}{L}} \sin\frac{\pi x}{L}, \quad
+\psi_2(x) = \sqrt{\frac{2}{L}} \sin\frac{2 \pi x}{L}, \quad
+\psi_3(x) = \sqrt{\frac{2}{L}} \sin\frac{3 \pi x}{L}
+\]
+
+\[
+\sqrt{\frac{2}{L}} = \sqrt{2} \approx 1.4142
+\]
+
+\section*{3. Função de Onda Total (Determinante)}
+
+O fator de normalização do determinante:
+
+\[
+\frac{1}{\sqrt{3!}} = \frac{1}{\sqrt{6}} \approx 0.4082
+\]
+
+\[
+\Psi_F(x_1,x_2,x_3) = \frac{1}{\sqrt{6}}
+\begin{vmatrix}
+1.4142 \sin(\pi x_1) & 1.4142 \sin(2\pi x_1) & 1.4142 \sin(3\pi x_1) \\
+1.4142 \sin(\pi x_2) & 1.4142 \sin(2\pi x_2) & 1.4142 \sin(3\pi x_2) \\
+1.4142 \sin(\pi x_3) & 1.4142 \sin(2\pi x_3) & 1.4142 \sin(3\pi x_3)
+\end{vmatrix}
+\]
+
+\section*{4. Energia Cinética}
+
+\[
+E_n = \frac{n^2 \pi^2 \hbar^2}{2 m L^2}
+\]
+
+\begin{align*}
+E_1 &= \frac{1^2 \pi^2 \cdot 1^2}{2 \cdot 1 \cdot 1^2} = 4.9348\,\mathrm{J} \\
+E_2 &= \frac{2^2 \pi^2 \cdot 1^2}{2 \cdot 1 \cdot 1^2} = 19.7392\,\mathrm{J} \\
+E_3 &= \frac{3^2 \pi^2 \cdot 1^2}{2 \cdot 1 \cdot 1^2} = 44.4132\,\mathrm{J} \\
+E_\mathrm{cin} &= E_1 + E_2 + E_3 = 69.0872\,\mathrm{J}
+\end{align*}
+
+\section*{5. Energia de Interação}
+
+Somando todos os pares:
+
+\begin{align*}
+V_{12} &= k (x_1 - x_2)^2 = (0.15 - 0.30)^2 = 0.0225\,\mathrm{J} \\
+V_{13} &= k (x_1 - x_3)^2 = (0.15 - 0.50)^2 = 0.1225\,\mathrm{J} \\
+V_{23} &= k (x_2 - x_3)^2 = (0.30 - 0.50)^2 = 0.04\,\mathrm{J} \\
+V_\mathrm{total} &= V_{12} + V_{13} + V_{23} = 0.185\,\mathrm{J}
+\end{align*}
+
+Energia total aproximada:
+
+\[
+E_\mathrm{total} = E_\mathrm{cin} + V_\mathrm{total} = 69.0872 + 0.185 \approx 69.2722\,\mathrm{J}
+\]
+
+\section*{6. Densidade no ponto}
+
+Substituindo as posições na função de onda total:
+
+\begin{align*}
+\text{Termo 1: } & \psi_1(x_1)\psi_2(x_2)\psi_3(x_3) = 1.4142 \sin(\pi \cdot 0.15) \cdot 1.4142 \sin(2\pi \cdot 0.30) \cdot 1.4142 \sin(3\pi \cdot 0.50) \approx -0.4317 \\
+\text{Termo 2: } & \psi_3(x_1)\psi_2(x_2)\psi_1(x_3) = 1.4142 \sin(3\pi \cdot 0.15) \cdot 1.4142 \sin(2\pi \cdot 0.30) \cdot 1.4142 \sin(\pi \cdot 0.50) \approx 0.9393
+\end{align*}
+
+\[
+\Psi_F(x_1,x_2,x_3) = \frac{1}{\sqrt{6}} (-0.4317 - 0.9393) \approx -0.5595
+\]
+
+Densidade:
+
+\[
+|\Psi_F|^2 \approx 0.5595^2 \approx 0.313
+\]
+
+\section*{7. Conclusão}
+
+\begin{itemize}
+  \item Este exercício mostrou a aplicação do formalismo de sistemas de muitos corpos para 3 férmions em uma caixa unidimensional.\\
+  \item A função de onda total, construída como determinante, reflete a antissimetria exigida pelo princípio de exclusão de Pauli.\\
+  \item As energias cinéticas dos estados individuais seguem a quantização característica de partículas em uma caixa.\\
+  \item A energia de interação adiciona uma contribuição pequena, mas significativa, à energia total do sistema, mostrando como pares de partículas próximas aumentam a energia do conjunto.\\
+  \item A densidade no ponto escolhido evidencia o efeito de interferência entre os termos do determinante, resultando em valores que representam a probabilidade de presença das partículas nas posições selecionadas.\\
+  \item Os valores obtidos refletem tanto as restrições quânticas da estatística de Fermi quanto a influência da interação par-a-par no sistema de muitos corpos.
+\end{itemize}
+
+\end{document}

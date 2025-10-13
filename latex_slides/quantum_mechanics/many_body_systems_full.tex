@@ -1,0 +1,197 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=2cm}
+
+\title{Sistemas de Muitos Corpos (Bosons e Fermions) - Completo}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Definição}
+Um \textbf{sistema de muitos corpos} é um sistema quântico composto por muitas partículas idênticas que interagem, como átomos em um sólido, elétrons em um metal ou átomos em um condensado de Bose-Einstein.
+
+\begin{itemize}
+    \item \textbf{Bosons:} partículas de spin inteiro (\(0,1,2,\dots\)), obedecem à estatística de Bose-Einstein (ex.: fótons, hélio-4).
+    \item \textbf{Fermions:} partículas de spin semi-inteiro (\(1/2, 3/2, \dots\)), obedecem à estatística de Fermi-Dirac e ao princípio de exclusão de Pauli (ex.: elétrons, prótons).
+\end{itemize}
+
+\section*{2. História e Descobridores}
+\begin{itemize}
+    \item \textbf{Fermi e Dirac (1926):} Estatística para férmions.
+    \item \textbf{Bose (1924) e Einstein (1924-25):} Estatística para bosons.
+    \item \textbf{Heisenberg, Pauli, Bloch:} Teoria de elétrons em sólidos e simetrias de muitas partículas.
+    \item \textbf{Schwinger, Dyson, Feynman:} Desenvolvimento de propagadores e diagramas de Feynman para sistemas interativos.
+\end{itemize}
+
+\section*{3. Formalismo Matemático Básico}
+
+\subsection*{3.1 Função de Onda Total}
+
+\textbf{Fermions (antisimétrica):}
+\[
+\Psi_F(x_1, \dots, x_N) = \frac{1}{\sqrt{N!}}
+\begin{vmatrix}
+\psi_1(x_1) & \dots & \psi_N(x_1) \\
+\vdots & \ddots & \vdots \\
+\psi_1(x_N) & \dots & \psi_N(x_N)
+\end{vmatrix}
+\]
+
+\textbf{Bosons (simétrica):}
+\[
+\Psi_B(x_1, \dots, x_N) = \frac{1}{\sqrt{N!}} \sum_{\text{perms } P} \psi_{p_1}(x_1)\cdots \psi_{p_N}(x_N)
+\]
+
+\textit{Legenda:} \(x_i\) = posição da i-ésima partícula, \(\psi_j(x_i)\) = função de onda j-ésima, \(P\) = permutações das partículas, \(N!\) = fator de normalização.
+
+\subsection*{3.2 Hamiltoniano de N Partículas}
+\[
+\hat{H} = \sum_{i=1}^{N} \hat{h}_i + \sum_{i<j} V(x_i - x_j), \quad
+\hat{h}_i = -\frac{\hbar^2}{2m} \nabla_i^2 + U(x_i)
+\]
+
+Para o exemplo, consideramos \(V=0\) (não interagente).
+
+\subsection*{3.3 Exemplo Detalhado: 2 Fermions em 1D}
+
+\textbf{Funções de onda individuais:}
+\[
+\psi_1(x) = \sqrt{\frac{2}{L}} \sin\frac{\pi x}{L}, \quad
+\psi_2(x) = \sqrt{\frac{2}{L}} \sin\frac{2 \pi x}{L}
+\]
+
+\textbf{Função de onda total (antisimétrica):}
+\[
+\Psi_F(x_1, x_2) = \frac{1}{\sqrt{2}} 
+\begin{vmatrix}
+\psi_1(x_1) & \psi_2(x_1) \\
+\psi_1(x_2) & \psi_2(x_2)
+\end{vmatrix}
+= \frac{1}{\sqrt{2}} \big[ \psi_1(x_1)\psi_2(x_2) - \psi_2(x_1)\psi_1(x_2) \big]
+\]
+
+\textbf{Passo a passo multiplicativo:}
+
+1. Substituindo funções de onda:
+\[
+\Psi_F = \frac{1}{\sqrt{2}} \Big[ 
+\big(\sqrt{\frac{2}{L}} \sin\frac{\pi x_1}{L}\big) 
+\cdot 
+\big(\sqrt{\frac{2}{L}} \sin\frac{2 \pi x_2}{L}\big) 
+-
+\big(\sqrt{\frac{2}{L}} \sin\frac{2 \pi x_1}{L}\big) 
+\cdot 
+\big(\sqrt{\frac{2}{L}} \sin\frac{\pi x_2}{L}\big) 
+\Big]
+\]
+
+2. Multiplicando os fatores de normalização:
+\[
+\sqrt{\frac{2}{L}} \cdot \sqrt{\frac{2}{L}} = \frac{2}{L}
+\]
+
+\[
+\Psi_F = \frac{1}{\sqrt{2}} \cdot \frac{2}{L} 
+\Big[ \sin\frac{\pi x_1}{L} \sin\frac{2 \pi x_2}{L} - \sin\frac{2 \pi x_1}{L} \sin\frac{\pi x_2}{L} \Big]
+\]
+
+3. Simplificando o fator:
+\[
+\Psi_F = \frac{\sqrt{2}}{L} \Big[ \sin\frac{\pi x_1}{L} \sin\frac{2 \pi x_2}{L} - \sin\frac{2 \pi x_1}{L} \sin\frac{\pi x_2}{L} \Big]
+\]
+
+\subsection*{3.4 Energia do Sistema (não interagente)}
+
+\[
+E_n = \frac{n^2 \pi^2 \hbar^2}{2 m L^2}, \quad n=1,2
+\]
+
+\[
+E_1 = \frac{\pi^2 \hbar^2}{2 m L^2}, \quad
+E_2 = \frac{4 \pi^2 \hbar^2}{2 m L^2}
+\]
+
+\[
+E_{\text{total}} = E_1 + E_2 = \frac{5 \pi^2 \hbar^2}{2 m L^2}
+\]
+
+\subsection*{3.5 Exemplo Numérico 2 Partículas}
+
+Assumindo: \(L=1\), \(\hbar=1\), \(m=1\)
+
+\[
+E_1 = \frac{\pi^2}{2} \approx 4.9348, \quad
+E_2 = 2 \pi^2 \approx 19.7392
+\]
+
+\[
+E_{\text{total}} = 4.9348 + 19.7392 = 24.674
+\]
+
+\subsection*{3.6 Exemplo Detalhado: 3 Fermions em 1D}
+
+\textbf{Funções de onda individuais:}
+\[
+\psi_1(x) = \sqrt{\frac{2}{L}} \sin\frac{\pi x}{L}, \quad
+\psi_2(x) = \sqrt{\frac{2}{L}} \sin\frac{2 \pi x}{L}, \quad
+\psi_3(x) = \sqrt{\frac{2}{L}} \sin\frac{3 \pi x}{L}
+\]
+
+\textbf{Função de onda total (determinante 3x3):}
+\[
+\Psi_F(x_1,x_2,x_3) = \frac{1}{\sqrt{3!}}
+\begin{vmatrix}
+\psi_1(x_1) & \psi_2(x_1) & \psi_3(x_1) \\
+\psi_1(x_2) & \psi_2(x_2) & \psi_3(x_2) \\
+\psi_1(x_3) & \psi_2(x_3) & \psi_3(x_3)
+\end{vmatrix}
+\]
+
+\textbf{Determinante expandido (6 termos):}
+\begin{align*}
+\Psi_F &= \frac{1}{\sqrt{6}} \Big[
+\psi_1(x_1)\psi_2(x_2)\psi_3(x_3) 
++ \psi_2(x_1)\psi_3(x_2)\psi_1(x_3) 
++ \psi_3(x_1)\psi_1(x_2)\psi_2(x_3) \\
+&\quad - \psi_3(x_1)\psi_2(x_2)\psi_1(x_3) 
+- \psi_2(x_1)\psi_1(x_2)\psi_3(x_3) 
+- \psi_1(x_1)\psi_3(x_2)\psi_2(x_3) 
+\Big]
+\end{align*}
+
+\textbf{Substituindo os fatores de normalização:} Cada termo tem \((\sqrt{2/L})^3 = 2 \sqrt{2}/L^{3/2}\)
+
+\subsection*{3.7 Energia do Sistema 3 Partículas}
+
+\[
+E_n = \frac{n^2 \pi^2 \hbar^2}{2 m L^2}, \quad n=1,2,3
+\]
+
+\[
+E_1 = \frac{\pi^2}{2} \approx 4.9348, \quad
+E_2 = 2 \pi^2 \approx 19.7392, \quad
+E_3 = \frac{9 \pi^2}{2} \approx 44.4132
+\]
+
+\[
+E_{\text{total}} = 4.9348 + 19.7392 + 44.4132 = 69.0872
+\]
+
+\section*{4. Ordem de Aplicação}
+
+\begin{enumerate}
+    \item Escolher o tipo de partículas (bosons ou fermions)
+    \item Escolher base de funções de onda individuais
+    \item Construir a função de onda total detalhando cada multiplicação e determinante
+    \item Montar o Hamiltoniano
+    \item Calcular energia e observáveis passo a passo
+    \item Se houver interação, aplicar técnicas aproximadas (Hartree-Fock, diagramas de Feynman)
+\end{enumerate}
+
+\end{document}

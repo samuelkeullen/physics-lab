@@ -1,0 +1,291 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, physics}
+\usepackage{geometry}
+\usepackage{siunitx}
+\geometry{margin=2.5cm}
+
+\title{EXERCÍCIO DE MECÂNICA QUÂNTICA \\ Spin e Partículas Relativísticas}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. História e descobridores}
+
+\textbf{Spin:}  
+- Conceito introduzido para explicar o momento magnético intrínseco dos elétrons.  
+- Descoberto empiricamente por Stern e Gerlach (1922).  
+- Formalizado teoricamente por Pauli (1927) através das matrizes de Pauli.
+
+\textbf{Equação de Klein--Gordon:}  
+- Desenvolvida por Oskar Klein e Walter Gordon (1926--1927).  
+- Primeira equação relativística para partículas de spin 0 (bósons).
+
+\textbf{Equação de Dirac:}  
+- Desenvolvida por Paul Dirac (1928).  
+- Descreve partículas de spin \(1/2\) e prevê a existência da antimatéria (pósitron).
+
+\section*{2. Conceito de Spin}
+
+- Spin é um momento angular intrínseco, com magnitude:
+\[
+S^2 = s(s+1)\hbar^2,
+\qquad S_z = m_s \hbar,\quad m_s=-s,\dots,s.
+\]
+- Férmions: spin semi-inteiro (estatística de Fermi--Dirac).  
+- Bósons: spin inteiro (estatística de Bose--Einstein).
+
+\section*{3. Equações relativísticas (forma formal e destrinchada)}
+
+\subsection*{3.1 Equação de Klein--Gordon (spin 0)}
+
+\textbf{Forma covariante:}
+\[
+\left(\frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2 + \frac{m^2 c^2}{\hbar^2}\right)\phi(\mathbf{r},t) = 0.
+\]
+
+\textbf{Derivação (passo-a-passo):}
+\begin{align*}
+E^2 &= p^2 c^2 + m^2 c^4, \\
+E &\to i\hbar\partial_t, \qquad \mathbf{p}\to -i\hbar\nabla, \\
+(i\hbar\partial_t)^2 \phi &= (-i\hbar c \nabla)^2 \phi + m^2 c^4 \phi, \\
+-\hbar^2 \partial_t^2 \phi &= -\hbar^2 c^2 \nabla^2 \phi + m^2 c^4 \phi, \\
+\Rightarrow \left(\frac{1}{c^2}\partial_t^2 - \nabla^2 + \frac{m^2 c^2}{\hbar^2}\right)\phi &= 0.
+\end{align*}
+
+\subsection*{3.2 Equação de Dirac (spin \(1/2\))}
+
+\textbf{Forma covariante:}
+\[
+\big( i\hbar \gamma^\mu \partial_\mu - mc \big)\psi = 0,
+\]
+onde \(\psi\) é um espinor de 4 componentes e as \(\gamma^\mu\) satisfazem \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\).
+
+\textbf{Construção (intuição resumida):}
+\begin{itemize}
+  \item Procuramos uma equação linear em \(E\) e \(\mathbf{p}\).
+  \item Propomos \(E = \boldsymbol{\alpha}\cdot \mathbf{p}c + \beta mc^2\) com \(\alpha_i,\beta\) matrizes que anticomutam; isso leva às matrizes \(\gamma^\mu\).
+  \item Soluções de ondas planas fornecem espinores \(u(\mathbf{p})\) (partículas) e \(v(\mathbf{p})\) (antipartículas).
+\end{itemize}
+
+\section*{4. Matrizes de Pauli e operadores de spin}
+
+Matrizes de Pauli:
+\[
+\sigma_x = \begin{pmatrix}0 & 1\\ 1 & 0\end{pmatrix},\quad
+\sigma_y = \begin{pmatrix}0 & -i\\ i & 0\end{pmatrix},\quad
+\sigma_z = \begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}.
+\]
+Operador de spin (para spin \(1/2\)):
+\[
+\hat{S}_i = \frac{\hbar}{2}\sigma_i.
+\]
+
+\section*{5. Aplicações (resumo)}
+
+\begin{itemize}
+  \item Spin: MRI, ressonância eletrônica, qubits (computação quântica), espectroscopia.
+  \item Klein--Gordon: campos escalares em teoria quântica de campos, cosmologia primitiva.
+  \item Dirac: elétrons, antipartículas, física de partículas, grafeno (análogos relativísticos).
+\end{itemize}
+
+\newpage
+\section*{6. Exemplos numéricos resolvidos (após a base teórica)}
+
+% -------------------------------------------------------------------------
+% 1. EQUAÇÃO DE DIRAC: exemplos A e B
+% -------------------------------------------------------------------------
+\subsection*{1. Equação de Dirac (exemplos numéricos)}
+
+\subsubsection*{Exemplo 1.A — Energia de repouso do elétron \(mc^2\)}
+
+Constantes usadas:
+\[
+m_e = 9.10938356\times 10^{-31}\ \mathrm{kg},\qquad
+c = 2.99792458\times 10^8\ \mathrm{m/s},
+\]
+e
+\[
+1\ \mathrm{eV} = 1.602176634\times 10^{-19}\ \mathrm{J}.
+\]
+
+Cálculo (passo a passo, dígito a dígito):
+
+\begin{align*}
+c^2 &= (2.99792458\times 10^{8}\ \mathrm{m/s})^2
+= 8.9875517873681764\times 10^{16}\ \mathrm{m^2/s^2}, \\[6pt]
+mc^2 &= m_e c^2
+= (9.10938356\times 10^{-31}\ \mathrm{kg}) \times (8.9875517873681764\times 10^{16}\ \mathrm{m^2/s^2}) \\
+&= 8.187105649650028\times 10^{-14}\ \mathrm{J}.
+\end{align*}
+
+Converter para elétron-volts:
+\[
+mc^2 = \frac{8.187105649650028\times 10^{-14}\ \mathrm{J}}{1.602176634\times 10^{-19}\ \mathrm{J/eV}}
+= 510\,998.9420585963\ \mathrm{eV} \approx 0.510999\ \mathrm{MeV}.
+\]
+
+\emph{Conclusão:} energia de repouso do elétron \(mc^2 \approx 8.1871\times10^{-14}\ \mathrm{J}\approx 0.511\ \mathrm{MeV}.\)
+
+\subsubsection*{Exemplo 1.B — Energia relativística para um momento dado (elétron)}
+
+Relação usada:
+\[
+E = \sqrt{(pc)^2 + (mc^2)^2}.
+\]
+
+Considere
+\[
+p = 1.0\times 10^{-22}\ \mathrm{kg\cdot m/s}.
+\]
+
+Calcule \(pc\) (passo a passo):
+\begin{align*}
+pc &= p\,c
+= (1.0\times 10^{-22}\ \mathrm{kg\,m/s})\times(2.99792458\times 10^8\ \mathrm{m/s}) \\
+   &= 2.99792458\times 10^{-14}\ \mathrm{J}.
+\end{align*}
+
+Observação: a unidade é consistente, pois \(\mathrm{kg\,m/s}\times\mathrm{m/s}=\mathrm{kg\,m^2/s^2}=\mathrm{J}\).
+
+Agora calcule os quadrados:
+\[
+(pc)^2 = (2.99792458\times 10^{-14})^2 = 8.987551787\times 10^{-28}\ \mathrm{J}^2,
+\]
+e recordando \(mc^2 = 8.187105649650028\times 10^{-14}\ \mathrm{J}\),
+\[
+(mc^2)^2 = (8.187105649650028\times 10^{-14})^2 = 6.703065000\times 10^{-27}\ \mathrm{J}^2.
+\]
+
+Some os termos:
+\[
+(pc)^2 + (mc^2)^2 \approx 8.987551787\times 10^{-28} + 6.703065000\times 10^{-27}
+= 7.6018201787\times 10^{-27}\ \mathrm{J}^2.
+\]
+
+Tome a raiz:
+\[
+E = \sqrt{7.6018201787\times 10^{-27}}\ \mathrm{J}
+= 8.718729879168156\times 10^{-14}\ \mathrm{J}.
+\]
+
+Converter para eV:
+\[
+E = \frac{8.718729879168156\times 10^{-14}\ \mathrm{J}}{1.602176634\times 10^{-19}\ \mathrm{J/eV}}
+\approx 544\,180.3165860024\ \mathrm{eV} \approx 0.54418\ \mathrm{MeV}.
+\]
+
+Energia cinética relativística \(K = E - mc^2\):
+\begin{align*}
+K &= 8.718729879168156\times 10^{-14}\ \mathrm{J} - 8.187105649650028\times 10^{-14}\ \mathrm{J} \\
+  &= 5.316242295181279\times 10^{-15}\ \mathrm{J} \\
+  &\approx \frac{5.316242295181279\times 10^{-15}\ \mathrm{J}}{1.602176634\times 10^{-19}\ \mathrm{J/eV}}
+  \approx 33\,181.374527406064\ \mathrm{eV} \\
+  &\approx 33.18\ \mathrm{keV}.
+\end{align*}
+
+\emph{Conclusão:} Para \(p=1\times10^{-22}\ \mathrm{kg\,m/s}\) o elétron tem energia total \(E\approx 0.54418\ \mathrm{MeV}\) e energia cinética \(K\approx 33.18\ \mathrm{keV}.\)
+
+% -------------------------------------------------------------------------
+% 2. EQUAÇÃO DE KLEIN-GORDON: exemplos A e B
+% -------------------------------------------------------------------------
+\subsection*{2. Equação de Klein--Gordon (exemplos numéricos)}
+
+\subsubsection*{Exemplo 2.A — Solução de onda plana e relação de dispersão (formal)}
+
+Procuramos soluções do tipo onda plana:
+\[
+\phi(\mathbf{r},t) = e^{i(\mathbf{k}\cdot\mathbf{r}-\omega t)}.
+\]
+Substituindo na equação de Klein--Gordon obtém-se a relação de dispersão:
+\[
+\frac{\omega^2}{c^2} - k^2 = \frac{m^2 c^2}{\hbar^2}
+\quad\Longrightarrow\quad
+\omega(k) = \sqrt{(ck)^2 + \left(\frac{mc^2}{\hbar}\right)^{\!2}}.
+\]
+Energia associada à onda (por quantum): \(E=\hbar\omega\), que leva à relação usual
+\[
+E^2 = (pc)^2 + (mc^2)^2,
+\quad\text{com } p=\hbar k.
+\]
+
+\subsubsection*{Exemplo 2.B — Exemplo numérico aplicado (píon e modo com \(k=10^{12}\ \mathrm{m^{-1}}\))}
+
+Aqui usamos um bóson escalar de massa semelhante ao píon (exemplo típico em física de partículas).  
+Dados e constantes:
+\[
+\hbar = 1.054571817\times 10^{-34}\ \mathrm{J\,s},\qquad
+c = 2.99792458\times 10^{8}\ \mathrm{m/s},
+\]
+e massa do píon (convertida a partir de \(139.57\ \mathrm{MeV}/c^2\)):
+\[
+m_\pi = \frac{139.57\times 10^6\ \mathrm{eV}\times 1.602176634\times 10^{-19}\ \mathrm{J/eV}}{c^2}
+\approx 2.488061244016057\times 10^{-28}\ \mathrm{kg}.
+\]
+
+Escolhemos um modo com número de onda
+\[
+k = 1.0\times 10^{12}\ \mathrm{m^{-1}}.
+\]
+
+Cálculo de \(\omega\) usando a relação de dispersão:
+\[
+\omega = \sqrt{(ck)^2 + \left(\frac{m_\pi c^2}{\hbar}\right)^{\!2}}.
+\]
+
+Calcule os termos (passo a passo):
+\begin{align*}
+ck &= (2.99792458\times 10^{8}\ \mathrm{m/s})\times(1.0\times 10^{12}\ \mathrm{m^{-1}})
+= 2.99792458\times 10^{20}\ \mathrm{s^{-1}}, \\[6pt]
+\frac{m_\pi c^2}{\hbar}
+&= \frac{(2.488061244016057\times 10^{-28}\ \mathrm{kg})\times (2.99792458\times 10^{8}\ \mathrm{m/s})^2}{1.054571817\times 10^{-34}\ \mathrm{J\,s}} \\
+&= \frac{(2.488061244016057\times 10^{-28})\times 8.9875517873681764\times 10^{16}\ \mathrm{J}}{1.054571817\times 10^{-34}\ \mathrm{J\,s}} \\
+&= \frac{2.2361601629889656\times 10^{-11}\ \mathrm{J}}{1.054571817\times 10^{-34}\ \mathrm{J\,s}}
+= 2.12044369756656\times 10^{23}\ \mathrm{s^{-1}}.
+\end{align*}
+
+Agora:
+\[
+(ck)^2 = (2.99792458\times 10^{20})^2 = 8.987551787\times 10^{40}\ \mathrm{s^{-2}},
+\]
+\[
+\left(\frac{m_\pi c^2}{\hbar}\right)^2 = (2.12044369756656\times 10^{23})^2 = 4.495282\!\times 10^{46}\ \mathrm{s^{-2}}.
+\]
+
+Somando (o termo de massa domina aqui):
+\[
+\omega^2 = 8.987551787\times 10^{40} + 4.495282\times 10^{46} \approx 4.495282\times 10^{46}\ \mathrm{s^{-2}}.
+\]
+
+Portanto:
+\[
+\omega = \sqrt{4.495282\times 10^{46}}\ \mathrm{s^{-1}} \approx 2.12044369756656\times 10^{23}\ \mathrm{s^{-1}}.
+\]
+
+Energia associada \(E=\hbar\omega\):
+\[
+E = (1.054571817\times 10^{-34}\ \mathrm{J\,s})\times (2.12044369756656\times 10^{23}\ \mathrm{s^{-1}})
+= 2.2361601629889656\times 10^{-11}\ \mathrm{J}.
+\]
+
+Converter \(E\) para eV:
+\[
+E = \frac{2.2361601629889656\times 10^{-11}\ \mathrm{J}}{1.602176634\times 10^{-19}\ \mathrm{J/eV}}
+\approx 139\,570\,139.49243286\ \mathrm{eV} \approx 139.57\ \mathrm{MeV}.
+\]
+
+\emph{Conclusão (KG):} para \(k=10^{12}\ \mathrm{m^{-1}}\) o modo corresponde a uma energia \(E\) muito próxima do repouso do píon (\(\sim139.57\ \mathrm{MeV}\)), porque o termo de massa \((mc^2/\hbar)\) domina sobre \(ck\) nesta escolha de \(k\). Assim o comportamento é de partícula massiva com pequena correção de dispersão.
+
+\section*{7. Exercícios sugeridos (para fixação)}
+
+\begin{enumerate}
+  \item Mostrar que a solução de onda plana \(\phi(\mathbf{r},t)=\exp[i(\mathbf{k}\cdot\mathbf{r}-\omega t)]\) satisfaz a equação de Klein--Gordon e obter a relação de dispersão \(\omega(k)\).
+  \item Calcular a energia \(E\) (em eV) para um elétron com momento \(p = 1\times10^{-23}\ \mathrm{kg\,m/s}\), seguindo o mesmo procedimento do Exemplo 1.B.
+  \item Para um espinor de Dirac livre com momento \(\mathbf p\) ao longo do eixo \(z\), construir explicitamente os espinores de energia positiva \(u(\mathbf p)\) para spin up e spin down e verificar sua normalização.
+  \item Repetir o Exemplo 2.B com \(k=10^{14}\ \mathrm{m^{-1}}\) e comparar quão importante se torna o termo \(ck\) em relação a \(mc^2/\hbar\).
+\end{enumerate}
+
+\end{document}

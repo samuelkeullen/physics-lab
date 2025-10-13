@@ -1,0 +1,184 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\geometry{margin=2cm}
+
+\title{Visualização Completa dos Sistemas Quânticos Fundamentais}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+% =======================================================
+\section{Poço Infinito Unidimensional}
+% =======================================================
+
+\subsection*{Equação e Solução}
+
+\[
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}=E\psi, \quad \psi(0)=\psi(L)=0
+\]
+Soluções normais:
+\[
+\psi_n(x)=\sqrt{\frac{2}{L}}\sin\frac{n\pi x}{L}, \qquad
+E_n=\frac{n^2\pi^2\hbar^2}{2mL^2}
+\]
+
+\subsection*{Densidade de Probabilidade}
+
+A densidade de probabilidade é:
+\[
+\rho_n(x)=|\psi_n(x)|^2 = \frac{2}{L}\sin^2\!\left(\frac{n\pi x}{L}\right)
+\]
+Ela indica a chance relativa de encontrar a partícula em cada ponto \(x\).  
+
+\begin{itemize}
+\item Para \(n=1\): máxima probabilidade no centro, sem nós.  
+\item Para \(n=2\): há um nó central (\(\rho=0\) em \(x=L/2\)), indicando uma região onde a partícula nunca é detectada.  
+\item Para \(n=3\): dois nós — o padrão ondulatório cresce com \(n\).
+\end{itemize}
+
+A função de onda muda de sinal entre nós, mas \(|\psi|^2\) sempre é positiva.
+
+\subsection*{Exemplo Numérico}
+
+Para \(L=1\,\mathrm{m}\), \(m=1\,\mathrm{kg}\), \(\hbar=1\,\mathrm{Js}\):
+\[
+E_1=4.9348\,\mathrm{J}, \quad E_2=19.7392\,\mathrm{J}, \quad E_3=44.4132\,\mathrm{J}
+\]
+
+A probabilidade de encontrar a partícula no intervalo \(0.4<x<0.6\) (no estado fundamental) é:
+\[
+P_{(0.4,0.6)} = \int_{0.4}^{0.6}\!\rho_1(x)\,dx = \frac{2}{L}\int_{0.4}^{0.6}\!\sin^2(\pi x)\,dx \approx 0.124
+\]
+Ou seja, cerca de 12,4\% de chance de detectar a partícula nessa região.
+
+\subsection*{Interpretação Física}
+
+O poço infinito representa confinamento absoluto: a partícula só existe entre \(x=0\) e \(x=L\).  
+As regiões onde \(\rho_n(x)\) é alta são análogas às posições “mais prováveis” do elétron em uma cavidade quântica.  
+O aumento de \(n\) corresponde a maior energia cinética e frequência de oscilação — o comportamento aproxima-se do clássico.
+
+
+% =======================================================
+\section{Oscilador Harmônico Quântico}
+% =======================================================
+
+\subsection*{Equação e Soluções}
+
+\[
+\left[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}m\omega^2x^2\right]\psi = E\psi
+\]
+
+\[
+E_n=\hbar\omega\left(n+\frac{1}{2}\right)
+\]
+\[
+\psi_n(x)=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\frac{1}{\sqrt{2^nn!}}H_n\!\left(\sqrt{\frac{m\omega}{\hbar}}x\right)e^{-\frac{m\omega x^2}{2\hbar}}
+\]
+
+\subsection*{Densidade e Forma da Onda}
+
+O termo exponencial \(e^{-m\omega x^2/2\hbar}\) garante confinamento — a partícula é mais provável próxima ao centro \(x=0\).  
+Os polinômios de Hermite \(H_n(x)\) introduzem nós e alternância de sinal conforme \(n\) aumenta.
+
+\begin{itemize}
+\item \(n=0\): sem nós, máxima densidade no centro.  
+\item \(n=1\): um nó central, simetria ímpar.  
+\item \(n=2\): dois nós, simetria par.
+\end{itemize}
+
+\subsection*{Exemplo Numérico}
+
+Para \(m=1\,\mathrm{kg}\), \(\omega=1\,\mathrm{rad/s}\), \(\hbar=1\,\mathrm{Js}\):
+\[
+E_0=0.5\,\mathrm{J}, \quad E_1=1.5\,\mathrm{J}, \quad E_2=2.5\,\mathrm{J}
+\]
+
+A densidade no estado fundamental:
+\[
+\rho_0(x)=\left(\frac{m\omega}{\pi\hbar}\right)^{1/2} e^{-\frac{m\omega x^2}{\hbar}}
+\]
+A largura da distribuição é \(\Delta x = \sqrt{\frac{\hbar}{2m\omega}} = 0.707\,\mathrm{m}\).  
+Ela define a incerteza de posição mínima do sistema — origem do princípio de Heisenberg.
+
+\subsection*{Interpretação Física}
+
+O oscilador harmônico descreve qualquer sistema que oscile em torno de um equilíbrio: vibração de átomos, modos de cordas ou campos quantizados.  
+Cada nível \(E_n\) corresponde à excitação de um “quantum” de vibração.  
+A energia de ponto zero (\(E_0=\frac{1}{2}\hbar\omega\)) mostra que mesmo no estado mais baixo há flutuações inevitáveis.
+
+
+% =======================================================
+\section{Átomo de Hidrogênio}
+% =======================================================
+
+\subsection*{Equação e Soluções}
+
+\[
+-\frac{\hbar^2}{2\mu}\nabla^2\psi-\frac{e^2}{4\pi\varepsilon_0r}\psi=E\psi
+\]
+com soluções separáveis:
+\[
+\psi_{n\ell m}(r,\theta,\phi)=R_{n\ell}(r)Y_{\ell m}(\theta,\phi)
+\]
+Energias:
+\[
+E_n=-\frac{\mu e^4}{2(4\pi\varepsilon_0)^2\hbar^2}\frac{1}{n^2}
+\]
+
+\subsection*{Função Radial}
+
+O termo radial mais simples (\(n=1,\ell=0\)):
+\[
+R_{10}(r)=2\left(\frac{1}{a_0}\right)^{3/2} e^{-r/a_0}
+\]
+onde \(a_0=5.29\times10^{-11}\,\mathrm{m}\) é o raio de Bohr.
+
+A densidade radial de probabilidade é:
+\[
+P(r)=r^2|R_{10}(r)|^2 = 4\left(\frac{r^2}{a_0^3}\right)e^{-2r/a_0}
+\]
+Seu máximo ocorre em \(r=a_0\), ou seja, o elétron é mais provável de ser encontrado a um raio de Bohr do núcleo.
+
+\subsection*{Exemplo Numérico}
+
+\[
+E_1=-13.6\,\mathrm{eV}, \quad E_2=-3.4\,\mathrm{eV}, \quad E_3=-1.51\,\mathrm{eV}
+\]
+A transição \(n=3 \to n=2\) libera:
+\[
+\Delta E = 1.89\,\mathrm{eV} \Rightarrow \lambda = \frac{hc}{\Delta E} = 656\,\mathrm{nm}
+\]
+correspondendo à linha vermelha da série de Balmer (\(H_\alpha\)).
+
+\subsection*{Interpretação Física}
+
+O átomo de hidrogênio representa o equilíbrio entre atração coulombiana e confinamento quântico.  
+A densidade \(P(r)\) explica a “nuvem eletrônica” — regiões de maior probabilidade.  
+Os números quânticos \(n,\ell,m\) descrevem o tamanho, forma e orientação dessa nuvem.  
+Cada transição entre níveis gera um fóton, origem dos espectros atômicos.
+
+
+% =======================================================
+\section{Conclusão Geral}
+% =======================================================
+
+\begin{itemize}
+\item O \textbf{poço infinito} introduz quantização por confinamento espacial e nós de onda.  
+\item O \textbf{oscilador harmônico} introduz o formalismo de operadores e o conceito de energia de ponto zero.  
+\item O \textbf{átomo de hidrogênio} introduz potenciais reais e revela a estrutura discreta da matéria observável.  
+\end{itemize}
+
+A densidade de probabilidade \(|\psi|^2\) é o elo comum entre todos — é ela que conecta o formalismo matemático à interpretação física.  
+Na teoria de campos, cada modo quântico de um campo comporta-se como um oscilador harmônico, e cada excitação (fóton, elétron, bóson) é uma “partícula” desse campo.
+
+\end{document}

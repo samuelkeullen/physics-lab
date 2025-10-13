@@ -1,0 +1,242 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, physics, geometry, hyperref, xcolor, siunitx}
+\geometry{a4paper, margin=2.2cm}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+\title{Métodos de Aproximação Quântica: História, Formalismo e Exemplos Numéricos Detalhados}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introdução}
+Este documento apresenta três métodos centrais de aproximação em mecânica quântica: teoria de perturbação, método variacional e aproximação WKB. Para cada método, são fornecidas notas históricas, definições formais e fórmulas (com legendas), aplicações práticas e exemplos resolvidos com cálculos numéricos detalhados passo a passo.
+
+\section{Convenções e constantes}
+Salvo indicação contrária, são usadas unidades SI. Constantes principais:
+\[
+\hbar = 1.054571817\times 10^{-34}\ \text{J·s},\qquad
+m_e = 9.10938356\times 10^{-31}\ \text{kg},
+\]
+\[
+e = 1.602176634\times 10^{-19}\ \text{C},\qquad
+\varepsilon_0 = 8.8541878128\times 10^{-12}\ \text{F/m},
+\]
+definindo
+\[
+k\equiv\frac{1}{4\pi\varepsilon_0}\approx 8.9875517923\times 10^{9}\ \text{N·m}^2\text{/C}^2.
+\]
+
+\section{Teoria de Perturbação}
+
+\subsection{História}
+Desenvolvida e formalizada entre 1926--1927 por Schrödinger e Dirac. Essencial para correções pequenas em sistemas cujos Hamiltonianos são exatamente solúveis.
+
+\subsection{Formalismo}
+Dado $\hat H=\hat H_0+\lambda \hat H'$, onde $\hat H_0$ é solúvel, expande-se energia e estado:
+\[
+E_n = E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + \cdots,
+\]
+\[
+\ket{\psi_n} = \ket{\psi_n^{(0)}} + \lambda \ket{\psi_n^{(1)}} + \lambda^2 \ket{\psi_n^{(2)}} + \cdots.
+\]
+Correções de primeira e segunda ordem:
+\[
+E_n^{(1)} = \bra{\psi_n^{(0)}}\hat H'\ket{\psi_n^{(0)}},\qquad
+E_n^{(2)} = \sum_{m\ne n}\frac{|\bra{\psi_m^{(0)}}\hat H'\ket{\psi_n^{(0)}}|^2}{E_n^{(0)}-E_m^{(0)}}.
+\]
+
+\subsection{Legenda}
+\begin{itemize}
+  \item $\hat H_0$ : Hamiltoniano não perturbado
+  \item $\hat H'$ : operador de perturbação
+  \item $\lambda$ : parâmetro formal (ajustado a 1 no fim)
+  \item $E_n^{(k)}$ : correção de $k$-ésima ordem para o nível $n$
+  \item $\ket{\psi_n^{(0)}}$ : autoestado não perturbado
+\end{itemize}
+
+\subsection{Exemplo 1: Oscilador harmônico com perturbação cúbica}
+
+\[
+\hat H = \hat H_0 + \lambda \hat x^3,\qquad
+\hat H_0=\frac{\hat p^2}{2m}+\frac{1}{2}m\omega^2\hat x^2.
+\]
+Calcular $E_0^{(1)}$ e $E_0^{(2)}$ e estimar numericamente para $\lambda=0.01$.
+
+\subsubsection{Base não perturbada}
+\[
+E_n^{(0)}=\hbar\omega\left(n+\tfrac12\right),\qquad
+\hat x = \sqrt{\frac{\hbar}{2m\omega}}\,(a+a^\dagger).
+\]
+Logo:
+\[
+\hat x^3 = \left(\sqrt{\frac{\hbar}{2m\omega}}\right)^3 (a+a^\dagger)^3.
+\]
+
+\subsubsection{Expansão}
+\[
+(a+a^\dagger)^3 = a^3 + 3 a^2 a^\dagger + 3 a (a^\dagger)^2 + (a^\dagger)^3.
+\]
+Aplicando em $\ket{0}$:
+\[
+(a^\dagger)^2\ket{0}=\sqrt{2}\ket{2},\quad (a^\dagger)^3\ket{0}=\sqrt{6}\ket{3},\quad a(a^\dagger)^2\ket{0}=2\ket{1}.
+\]
+Portanto:
+\[
+\hat x^3\ket{0}=\left(\sqrt{\frac{\hbar}{2m\omega}}\right)^3(6\ket{1}+\sqrt{6}\ket{3}).
+\]
+Primeira ordem:
+\[
+E_0^{(1)}=0.
+\]
+Segunda ordem:
+\[
+E_0^{(2)} = \lambda^2\left[
+\frac{36\left(\frac{\hbar}{2m\omega}\right)^3}{-\hbar\omega}+
+\frac{6\left(\frac{\hbar}{2m\omega}\right)^3}{-3\hbar\omega}
+\right]
+= -38\,\lambda^2\,\frac{\hbar^2}{8\,m^3\omega^4}.
+\]
+
+\subsubsection{Exemplo numérico}
+Usando $\hbar=1$, $m=1$, $\omega=1$, $\lambda=0.01$:
+\[
+E_0^{(2)}=-38(0.01)^2=-0.0038,\qquad E_0\approx0.5-0.0038=0.4962.
+\]
+
+\subsubsection{Exemplo físico}
+Usando valores reais:
+\[
+m=m_e,\ \omega=1\times10^{15}\ \text{rad/s}.
+\]
+\[
+\frac{\hbar}{2m\omega}=\frac{1.054571817\times10^{-34}}{1.821876712\times10^{-15}}\approx5.788\times10^{-20}.
+\]
+\[
+\left(\frac{\hbar}{2m\omega}\right)^3\approx(5.788\times10^{-20})^3=1.93898\times10^{-58}.
+\]
+\[
+\frac{\left(\frac{\hbar}{2m\omega}\right)^3}{\hbar\omega}=\frac{1.93898\times10^{-58}}{1.054571817\times10^{-19}}\approx1.8387\times10^{-39}.
+\]
+Logo:
+\[
+E_0^{(2)}=-38\lambda^2\times1.8387\times10^{-39}=-6.988\times10^{-38}\lambda^2.
+\]
+Para $\lambda=0.01$:
+\[
+E_0^{(2)}=-6.988\times10^{-42}\ \text{J}\approx-4.36\times10^{-23}\ \text{eV}.
+\]
+
+\section{Método Variacional}
+
+\subsection{História}
+Baseado no princípio de Rayleigh, aplicado à mecânica quântica por Heisenberg e Schrödinger (1926).
+
+\subsection{Formalismo}
+Para qualquer função de teste normalizada $\phi(\mathbf{r};\{\alpha_i\})$:
+\[
+E_0 \le E[\phi] = \frac{\bra{\phi}\hat H\ket{\phi}}{\braket{\phi|\phi}}.
+\]
+Minimiza-se $E[\phi]$ em relação aos parâmetros variacionais $\{\alpha_i\}$.
+
+\subsection{Exemplo: Átomo de hidrogênio com função exponencial}
+\[
+\hat H=-\frac{\hbar^2}{2m_e}\nabla^2-\frac{k e^2}{r},\quad
+\phi(r)=\sqrt{\frac{\alpha^3}{\pi}}e^{-\alpha r}.
+\]
+\[
+E(\alpha)=\frac{\hbar^2\alpha^2}{2m_e}-k e^2\alpha.
+\]
+Condição de mínimo:
+\[
+\frac{dE}{d\alpha}=0\Rightarrow \alpha_{\text{opt}}=\frac{m_e k e^2}{\hbar^2}.
+\]
+\[
+E_0=-\frac{m_e(k e^2)^2}{2\hbar^2}.
+\]
+
+\subsubsection{Cálculo numérico}
+\[
+e^2=(1.602176634\times10^{-19})^2=2.56697\times10^{-38},
+\]
+\[
+k e^2=8.98755\times10^{9}\times2.56697\times10^{-38}=2.30719\times10^{-28},
+\]
+\[
+\hbar^2=(1.05457\times10^{-34})^2=1.11212\times10^{-68},
+\]
+\[
+m_e k e^2=9.10938\times10^{-31}\times2.30719\times10^{-28}=2.1012\times10^{-58},
+\]
+\[
+\alpha_{\text{opt}}=\frac{2.1012\times10^{-58}}{1.11212\times10^{-68}}=1.8897\times10^{10}\ \text{m}^{-1}.
+\]
+\[
+E_0=-\frac{4.8482\times10^{-86}}{2.2242\times10^{-68}}=-2.1799\times10^{-18}\ \text{J}=-13.6057\ \text{eV}.
+\]
+
+\section{Aproximação WKB}
+
+\subsection{História}
+Desenvolvida independentemente por Wentzel, Kramers e Brillouin (1926). Importante em potenciais lentos e tunelamento quântico.
+
+\subsection{Formalismo}
+\[
+-\frac{\hbar^2}{2m}\psi''(x)+V(x)\psi(x)=E\psi(x),
+\]
+\[
+\psi(x)\approx\frac{C}{\sqrt{p(x)}}\exp\left(\pm\frac{i}{\hbar}\int^x p(x')\,dx'\right),
+\quad p(x)=\sqrt{2m(E-V(x))}.
+\]
+Condição de quantização:
+\[
+\int_{x_1}^{x_2}p(x)\,dx=\left(n+\tfrac12\right)\pi\hbar.
+\]
+
+\subsection{Exemplo: Poço infinito de largura $L=1\,\text{nm}$}
+\[
+E_n=\frac{(n+\tfrac12)^2\pi^2\hbar^2}{2mL^2}.
+\]
+\[
+m=m_e=9.10938\times10^{-31}\ \text{kg},\quad
+\hbar=1.05457\times10^{-34},\quad
+L=1.00\times10^{-9}\ \text{m}.
+\]
+
+\subsubsection{Nível fundamental ($n=0$)}
+\[
+(n+\tfrac12)\pi\hbar=0.5\times3.1416\times1.0546\times10^{-34}=1.6574\times10^{-34}.
+\]
+\[
+\sqrt{2mE}=\frac{1.6574\times10^{-34}}{1\times10^{-9}}=1.6574\times10^{-25}.
+\]
+\[
+E_0=\frac{(1.6574\times10^{-25})^2}{2\times9.10938\times10^{-31}}=1.507\times10^{-20}\ \text{J}=0.0940\ \text{eV}.
+\]
+
+\subsubsection{Primeiro excitado ($n=1$)}
+\[
+1.5\pi\hbar=4.972\times10^{-34},\quad
+E_1=\frac{(4.972\times10^{-25})^2}{1.8219\times10^{-30}}=1.357\times10^{-19}\ \text{J}=0.846\ \text{eV}.
+\]
+
+\section{Tabela comparativa}
+\begin{center}
+\begin{tabular}{|l|p{6.5cm}|p{5.5cm}|}
+\hline
+Método & Aplicação típica & Vantagens / Limitações \\
+\hline
+Teoria de perturbação & Correções pequenas a sistemas conhecidos (campos externos, anarmonicidades) & Expansão sistemática; falha se a perturbação não for pequena \\
+\hline
+Método variacional & Estimativas do estado fundamental (moléculas, muitos corpos) & Dá limite superior da energia; depende da função de teste \\
+\hline
+WKB & Quantização semiclassical e tunelamento & Intuitivo; falha em potenciais abruptos ou baixos $n$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conclusões}
+Os exemplos apresentados demonstram os métodos perturbativo, variacional e WKB com derivação algébrica e cálculo numérico detalhado. Recomenda-se repetir os cálculos variando parâmetros ($L$, $\omega$, $\lambda$) para observar o comportamento escalar e fixar os conceitos.
+
+\end{document}
