@@ -1,0 +1,127 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\title{Exercícios Detalhados Antes de Propagadores de Feynman}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introdução}
+Neste documento, apresentamos dois exercícios detalhados sobre campos escalares, desde a quantização em modos discretos até a obtenção do propagador de Feynman em 1D e 3D. Todos os cálculos são mostrados passo a passo, incluindo conversão para unidades SI e interpretação física de cada resultado.  
+
+\section{Exercício 1 — Campo Escalar 1D}
+\subsection{Dados}
+\begin{itemize}
+    \item Campo escalar \(\phi(x,t)\), sem massa (\(m=0\)), caixa de comprimento \(L=1\) m
+    \item Constante de Planck reduzida: \(\hbar = 1.055\times 10^{-34}\) J·s
+    \item Velocidade da luz: \(c = 2.998\times 10^8\) m/s
+\end{itemize}
+
+\subsection{Passo 1: Modos discretos}
+\[
+k_n = \frac{n \pi}{L}, \quad n=1,2,3,...
+\]
+\[
+\omega_n = c |k_n|
+\]
+\textbf{Modo fundamental \(n=1\):}
+\[
+k_1 = \frac{\pi}{1} \approx 3.1416 \text{ m}^{-1}, \quad
+\omega_1 = c k_1 \approx 2.998\times10^8 \cdot 3.1416 \approx 9.425\times10^8 \text{ s}^{-1}
+\]
+
+\subsection{Passo 2: Hamiltoniano por modos}
+\[
+H = \sum_{n=1}^{\infty} \hbar \omega_n \left(a_n^\dagger a_n + \frac12\right)
+\]
+\textbf{Interpretação:} cada modo é um oscilador harmônico independente; energia mínima de cada modo: 
+\[
+E_0 = \frac12 \hbar \omega_n
+\]
+
+\subsection{Passo 3: Energia numérica do modo fundamental}
+\[
+E_0 = \frac12 \hbar \omega_1 = 0.5 \cdot 1.055\times10^{-34} \cdot 9.425\times10^8 \approx 4.97\times10^{-26} \text{ J}
+\]
+
+\subsection{Passo 4: Propagador 1D discreto}
+\[
+\langle 0 | T\{\phi(x,t)\phi(y,0)\} | 0 \rangle = 
+\sum_{n=1}^{\infty} \frac{1}{2 \omega_n L} \left( e^{-i \omega_n t + i k_n (x-y)} + e^{i \omega_n t - i k_n (x-y)} \right)
+\]
+
+\subsection{Passo 5: Soma $\rightarrow$ Integral contínuo}
+\[
+\sum_n \frac{1}{L} \to \int \frac{dk}{2\pi} \quad \Rightarrow \quad
+\Delta_F^{1D}(x,t) = \int \frac{dk}{2\pi} \frac{1}{2\omega_k} e^{-i \omega_k t + i k (x-y)}
+\]
+
+\subsection{Interpretação final}
+O propagador mede a correlação entre pontos do campo em diferentes tempos. Mesmo no modo fundamental, vemos a quantização do vácuo e como cada modo contribui para o propagador.
+
+\newpage
+
+\section{Exercício 2 — Campo Escalar 3D}
+\subsection{Dados}
+\begin{itemize}
+    \item Campo escalar massivo (\(m = 1\) eV/$c^2$ \(\approx 1.783\times10^{-36}\) kg), caixa de lado \(L=1\) m
+    \item Constantes: \(\hbar = 1.055\times 10^{-34}\) J·s, \(c = 2.998\times10^8\) m/s
+\end{itemize}
+
+\subsection{Passo 1: Modos discretos 3D}
+\[
+\mathbf{k} = \frac{\pi}{L} (n_x, n_y, n_z), \quad n_i = 0,1,2,...
+\]
+\[
+\omega_\mathbf{k} = \sqrt{|\mathbf{k}|^2 c^2 + \left(\frac{m c^2}{\hbar}\right)^2}
+\]
+
+\subsection{Passo 2: Hamiltoniano}
+\[
+H = \sum_{\mathbf{k}} \hbar \omega_\mathbf{k} \left(a_\mathbf{k}^\dagger a_\mathbf{k} + \frac12\right)
+\]
+
+\subsection{Passo 3: Energia do modo fundamental \((1,0,0)\)}
+\[
+k = \pi/L = 3.1416 \text{ m}^{-1}
+\]
+\[
+\omega = \sqrt{(c k)^2 + (m c^2/\hbar)^2}
+\]
+\[
+(m c^2/\hbar) = \frac{1.783\times10^{-36}\cdot (2.998\times10^8)^2}{1.055\times10^{-34}} \approx 1.518\times10^{15}\text{ s}^{-1}
+\]
+\[
+(c k)^2 = (2.998\times10^8 \cdot 3.1416)^2 \approx 8.869\times10^{17} \ll (1.518\times10^{15})^2
+\]
+\[
+\omega \approx 1.518\times10^{15}\text{ s}^{-1}
+\]
+\[
+E_0 = \frac12 \hbar \omega \approx 0.5 \cdot 1.055\times10^{-34} \cdot 1.518\times10^{15} \approx 8.01\times10^{-20} \text{ J} \approx 0.5 \text{ eV}
+\]
+
+\subsection{Passo 4: Propagador 3D discreto}
+\[
+\langle 0 | T\{\phi(\mathbf{x},t)\phi(\mathbf{y},0)\} | 0\rangle =
+\sum_\mathbf{k} \frac{1}{2 \omega_\mathbf{k} L^3} \left( e^{-i \omega_\mathbf{k} t + i \mathbf{k}\cdot (\mathbf{x}-\mathbf{y})} + e^{i \omega_\mathbf{k} t - i \mathbf{k}\cdot (\mathbf{x}-\mathbf{y})} \right)
+\]
+
+\subsection{Passo 5: Soma $\rightarrow$ Integral contínuo}
+\[
+\sum_\mathbf{k} \frac{1}{L^3} \to \int \frac{d^3 k}{(2\pi)^3} \quad \Rightarrow \quad
+\Delta_F^{3D}(\mathbf{x}-\mathbf{y},t) = \int \frac{d^3 k}{(2\pi)^3} \frac{1}{2 \omega_\mathbf{k}} e^{-i \omega_\mathbf{k} t + i \mathbf{k}\cdot (\mathbf{x}-\mathbf{y})}
+\]
+
+\subsection{Interpretação final}
+O propagador em 3D mostra como cada modo contribui à correlação do campo em três dimensões. Ele prepara a forma contínua, que será generalizada para 4D e usada em diagramas de Feynman.
+
+\end{document}

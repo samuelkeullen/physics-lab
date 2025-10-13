@@ -1,0 +1,197 @@
+% Arquivo LaTeX: quantizacao_campos_detalhado_v2.tex
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\title{Guia Interpretativo de Quantização de Campos (unidades naturais e conversões)}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Documento focado em \textbf{quantização de campos: scalar, spinor (Dirac) e gauge (Maxwell)}. Objetivo: ensinar \em detalhe como \emph{ler}, \emph{desmontar} e \emph{aplicar} cada fórmula. Usamos unidades naturais ($\hbar=c=1$) para escrever as fórmulas de forma compacta e fornecemos conversões completas para unidades SI (J, m, s) em exemplos numéricos. Cada seção contém:
+\begin{enumerate}
+  \item Fórmula formal com legenda.
+  \item Desmontagem termo-a-termo (interpretação física).
+  \item Quantização passo-a-passo (como surgem operadores, condições de contorno, modos).
+  \item Um exemplo numérico totalmente detalhado (todas as contas intermediárias) primeiro em unidades naturais, depois convertido para SI.
+  \item Conclusão interpretativa — como um físico "lê" a equação.
+\end{enumerate}
+\end{abstract}
+
+\section*{Constantes e fatores de conversão (referência)}
+Em unidades naturais ($\hbar=c=1$) as quantidades energéticas são expressas em eV (ou MeV etc.) e comprimentos em eV$^{-1}$. Para converter entre sistemas usamos:
+\begin{align}
+\hbar c &= 197.3269804\ \mathrm{MeV\cdot fm} = 1.973269804\times10^{-7}\ \mathrm{eV\cdot m}, \\
+1\ \mathrm{m} &= 5.067730717679395\times10^{6}\ \mathrm{eV^{-1}}, \\
+1\ \mathrm{eV} &= 1.602176634\times10^{-19}\ \mathrm{J}.
+\end{align}
+(Valores numéricos usados nos exemplos.)
+
+\section{Campo Escalar}
+\subsection{Fórmula formal (unidades naturais)}
+\begin{equation}\label{lag_scalar}
+\mathcal{L} = \tfrac{1}{2}\partial_\mu\phi\,\partial^\mu\phi - \tfrac{1}{2} m^2 \phi^2.
+\end{equation}
+\textbf{Legenda:} $\phi(x)$ campo escalar real; $m$ massa (em eV em unidades naturais); índices espaço-temporais $\mu=0,1,2,3$.
+
+\subsection{Desmanche e interpretação}
+Escrevemos explicitamente termos temporal e espacial (assumindo métrica $+,-,-,-$):
+\begin{equation}
+\mathcal{L} = \tfrac{1}{2}(\partial_t\phi)^2 - \tfrac{1}{2}(\nabla\phi)^2 - \tfrac{1}{2} m^2\phi^2.
+\end{equation}
+Interpretação:
+\begin{itemize}
+  \item $\tfrac{1}{2}(\partial_t\phi)^2$: densidade de energia cinética (temporal).
+  \item $-\tfrac{1}{2}(\nabla\phi)^2$: energia associada a variações espaciais (modos, gradientes).
+  \item $-\tfrac{1}{2}m^2\phi^2$: termo de massa (potencial local) que define energia de repouso das excitações.
+\end{itemize}
+
+\subsection{Quantização — passos essenciais}
+\begin{enumerate}
+  \item Identifique conjugado canônico: $\pi(x) = \partial \mathcal{L}/\partial(\partial_t\phi) = \partial_t\phi$.
+  \item Imponha comutadores canônicos no mesmo tempo:
+  \[ [\phi(t,\mathbf{x}),\pi(t,\mathbf{y})] = i\delta^{(3)}(\mathbf{x}-\mathbf{y}). \]
+  \item Expansão em modos (campo livre):
+  \begin{equation}\label{phi_modes}
+  \phi(t,\mathbf{x}) = \int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\left(a_{\mathbf{k}}e^{-i\omega_{\mathbf{k}}t+i\mathbf{k}\cdot\mathbf{x}}+a^\dagger_{\mathbf{k}}e^{i\omega_{\mathbf{k}}t-i\mathbf{k}\cdot\mathbf{x}}\right),
+  \end{equation}
+  com $\omega_{\mathbf{k}}=\sqrt{\mathbf{k}^2+m^2}$ em unidades naturais.
+  \item Operadores seguem: $[a_{\mathbf{k}},a^\dagger_{\mathbf{k}'}]=(2\pi)^3\delta^{(3)}(\mathbf{k}-\mathbf{k}')$.
+\end{enumerate}
+
+\subsection{Exemplo numérico detalhado (massless 1D) — passo a passo}
+\textbf{Objetivo:} calcular energia de ponto zero do modo fundamental numa caixa 1D de comprimento $L=1\ \mathrm{m}$.
+
+\textbf{1) Trabalhando em unidades naturais (energia em eV):}
+\begin{itemize}
+  \item Converta o comprimento para unidades naturais: 
+  \[ L(\text{eV}^{-1}) = L(\mathrm{m}) \times 5.067730717679395\times10^{6}\ \mathrm{eV^{-1}}. \]
+  Substituindo $L=1$ m:
+  \[ L = 5.067730717679395\times10^{6}\ \mathrm{eV^{-1}}. \]
+  \item Modos discretos (Dirichlet): $k_n = n\pi/L$. Para $n=1$:
+  \[ k_1 = \pi / L = \frac{3.141592653589793}{5.067730717679395\times10^{6}} = 6.199209919796972\times10^{-7}\ \mathrm{eV}. \]
+  (Em unidades naturais $k$ tem dimensão de energia.)
+  \item Para campo massless $\omega_1 = |k_1| = 6.199209919796972\times10^{-7}\ \mathrm{eV}.$
+  \item Energia de ponto zero por modo: $E_{0,1} = \tfrac{1}{2}\omega_1 = 3.099604959898486\times10^{-7}\ \mathrm{eV}.$
+\end{itemize}
+
+\textbf{2) Conversão para SI (Joules):}
+\[ E_{0,1}(\mathrm{J}) = E_{0,1}(\mathrm{eV}) \times 1.602176634\times10^{-19} \ \mathrm{J/eV}. \]
+Substituindo:
+\[ E_{0,1} = 3.099604959898486\times10^{-7} \times 1.602176634\times10^{-19} = 4.9661146413798605\times10^{-26}\ \mathrm{J}. \]
+(Operação mostrada: multiplicação direta dos mantissas e soma dos expoentes.)
+
+\textbf{3) Interpretação física (conclusão):} em unidades naturais a energia do modo fundamental \`e $3.10\times10^{-7}$ eV; em SI isto corresponde a $\sim5\times10^{-26}$ J — macroscopicamente desprezível. O procedimento mostrou: converter comprimento, determinar $k$, obter $\omega$, aplicar fator $1/2$ e converter unidades.
+
+\section{Campo Spinor (Dirac)}
+\subsection{Fórmula formal (unidades naturais)}
+\begin{equation}\label{lag_dirac}
+\mathcal{L} = \bar{\psi}(i\gamma^\mu\partial_\mu - m)\psi.
+\end{equation}
+\textbf{Legenda:} $\psi$ espinor de Dirac (4 componentes); $m$ massa em eV; $\gamma^\mu$ matrizes de Dirac.
+
+\subsection{Desmanche e interpretação}
+\begin{itemize}
+  \item O termo cinético $i\bar\psi\gamma^\mu\partial_\mu\psi$ contém o termo temporal que gera o conjugado canônico e os termos espaciais que dão a dependência de momento.
+  \item O termo $-m\bar\psi\psi$ gera a energia de repouso por partícula $m$ (em unidades naturais, energia = massa).
+\end{itemize}
+
+\subsection{Quantização — passos essenciais}
+\begin{enumerate}
+  \item Expansão em modos (campo livre):
+  \[ \psi(t,\mathbf{x}) = \sum_s \int \frac{d^3p}{(2\pi)^3}\frac{1}{\sqrt{2E_{\mathbf{p}}}}\left(b_{\mathbf{p},s}u_s(\mathbf{p})e^{-iE_{\mathbf{p}}t}+d^\dagger_{\mathbf{p},s}v_s(\mathbf{p})e^{iE_{\mathbf{p}}t}\right), \]
+  com $E_{\mathbf{p}}=\sqrt{\mathbf{p}^2 + m^2}$.
+  \item Anticomutadores: $\{b,b^\dagger\}=\{d,d^\dagger\}=(2\pi)^3\delta^{(3)}(\mathbf{p}-\mathbf{p}')$.
+  \item Hamiltoniano (normal-order): $H=\sum_s\int\frac{d^3p}{(2\pi)^3} E_{\mathbf{p}}(b^\dagger b + d^\dagger d)$.
+\end{enumerate}
+
+\subsection{Exemplo numérico detalhado (elétron, dois modos ocupados)}
+\textbf{Objetivo:} ocupar 1 elétron e 1 pósitron em cada um dos dois primeiros modos de uma caixa 1D $L=1$ m; calcular energia total.
+
+\textbf{1) Unidades naturais — preparação:}
+\begin{itemize}
+  \item Massa do elétron: $m_e = 511\ \mathrm{keV} = 5.11\times10^5\ \mathrm{eV}$ (usamos $511\,000\ \mathrm{eV}$ para precisão mostrada).
+  \item Converter comprimento $L$ para eV$^{-1}$: $L = 5.067730717679395\times10^{6}\ \mathrm{eV^{-1}}$ (como antes).
+  \item Modos: $k_n = n\pi/L$; para $n=1,2$ calculamos $k_1,k_2$ (valores em eV):
+  \[ k_1 = 6.199209919796972\times10^{-7}\ \mathrm{eV},\quad k_2 = 1.2398419839593944\times10^{-6}\ \mathrm{eV}. \]
+\end{itemize}
+
+\textbf{2) Calcular energias por modo (unidades naturais):}
+\[ E_{n}=\sqrt{k_n^2 + m_e^2}. \]
+Como $m_e\gg k_n$ (511\,000 eV vs $10^{-6}$ eV), numericamente $E_n\approx m_e$ com grande precisão. Escrevemos explicitamente:
+\begin{align*}
+E_1 &= \sqrt{(6.1992\times10^{-7})^2 + (5.11\times10^{5})^2} \\
+&\approx 5.11\times10^{5}\ \mathrm{eV}.
+\end{align*}
+\textbf{3) Energia por ocupação (1 elétron + 1 pósitron) em cada modo:}
+\[ E_{\text{modo},n} = E_n (N_{b_n}+N_{d_n}) = m_e (1+1) = 2m_e. \]
+Assim,
+\[ E_{\text{modo},1} = 2\times511\,000\ \mathrm{eV} = 1.022\times10^{6}\ \mathrm{eV}. \]
+\textbf{4) Energia total para dois modos:}
+\[ E_{\text{total}} = 2\times E_{\text{modo},1} = 2.044\times10^{6}\ \mathrm{eV} = 2.044\ \mathrm{MeV}. \]
+
+\textbf{5) Conversão para SI (J):}
+\[ E_{\text{total}}(\mathrm{J}) = 2.044\times10^{6}\times 1.602176634\times10^{-19} = 3.2748490398959997\times10^{-13}\ \mathrm{J}. \]
+(Operação: multiplicação das mantissas e soma dos expoentes.)
+
+\textbf{Conclusão interpretativa:} como as contribuições de momento são insignificantes frente à massa, cada partícula carrega sua energia de repouso $m_e$, e ocupar partículas e antipartículas em modos distintos soma energia linearmente. O procedimento mostrou: converter L, calcular $k_n$, comparar com $m$, decidir aproximação, somar ocupações e converter unidades.
+
+\section{Campo Gauge (Maxwell)}
+\subsection{Fórmula formal (unidades naturais)}
+\begin{equation}\label{lag_maxwell}
+\mathcal{L} = -\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu},\qquad F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\end{equation}
+Legenda: $A_\mu$ potencial 4-vetor; campos físicos $\mathbf{E},\mathbf{B}$ extraídos de $F_{\mu\nu}$.
+
+\subsection{Desmanche e interpretação}
+Em unidades naturais a densidade de energia por volume é
+\[ \mathcal{H} = \tfrac{1}{2}(\mathbf{E}^2 + \mathbf{B}^2). \]
+Cada modo do campo eletromagnético tem duas polarizações físicas (helicidades) e energia por modo $\omega$ (no caso livre, $\omega=|\mathbf{k}|$).
+
+\subsection{Quantização — passos essenciais}
+\begin{enumerate}
+  \item Imponha fixação de gauge conveniente (p.ex. Coulomb ou gauge de Lorenz) para remover graus não físicos.
+  \item Expansão em modos transversais: 
+  \[ A^\mu(x)=\sum_{\lambda=1}^2\int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\left(\epsilon^\mu(\mathbf{k},\lambda)a_{\mathbf{k},\lambda}e^{-i\omega t}+\text{h.c.}\right). \]
+  \item Comutadores para operadores fotônicos: $[a_{\mathbf{k},\lambda},a_{\mathbf{k}',\lambda'}^\dagger]=(2\pi)^3\delta^{(3)}(\mathbf{k}-\mathbf{k}')\delta_{\lambda\lambda'}$.
+\end{enumerate}
+
+\subsection{Exemplo numérico detalhado (dois modos, duas polarizações)}
+\textbf{Objetivo:} calcular energia de ponto zero somando dois modos ($n=1,2$) e duas polarizações por modo para caixa $L=1$ m.
+
+\textbf{1) Em unidades naturais:}
+\begin{itemize}
+  \item Como antes, $L=5.067730717679395\times10^{6}\ \mathrm{eV^{-1}}$.
+  \item Modos: $k_1=6.199209919796972\times10^{-7}\ \mathrm{eV},\quad k_2=1.2398419839593944\times10^{-6}\ \mathrm{eV}.$
+  \item Frequências: $\omega_n=|k_n|$ para fótons (massless).
+  \item Energia por polarização e modo: $E_{n,\text{polar}}=\tfrac{1}{2}\omega_n$. Calculados:
+  \[ E_{1,\text{polar}}=3.099604959898486\times10^{-7}\ \mathrm{eV},\quad E_{2,\text{polar}}=6.199209919796972\times10^{-7}\ \mathrm{eV}. \]
+\end{itemize}
+
+\textbf{2) Somando polarizações e modos (unidades naturais):}
+\[ E_{\text{total}}(\mathrm{eV}) = 2\times(E_{1,\text{polar}}+E_{2,\text{polar}}) = 2\times(3.0996\times10^{-7}+6.1992\times10^{-7}) = 1.8597629759390915\times10^{-6}\ \mathrm{eV}. \]
+
+\textbf{3) Conversão para SI:}
+\[ E_{\text{total}}(\mathrm{J}) = 1.8597629759390915\times10^{-6}\times1.602176634\times10^{-19} = 2.9796687848279163\times10^{-25}\ \mathrm{J}. \]
+
+\textbf{Conclusão interpretativa:} energia total de dois modos com duas polarizações permanece extremamente pequena (\(\sim10^{-25}\) J), demonstrando novamente a natureza microscópica da energia de ponto zero para campos em caixas macroscópicas.
+
+\section*{Resumo final e como ler as equações}
+Para qualquer problema de quantização de campos siga rigorosamente estes passos:
+\begin{enumerate}
+  \item Escreva o Lagrangiano na forma correta (unidades naturais) e identifique termos físicos.
+  \item Derive equações de movimento (Euler--Lagrange / Dirac) e encontre soluções de modos compatíveis com as condições de contorno.
+  \item Expresse modos em unidades naturais (energia em eV, comprimento em eV$^{-1}$), calcule $k_n$ e $\omega_n$.
+  \item Determine ocupações (número de quanta por modo) e calcule energia por modo: $E=\sum_n N_n\omega_n$ (com fatores 1/2 para zero-point quando apropriado).
+  \item Convert a para SI se necessário multiplicando por $1.602176634\times10^{-19}$ J/eV e convertendo comprimentos via $1\ \mathrm{m}=5.067730717679395\times10^{6}\ \mathrm{eV^{-1}}$.
+\end{enumerate}
+
+\end{document}

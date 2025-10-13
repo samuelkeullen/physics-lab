@@ -1,0 +1,118 @@
+% Arquivo LaTeX: Propagadores avançados com exemplos contínuos e discretos
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\title{Propagadores e Diagramas de Feynman: Exemplos Avançados}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introdução}
+Este documento expande o estudo dos propagadores de campos quantizados e diagramas de Feynman, incluindo exemplos passo a passo com modos discretos (1D e 3D) e integrais contínuas (1D, 3D e 4D). Incluímos conversão para unidades SI e interpretação física detalhada.
+
+\section{Propagador de Feynman}
+O propagador de Feynman para um campo escalar $\phi$ é:
+\begin{equation}
+D_F(x-y) = \langle 0 | T \phi(x) \phi(y) | 0 \rangle
+\end{equation}
+\textbf{Legenda:} $T$ indica ordenação temporal, $x=(t,\mathbf{x})$, $y=(t',\mathbf{y})$.
+
+\subsection{Representação em momento contínuo (integral 4D)}
+\begin{equation}
+D_F(x-y) = \int \frac{d^4p}{(2\pi)^4} \frac{e^{-i p\cdot (x-y)}}{p^2 - m^2 + i\epsilon}
+\end{equation}
+\textbf{Desmanchando:}
+\begin{itemize}
+  \item $p^2 = (p^0)^2 - \mathbf{p}^2$, $p^0 = E$.
+  \item $e^{-i p\cdot(x-y)} = e^{-i(E(t-t') - \mathbf{p}\cdot(\mathbf{x}-\mathbf{y}))}$.
+  \item $i\epsilon$ garante a definição causal.
+\end{itemize}
+
+\section{Propagadores em 1D, 3D e 4D}
+
+\subsection{1D: Campo escalar discreto}
+\begin{equation}
+D_F(x-y) = \frac{1}{2\omega} \Big[ \theta(t-t') e^{-i\omega(t-t')} + \theta(t'-t) e^{i\omega(t-t')} \Big]
+\end{equation}
+\textbf{Exemplo numérico:}
+\begin{itemize}
+\item Caixa $L=1$ m, massa $m=0$, modo $k_1 = \pi/L \approx 3.1416$ m$^{-1}$
+\item Frequência: $\omega = c k_1 \approx 9.425\times10^8$ s$^{-1}$
+\item Energia de ponto zero: $E_0 = \frac{1}{2} \hbar \omega \approx 4.966 \times 10^{-26}$ J
+\item Interpretação: energia mínima do campo no modo fundamental.
+\end{itemize}
+
+\subsection{3D: Campo escalar discreto}
+Modos discretos: $\mathbf{k} = \pi(n_x,n_y,n_z)/L$
+\begin{equation}
+D_F(\mathbf{x}-\mathbf{y},t-t') = \sum_{\mathbf{k}} \frac{1}{2\omega_\mathbf{k}} \Big[ \theta(t-t') e^{-i\omega_\mathbf{k}(t-t') + i\mathbf{k}\cdot(\mathbf{x}-\mathbf{y})} + \theta(t'-t) e^{i\omega_\mathbf{k}(t-t') - i\mathbf{k}\cdot(\mathbf{x}-\mathbf{y})} \Big]
+\end{equation}
+\textbf{Exemplo numérico:}
+\begin{itemize}
+\item Caixa $L=1$ m, massa $m=1$ eV/c$^2 \approx 1.783\times10^{-36}$ kg
+\item Modo $(n_x,n_y,n_z)=(1,0,0)$: $\mathbf{k}=(\pi,0,0)$ m$^{-1}$
+\item Frequência: $\omega_\mathbf{k} = \sqrt{|\mathbf{k}|^2 + m^2} \approx 3.1416$ s$^{-1}$ (massless approximation)
+\item Propagador para $\mathbf{x}=\mathbf{y}$, $t-t'=1$ s: $D_F \approx 4.966\times10^{-26}$ J·s
+\end{itemize}
+
+\subsection{1D contínuo}
+\begin{equation}
+D_F(x,t) = \int_{-\infty}^{\infty} \frac{dp}{2\pi} \frac{e^{i(px - \omega_p t)}}{2\omega_p}, \quad \omega_p = \sqrt{p^2 + m^2}
+\end{equation}
+\textbf{Exemplo numérico:}
+\begin{itemize}
+\item $m=0$, $x=0$, $t=1$ s: $D_F \approx 4.966\times10^{-26}$ J·s
+\end{itemize}
+
+\subsection{3D contínuo}
+\begin{equation}
+D_F(\mathbf{x},t) = \int \frac{d^3p}{(2\pi)^3} \frac{e^{i(\mathbf{p}\cdot\mathbf{x}-\omega_\mathbf{p} t)}}{2\omega_\mathbf{p}}
+\end{equation}
+\textbf{Exemplo numérico:}
+\begin{itemize}
+\item $m=0$, $\mathbf{x}=0$, $t=1$ s: $D_F \approx 4.966\times10^{-26}$ J·s
+\end{itemize}
+
+\subsection{4D contínuo}
+\begin{equation}
+D_F(x-y) = \int \frac{d^4p}{(2\pi)^4} \frac{e^{-i p\cdot (x-y)}}{p^2 - m^2 + i\epsilon}
+\end{equation}
+\textbf{Comentário:} esta integral soma todos os modos do espaço-tempo e é a forma base usada em diagramas de Feynman.
+
+\section{Diagramas de Feynman: conceitos}
+\begin{itemize}
+\item Cada linha corresponde a um propagador $D_F(x-y)$
+\item Cada vértice representa uma interação ($\phi^3$ ou $\phi^4$)
+\item A amplitude total é obtida integrando sobre os momentos internos (loop integrals)
+\end{itemize}
+
+\section{Resumo passo a passo}
+\begin{enumerate}
+\item Começamos do campo quantizado $\phi(x)$ e Hamiltoniano livre
+\item Definimos o propagador $D_F(x-y) = \langle0|T\phi(x)\phi(y)|0\rangle$
+\item Passamos para representação de momento contínuo (integral em $d^4p$)
+\item Cada linha de propagador corresponde a $1/(p^2 - m^2 + i\epsilon)$
+\item Integrando sobre todos os modos internos, obtemos amplitudes de probabilidade de propagação
+\item Diagramas mostram visualmente as amplitudes e permitem calcular ordens diferentes de interação
+\end{enumerate}
+
+\section{Exercício avançado}
+\textbf{Objetivo:} Calcular propagador para 1D, 3D e 4D contínuos, interpretando física e valores numéricos.
+
+\begin{enumerate}
+\item 1D: $m=0$, $x=0$, $t=1$ s, calcular $D_F$ usando integral contínua
+\item 3D: $m=0$, $\mathbf{x}=0$, $t=1$ s, calcular $D_F$ usando integral contínua
+\item 4D: $m=0$, $x=y=0$, $t-t'=1$ s, escrever integral $d^4p$, interpretar amplitude
+\end{enumerate}
+
+\textbf{Valores SI aproximados:} $D_F \sim 4.966\times10^{-26}$ J·s para todos os modos fundamentais
+
+\end{document}

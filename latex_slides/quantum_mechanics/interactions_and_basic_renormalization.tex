@@ -1,0 +1,192 @@
+% Arquivo LaTeX corrigido: interacoes_renormalizacao_basica.tex
+% Mudanças principais (didáticas):
+% - Substituí ocorrências problemáticas de \overline{MS} por $\overline{\text{MS}}$ (modo matemático corretamente usado).
+% - Removi barras finais '\' soltas em itemize (causavam erros ou warnings).
+% - Mantive notação consistente para unidades: \mathrm{eV}, \mathrm{J}, etc.
+% - Adicionei alguns comentários explicativos em pontos-chave.
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{physics} % fornece \bra,\ket,\braket etc.
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{siunitx} % para formatar unidades (opcional, útil)
+\title{Interações e Renormalização Básica\\\small{Guia detalhado com exemplos e exercícios}}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Documento detalhado que integra todo o conteúdo estudado até aqui (postulados, operadores, spin, quantização de campos, propagadores) e o aplica ao estudo de interações e renormalização básica. Para cada tópico apresentamos: 1) exposição formal; 2) ``desmonte'' termo-a-termo; 3) cálculo passo-a-passo; 4) exemplo numérico com conversões (unidades naturais \& SI); 5) exercícios com soluções. Este material foi pensado para você aplicar todo o método aprendido e obter diagnósticos quantitativos (amplitudes, correlações, comportamentos de escala) em modelos simples de QFT.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Visão geral: por que interações + renormalização juntam tudo}
+Sim: neste único conjunto de tópicos você aplicará de fato todas as ferramentas que aprendeu. Em síntese:
+\begin{itemize}
+\item O \textbf{Lagrangiano} define o sistema (campo livre + termos de interação).
+\item A \textbf{quantização} transforma campos em operadores; os propagadores aparecem como correladores do campo livre.
+\item As \textbf{regras de Feynman} transformam o Lagrangiano interativo em ingredientes de cálculo (linhas, vértices, fatores numéricos).
+\item Os \textbf{diagramas} fornecem expressões integrais em momento (loop integrals) que precisam ser avaliadas.
+\item Essas integrais frequentemente divergem; daí vem a \textbf{renormalização}: regularizar, introduzir contra-termos, definir parâmetros físicos medidos (massa renormalizada, acoplamento renormalizado).
+\end{itemize}
+
+Resultado: ao resolver um problema interativo (ex.: calcular a amplitude de espalhamento \(2\to2\) até uma ordem), você efetivamente usa tudo: operadores, modos, propagadores, Fourier, integrais, limites, conversões de unidade, interpretação física.
+
+\section{Modelo de trabalho: \(\phi^4\) escalares em \(d=4\) (unidades naturais \(\hbar=c=1\))}
+Escolhemos o modelo mais simples e pedagógico com interação renormalizável: campo escalar real com interação quártica.
+
+\subsection{Lagrangiano completo}
+\begin{equation}\label{lag_phi4}
+\mathcal{L} = \tfrac12(\partial_\mu\phi)(\partial^\mu\phi) - \tfrac12 m^2 \phi^2 - \frac{\lambda}{4!}\phi^4.
+\end{equation}
+\textbf{Legenda:} \(\phi\) campo escalar real; \(m\) parâmetro de massa (energia); \(\lambda\) acoplamento (adimensional em \(d=4\)); fator \(1/4!\) por convenção para contas de simetria.
+
+\subsection{Desmanche termo-a-termo}
+\begin{itemize}
+\item \(\tfrac12(\partial_\mu\phi)(\partial^\mu\phi)\): termo cinético, gera propagador e energia cinética por modo.
+\item \(-\tfrac12 m^2\phi^2\): termo de massa; fixa o denominador \(p^2 - m^2\) do propagador.
+\item \(-\lambda\phi^4/4!\): termo de interação local responsável por vértices com quatro linhas; gera contribuições a \(2\to2\) no primeiro nível perturbativo (árvore) e laços (loops) em ordens superiores.
+\end{itemize}
+
+\section{Feynman rules (regras para calcular amplitudes perturbativas)}
+Trabalhamos em espaço-tempo Minkowski \(d=4\). Para o modelo \(\phi^4\) as regras de Feynman em momento são:
+\begin{itemize}
+\item Linha interna (propagador): \(\dfrac{i}{p^2 - m^2 + i\epsilon}\).
+\item Vértice: \(-i\lambda\).
+\item Conservação de momento em cada vértice: inserir fator \((2\pi)^4\delta^{(4)}(\sum p_{in}-\sum p_{out})\).
+\item Para cada laço, integrar sobre \(\int\dfrac{d^4k}{(2\pi)^4}\) (variável de momento interno).
+\end{itemize}
+
+\section{Exemplo 1 (árvore): amplitude \(2\to2\) no \(\phi^4\) (ordem árvore)}
+\subsection{Descritivo}
+Com o termo \(\lambda\phi^4\) a amplitude de espalhamento \(2\to2\) à ordem árvore é simplesmente constante (único vértice conectando quatro linhas externas).
+
+\subsection{Fórmula}
+\begin{equation}\label{amp_tree}
+\mathcal{M}_{\text{tree}} = -i\lambda.
+\end{equation}
+
+\subsection{Interpretação}
+Sem integrais: amplitude trivial em momento (local). Probabilidade proporcional a \(|\mathcal{M}|^2 = \lambda^2\) (com fatores de fase espaço-tempo e normalização do estado para obter seções de choque).
+
+\section{Exemplo 2 (1-loop): correção à função de 2 pontos (self-energy) e divergência simples}
+\subsection{Diagrama e expressão}
+O diagrama de 1-loop para a função de 2-pontos (self-energy) é o tadpole (ou bubble dependendo da ordenação). A contribuição 1-loop ao propagador é dada por:
+\begin{equation}\label{self_raw}
+-i \Sigma(p^2) = \frac{(-i\lambda)}{2} \int \frac{d^4k}{(2\pi)^4} \frac{i}{k^2 - m^2 + i\epsilon},
+\end{equation}
+onde o fator \(1/2\) é fator de simetria do diagrama. Note que a integral não depende de \(p\) (para esse tadpole) — é uma divergência quadrática em corte bruto.
+
+\subsection{Regularização por cutoff (exemplo numérico)}
+Introduzimos cutoff de momento espacial magnitude \(\Lambda\) (regularização de tipo físico). A integral aproximadamente se comporta como
+\begin{equation}
+I(\Lambda) \equiv \int^{\Lambda} \frac{d^4k}{(2\pi)^4} \frac{i}{k^2 - m^2 + i\epsilon} \approx i\,\frac{\Lambda^2}{16\pi^2} + \text{(subdominantes)}.
+\end{equation}
+Logo,
+\begin{equation}
+\Sigma \approx \frac{\lambda}{2} \frac{\Lambda^2}{16\pi^2}.
+\end{equation}
+\textbf{Interpretação:} a massa efetiva desloca-se: \(m^2_{\text{phys}} = m^2 + \delta m^2\) com \(\delta m^2 \propto \lambda \Lambda^2\) — divergência quadrática.
+
+\subsection{Regularização dimensional (resumo)}
+Usando dimensional regularization (DR) em \(d=4-\epsilon\) obtemos (esquematicamente):
+\begin{equation}
+I_{\text{DR}} = \frac{i m^2}{16\pi^2} \left(\frac{2}{\epsilon} + 1 - \gamma + \ln\frac{4\pi\mu^2}{m^2} + O(\epsilon)\right),
+\end{equation}
+e assim
+\begin{equation}
+\Sigma_{\text{DR}} = \frac{\lambda m^2}{32\pi^2} \left(\frac{2}{\epsilon} + 1 - \gamma + \ln\frac{4\pi\mu^2}{m^2}\right).
+\end{equation}
+Essa forma mostra o polo \(1/\epsilon\) típico da renormalização dimensional.  % use math-mode corretamente
+
+\section{Contratermos e condição de renormalização}
+\subsection{Lagrangiano renormalizado}
+Escrevemos parâmetros renormalizados e contra-termos:
+\begin{equation}
+\mathcal{L} = \tfrac12 Z_\phi (\partial\phi)^2 - \tfrac12 Z_m m^2 \phi^2 - \frac{Z_\lambda \lambda}{4!} \phi^4 + \mathcal{L}_{\text{CT}},
+\end{equation}
+com definições \(Z_i = 1 + \delta Z_i\) e contratermos em \(\mathcal{L}_{\text{CT}}\) ajustados para cancelar divergências em ordens de perturbação.
+
+\subsection{Condições de renormalização (esquema minimal subtraction, $\overline{\text{MS}}$)}
+No esquema MS (ou \(\overline{\text{MS}}\)) removemos os polos em \(1/\epsilon\) e definimos parâmetros renormalizados em escala \(\mu\).
+
+\section{Exemplo numérico — 1-loop com dimensional regularization (esquema $\overline{\text{MS}}$)}
+\subsection{Dados}
+Escolhemos: \(m=1\ \mathrm{eV}\), \(\lambda = 0.1\), escala de renormalização \(\mu = 1\ \mathrm{eV}\).
+
+\subsection{Cálculo esquemático}
+Usando a expressão (DR) simplificada:
+\begin{equation}
+\Sigma = \frac{\lambda m^2}{32\pi^2} \left(\frac{2}{\epsilon} + 1 - \gamma + \ln\frac{4\pi\mu^2}{m^2}\right).
+\end{equation}
+No esquema \(\overline{\text{MS}}\) subtraímos o polo e fatores associados, definindo \(\delta m^2\) para cancelar o termo divergente. O contratermo deixará a massa física finita.
+
+\subsection{Valor finito restante}
+Após subtração, o termo finito é proporcional a
+\begin{equation}
+\Sigma_{\text{finite}} = \frac{\lambda m^2}{32\pi^2} \left(1 + \ln\frac{\mu^2}{m^2}\right).
+\end{equation}
+Substituindo números: \(\lambda=0.1\), \(m=1\) eV, \(\mu=1\) eV,
+\[
+\Sigma_{\text{finite}} = \frac{0.1\times 1^2}{32\pi^2} (1 + \ln 1) = \frac{0.1}{32\pi^2} \approx 3.16\times10^{-4}\ \mathrm{eV}^2.
+\]
+(Observação: \(\ln 1 = 0\).)
+
+Para converter \(\mathrm{eV}^2\) em \(\mathrm{J}^2\) multiplique por \((1.602176634\times10^{-19})^2\). Se quiser a variação de massa em joules (energia), considere tomar a raiz conforme interpretação física.
+
+\section{Beta function (breve) — comportamento do acoplamento com escala}
+Para \(\phi^4\) em \(d=4\), o beta function de um-loop é (resultado padrão):
+\begin{equation}
+\beta(\lambda) = \mu \frac{d\lambda}{d\mu} = \frac{3\lambda^2}{16\pi^2} + O(\lambda^3).
+\end{equation}
+Isso diz que o acoplamento cresce com a escala (teoria não assintoticamente livre neste caso simples).
+
+\section{Exercícios (práticos) — faça e confira}
+\subsection{Exercício A: \(2\to2\) no \(\phi^4\)}
+Calcule a amplitude de espalhamento \(2\to2\) na árvore e depois a contribuição de 1-loop (s-channel) em expressão simbólica (mostre a integral em \(d^4k\)). Em seguida, use cutoff e faça a estimativa da divergência dependente de \(\Lambda\).
+
+\subsection{Exercício B: self-energy numérico}
+Refaça o cálculo do tadpole em DR com \(m=1\) eV, \(\lambda=0.1\), encontre \(\Sigma_{\text{finite}}\) no esquema \(\overline{\text{MS}}\) e converta para J (mostre passos).
+
+\subsection{Exercício C (avançado): estimativa de running}
+Usando \(\beta(\lambda) = 3\lambda^2/(16\pi^2)\) resolva a equação de RG aproximada para \(\lambda(\mu)\) com condição inicial \(\lambda(1\ \mathrm{eV})=0.1\) até \(\mu=10^3\) eV; interprete resultado.
+
+\section{Respostas e soluções resumidas}
+\subsection{Solução A (esquema)}
+\begin{itemize}
+\item Tree: \(\mathcal{M}_{\text{tree}} = -i\lambda\).
+\item 1-loop s-channel: \(\mathcal{M}_{1\text{-loop}}^{(s)} = (-i\lambda)^2 \frac{1}{2} \int \frac{d^4k}{(2\pi)^4} \frac{i}{k^2 - m^2 + i\epsilon} \frac{i}{(p_1+p_2-k)^2 - m^2 + i\epsilon}\) (mostrar passos de fator de simetria e conservar momento).
+\item Estimativa cutoff: comportamento logarítmico/quadrático dependendo do diagrama; o tadpole interno dá termo \(\sim \lambda \Lambda^2\) como mostrado.
+\end{itemize}
+
+\subsection{Solução B (numérica)}
+Repetimos valor calculado: \(\Sigma_{\text{finite}} \approx 3.16\times10^{-4}\) eV\(^2\); converter para J\(^2\) se necessário: multiplicar por \((1.602176634\times10^{-19})^2\) para obter J\(^2\), ou converter raiz conforme interpretação.
+
+\subsection{Solução C}
+Equação RG aproximada (separável):
+\[
+\frac{d\lambda}{\lambda^2} = \frac{3}{16\pi^2} \frac{d\mu}{\mu} \quad\Rightarrow\quad
+\lambda(\mu) = \frac{\lambda(\mu_0)}{1 - \dfrac{3\lambda(\mu_0)}{16\pi^2} \ln\!\left(\dfrac{\mu}{\mu_0}\right)}.
+\]
+Substituindo \(\lambda(1) = 0.1\), \(\mu/\mu_0 = 10^3\), obtemos o valor numérico (deixe-me saber se quer que eu calcule e o apresente com casas decimais).
+
+\section{Conclusão e roteiro para seguir}
+Este documento mostra que, trabalhando com um modelo simples (\(\phi^4\)), você usará todas as ferramentas que aprendeu: Lagrangiano, modos, comutadores, propagadores, integrais de momento, regularização e renormalização, e interpretação de escala via beta function.
+
+Próximos passos recomendados depois de praticar estes exercícios:
+\begin{enumerate}
+\item diagramas com loops (ex: 2-loops) e técnicas de avaliação de integrais,
+\item QED como exemplo gauge + férmions,
+\item teoria de renormalização formal (operadores relevantes/marginais/irrelevantes),
+\item Noether e invariâncias de gauge (para entender simetrias e cargas locais).
+\end{enumerate}
+
+\end{document}

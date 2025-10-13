@@ -1,0 +1,124 @@
+
+% Arquivo LaTeX: before_feyman_propagators_summary.tex
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\title{Passos Antes de Propagadores de Feynman\\\small{(how the equations "converse" — resumo técnico)}}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Documento-resumo que consolida a cadeia lógica que leva da formulação Lagrangiana e dos postulados de quantização até a noção de propagador (preparação imediata para diagramas de Feynman). Mostra as equações completas e suas formas simplificadas / desmanchadas, com interpretação física em cada etapa. Usa unidades naturais ($\hbar=c=1$) para as fórmulas principais; quando útil são adicionadas indicações de conversão para SI.
+\end{abstract}
+
+\section{Visão geral — sequência lógica (micro-fluxograma)}
+As peças principais e como elas se alimentam:
+\begin{enumerate}
+  \item \textbf{Lagrangiano $\mathcal{L}[\Phi]$} -- define dinâmica e simetrias.\\
+  \item \textbf{Equação de movimento} via Euler--Lagrange: $\delta S/\delta\Phi=0$.\\
+  \item \textbf{Momento canônico} $\Pi(x)=\partial\mathcal{L}/\partial(\partial_0\Phi)$ — fornece o par canônico $(\Phi,\Pi)$.\\
+  \item \textbf{Condicionamento canônico (quantização)}: impor $[\Phi(t,\mathbf{x}),\Pi(t,\mathbf{y})]=i\delta^{(3)}(\mathbf{x}-\mathbf{y})$ (para bosons) ou anticonmutador para férmions.\\
+  \item \textbf{Expansão em modos / operadores}: $\Phi(x)=\sum\_k (a_k u_k(x)+a_k^\dagger u_k^*(x))$.\\
+  \item \textbf{Hamiltoniano $H$ e geradores}: $H=\int d^3x\,T^{00}$; operadores de tempo-evolução e espectro de energias.\\
+  \item \textbf{Correlações/propagação}: quantidades físicas como $\langle0|T\{\Phi(x)\Phi(y)\}|0\rangle$ surgem naturalmente e são a ponte para propagadores e Feynman diagrams.
+\end{enumerate}
+
+\section{Exemplo padrão: campo escalar livre (compacto e simplificado)}
+\subsection{Lagrangiano e Euler--Lagrange}
+Campo escalar real $\phi(x)$:
+\begin{equation}\label{lag_scalar}
+\mathcal{L} = \tfrac12\partial_\mu\phi\partial^\mu\phi - \tfrac12 m^2\phi^2.
+\end{equation}
+Varia\c{c}\~ao (Euler--Lagrange):
+\[ \partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\right)-\frac{\partial\mathcal{L}}{\partial\phi}=0 \quad\Rightarrow\quad (\Box + m^2)\phi=0. \]
+\textbf{Forma desmanchada}: $\Box=\partial_t^2-\nabla^2$, ent\~ao
+\[ (\partial_t^2 - \nabla^2 + m^2)\phi(t,\mathbf{x})=0.\]
+\textit{Interpreta\c{c}\~ao:} equa\c{c}\~ao de onda relativ\'istica para modos independentes (osciladores harm\^onicos por modo de momento). 
+
+\subsection{Momento canônico e comutadores}
+Momento canônico:
+\[ \pi(t,\mathbf{x}) = \frac{\partial\mathcal{L}}{\partial(\partial_t\phi)} = \partial_t\phi(t,\mathbf{x}). \]
+Impor condi\c{c}\~ao de quantiza\c{c}\~ao (bosônica):
+\begin{equation}\label{canonical_commutator}
+[\phi(t,\mathbf{x}),\pi(t,\mathbf{y})] = i\delta^{(3)}(\mathbf{x}-\mathbf{y}).
+\end{equation}
+Isto transforma campos clássicos em operadores sobre o espaço de Fock.
+
+\subsection{Expansão em modos — forma completa e simplificada}
+Forma completa (campo livre, espaço infinito):
+\begin{equation}\label{mode_expansion_full}
+\phi(t,\mathbf{x}) = \int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\big(a_{\mathbf{k}}e^{-i\omega_{\mathbf{k}}t+i\mathbf{k}\cdot\mathbf{x}} + a^\dagger_{\mathbf{k}}e^{i\omega_{\mathbf{k}}t-i\mathbf{k}\cdot\mathbf{x}}\big),
+\end{equation}
+com $\omega_{\mathbf{k}}=\sqrt{\mathbf{k}^2+m^2}$.\\
+Forma simplificada (modo discreto, caixa de volume $V$): escreva soma sobre modos $\mathbf{k}_n$ e fatores $1/\sqrt{2\omega_n V}$ — útil para contar modos.
+
+\subsection{Hamiltoniano e espectro — ligação com operadores}
+Hamiltoniano (normal-order omitted briefly):
+\[ H = \int d^3x \left(\tfrac12\pi^2 + \tfrac12(\nabla\phi)^2 + \tfrac12 m^2\phi^2\right) = \int\frac{d^3k}{(2\pi)^3}\,\omega_{\mathbf{k}}\left(a^\dagger_{\mathbf{k}}a_{\mathbf{k}}+\tfrac12\delta^{(3)}(0)\right).\]
+\textit{Desmanche:} cada modo contribui com níveis de energia $\omega_{\mathbf{k}}(n+1/2)$ — reconheça o oscilador harm\^onico.
+
+\section{Como as equações "conversam" — mecanismo passo a passo}
+Aqui mostramos o fluxo lógico com pequenos trechos algébricos (síntese):
+\begin{enumerate}
+  \item Escrevo $\mathcal{L}[\phi]$ (equação \ref{lag_scalar}).
+  \item Derivo EOM: $(\Box+m^2)\phi=0$; soluções plane-wave $e^{-i\omega t+i\mathbf{k}\cdot\mathbf{x}}$ com $\omega=\sqrt{\mathbf{k}^2+m^2}$.
+  \item Substituo soluções na expansão de modo (\ref{mode_expansion_full}) para parametrizar o espaço de soluções por amplitudes $a_{\mathbf{k}}$.
+  \item Os comutadores canônicos (\ref{canonical_commutator}) implicam comutadores para $a_{\mathbf{k}},a^\dagger_{\mathbf{k}}$; isto define o álgebra de operadores do problema.
+  \item O Hamiltoniano escrito em termos de $a^\dagger a$ dá o espectro e a noção de partícula (ocupação de modo $\mathbf{k}$).
+  \item Com operadores e vácuo definidos, podemos calcular correladores como $\langle0|\phi(x)\phi(y)|0\rangle$ — que medem "como a excitação em $y$ afeta $x$". Estas quantidades são a raiz dos propagadores.
+\end{enumerate}
+
+\section{Rumo aos propagadores — definição e origem}
+\subsection{Time-ordered correlator (defini\c{c}\~ao)}
+A função que chamamos de propagador de Feynman para um campo escalar é
+\begin{equation}\label{feynman_def}
+\Delta_F(x-y) \equiv \langle0|\,T\{\phi(x)\phi(y)\}\,|0\rangle,
+\end{equation}
+onde $T$ ordena temporalmente os operadores: $T\{A(x)B(y)\}=A(x)B(y)$ se $x^0>y^0$, e $\pm B(y)A(x)$ caso contrário (sinal para fótons/férmions conforme estatística).
+
+\subsection{Como surge do formalismo anterior}
+Use a expansão em modos (\ref{mode_expansion_full}) e calcule o vácuo-valor:
+\begin{align*}
+\langle0|\phi(x)\phi(y)|0\rangle &= \int\frac{d^3k}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{k}}}e^{-i\omega_{\mathbf{k}}(x^0-y^0)+i\mathbf{k}\cdot(\mathbf{x}-\mathbf{y})}, \\
+\langle0|\phi(y)\phi(x)|0\rangle &= \int\frac{d^3k}{(2\pi)^3}\frac{1}{2\omega_{\mathbf{k}}}e^{+i\omega_{\mathbf{k}}(x^0-y^0)+i\mathbf{k}\cdot(\mathbf{x}-\mathbf{y})}.
+\end{align*}
+O time-ordering combina essas duas expressões e, via manipulação usando uma pequena prescri\c{c}\~ao $i\varepsilon$, resulta na forma integral 4D familiar:
+\[ \Delta_F(x-y) = \int\frac{d^4k}{(2\pi)^4}\frac{i}{k^2-m^2+i\varepsilon}e^{-ik\cdot(x-y)}. \]
+(\textit{Nota:} a derivação completa requer tratamento cuidadoso das integrais em $k^0$; o importante aqui é a origem: correlador de campo no vácuo construído a partir da expansão em modos e da álgebra de operadores.)
+
+\section{Comentários interpretativos — o que tudo isso significa}
+\begin{itemize}
+  \item O Lagrangiano codifica as leis locais (dinâmica) e as simetrias; as equações de movimento descrevem quais configurações são fisicamente permitidas.
+  \item A quantização promove soluções clássicas a operadores; os comutadores garantem a estatística (Bose/Fermi) e fixam a estrutura algébrica.
+  \item A expansão em modos organiza o campo em graus de liberdade discretizáveis (modos) — cada modo vira um oscilador quântico independente.
+  \item Correladores (incluindo o propagador de Feynman) são objetos físicos: medem correlação causal entre pontos do espaço-tempo — no regime interativo tornam-se os blocos de construção de amplitudes (diagramas de Feynman).
+\end{itemize}
+
+\section{Resumo rápido de equações-chave (lista para "ler")}
+\begin{align}
+\mathcal{L}[\phi] &= \tfrac12\partial_\mu\phi\partial^\mu\phi - \tfrac12 m^2\phi^2, \\
+(\Box+m^2)\phi &=0, \\
+\pi &= \partial_t\phi, \\
+[\phi(t,\mathbf{x}),\pi(t,\mathbf{y})] &= i\delta^{(3)}(\mathbf{x}-\mathbf{y}), \\
+\phi(x) &= \int\frac{d^3k}{(2\pi)^3}\frac{1}{\sqrt{2\omega_k}}(a_ke^{-i\omega t+i\mathbf{k}\cdot\mathbf{x}}+a^\dagger_k e^{i\omega t-i\mathbf{k}\cdot\mathbf{x}}), \\
+\Delta_F(x-y) &= \langle0|T\{\phi(x)\phi(y)\}|0\rangle = \int\frac{d^4k}{(2\pi)^4}\frac{i}{k^2-m^2+i\varepsilon}e^{-ik\cdot(x-y)}.
+\end{align}
+
+\section*{Próximo passo sugerido (roteiro curto)}
+Para entrar em propagadores e diagramas de Feynman com segurança: 
+\begin{enumerate}
+  \item Revise integral em $k^0$ e técnica de contorno (resíduos). 
+  \item Estude a derivação do propagador via integral de caminho (path integral) — mostra diretamente a origem combinatorial dos diagramas.
+  \item Pratique transformações Fourier/time-ordering em exemplos simples (1D) antes de encarar integrais 4D.
+\end{enumerate}
+
+\end{document}
