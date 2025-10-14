@@ -1,0 +1,20 @@
+\contentsline {section}{\numberline {1}Introdução: o papel das simetrias}{2}{section.1}%
+\contentsline {section}{\numberline {2}Teorema de Noether — enunciado e legenda das fórmulas}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Enunciado (forma curta)}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Construção explícita da corrente (campo escalar)}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Exemplo (desmontado) --- invariância de fase global $U(1)$ para campo escalar complexo}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Lagrangiano}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Transformação}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Corrente de Noether (derivação curta)}{3}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Verificação com ondas planas (preparando exercício 1)}{3}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Invariância translacional e tensor energia-momento}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Definição}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Exemplo prático (campo escalar real)}{3}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Invariância de gauge local (esboço e legenda)}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Transformação local $U(1)$}{4}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Exercícios resolvidos (passo a passo) --- preparo para a prova}{4}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Exercício 1 (resolvido) — corrente de Noether para onda plana}{4}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Exercício 2 (resolvido) — tensor energia-momento para onda senoidal (1+1D simplificada)}{5}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Exercício 3 (resolvido) — derivada covariante e invariância de gauge local}{6}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Checklist de assuntos para prova (resumo rápido)}{7}{section.7}%
+\contentsline {section}{\numberline {8}Referências rápidas (para revisão)}{7}{section.8}%

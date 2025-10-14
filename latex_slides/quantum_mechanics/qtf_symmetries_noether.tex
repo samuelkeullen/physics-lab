@@ -1,0 +1,249 @@
+% Arquivo LaTeX: qft_symmetries_noether.tex
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{physics}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{siunitx} % formatação de unidades
+\title{QFT: Simetrias e Conservação --- Noether \& Gauge \\ \small{Guia com equações destrinchadas e exercícios resolvidos}}
+\author{Samuel Keullen Sales}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Este documento apresenta Noether e invariância de gauge de forma prática: (i) exposição formal e legenda termo-a-termo das equações-chave; (ii) exercícios resolvidos com valores numéricos e conversão para SI; (iii) interpretações físicas prontas para registrar em relatórios. O objetivo é preparar você para a prova cobrindo cálculo e interpretação.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introdução: o papel das simetrias}
+Breve: simetrias contínuas implicam correntes conservadas (Noether). Simetrias locais (gauge) exigem campos de gauge para preservar invariância e introduzem interações.
+
+\section{Teorema de Noether — enunciado e legenda das fórmulas}
+\subsection{Enunciado (forma curta)}
+Se a ação \(S=\int d^4x\,\mathcal{L}(\phi,\partial\phi)\) é invariante sob uma transformação contínua de parâmetro pequeno $\alpha$:
+\[
+\phi(x)\to\phi'(x)=\phi(x)+\delta\phi(x),\qquad \delta\phi(x)=\alpha\,\Delta\phi(x),
+\]
+então existe uma corrente \(j^\mu\) conservada:
+\[
+\boxed{\partial_\mu j^\mu = 0.}
+\]
+
+\subsection{Construção explícita da corrente (campo escalar)}
+Para transformações internas (não dependem de $x$), a corrente de Noether é, tipicamente,
+\[
+j^\mu = \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\delta\phi + \text{c.c.},
+\]
+onde ``c.c.'' indica conjugado complexo quando necessário.
+
+\textbf{Legenda (destrinchada):}
+\begin{itemize}
+  \item $\mathcal{L}$: Lagrangiano, função das variáveis de campo e suas derivadas.
+  \item $\partial\mathcal{L}/\partial(\partial_\mu\phi)$: momento canônico associado à variação de $\phi$ (derivada conjugada).
+  \item $\delta\phi$: variação do campo sob a transformação de simetria (proporcional ao gerador da simetria).
+  \item $\partial_\mu j^\mu=0$: conservação local da quantidade associada (integrando sobre espaço gera quantidade global conservada).
+\end{itemize}
+
+\section{Exemplo (desmontado) --- invariância de fase global $U(1)$ para campo escalar complexo}
+\subsection{Lagrangiano}
+\[
+\mathcal{L} = (\partial_\mu\phi)^*(\partial^\mu\phi) - m^2 \phi^*\phi.
+\]
+\textbf{Legenda:} primeiro termo = derivadas cinéticas (energia cinética do campo), segundo = termo de massa.
+
+\subsection{Transformação}
+\[
+\phi(x)\to e^{i\alpha}\phi(x)\approx \phi(x)+i\alpha\phi(x)\quad(\text{para }\alpha\ll1).
+\]
+\textbf{Variação:} $\delta\phi = i\alpha\phi$.
+
+\subsection{Corrente de Noether (derivação curta)}
+\[
+j^\mu = i\big(\phi\partial^\mu\phi^* - \phi^*\partial^\mu\phi\big).
+\]
+\textbf{Destrinchamento:}
+\begin{itemize}
+  \item $\phi\partial^\mu\phi^*$: campo vezes derivada do conjugado (fluxo de fase).
+  \item sinal $i$: surge da variação de fase complexa.
+  \item $j^0$ (componente temporal) corresponde à densidade de carga; $j^i$ são densidades de corrente espacial.
+\end{itemize}
+
+\subsection{Verificação com ondas planas (preparando exercício 1)}
+Se $\phi(x)=\phi_0 e^{-ip\cdot x}$ então
+\[
+\partial^\mu\phi = -i p^\mu \phi,\qquad \partial^\mu\phi^*=+i p^\mu\phi^*.
+\]
+Substituindo:
+\[
+j^\mu = i\big(\phi (i p^\mu\phi^*) - \phi^*(-i p^\mu\phi)\big) = i(2 i p^\mu |\phi|^2) = -2 p^\mu |\phi|^2.
+\]
+\textbf{Interpretação:} corrente proporcional a \(p^\mu\) e à densidade \(|\phi|^2\); seu sinal depende da convenção de corrente (alguns livros definem com sinal trocado — o que importa é consistência).
+
+\section{Invariância translacional e tensor energia-momento}
+\subsection{Definição}
+Se $\mathcal{L}$ é invariante sob $x^\mu\to x^\mu+a^\mu$, então a corrente de Noether é o tensor energia-momento:
+\[
+T^{\mu\nu} = \frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi)}\partial^\nu\phi - g^{\mu\nu}\mathcal{L}.
+\]
+\textbf{Legenda:}
+\begin{itemize}
+  \item $T^{00}$: densidade de energia; $T^{0i}$: densidade de momento; $T^{ij}$: fluxo de momento.
+  \item $\partial_\mu T^{\mu\nu}=0$: expressa conservação local de energia-momento.
+\end{itemize}
+
+\subsection{Exemplo prático (campo escalar real)}
+Com $\mathcal{L}=\tfrac12(\partial_\mu\phi)(\partial^\mu\phi)-\tfrac12 m^2\phi^2$,
+\[
+T^{\mu\nu} = \partial^\mu\phi\,\partial^\nu\phi - g^{\mu\nu}\Big(\tfrac12(\partial_\alpha\phi)^2 - \tfrac12 m^2\phi^2\Big).
+\]
+\textbf{Observação:} essa é a forma \emph{canônica}; existem formas simétricas (Belinfante) úteis em GR.
+
+\section{Invariância de gauge local (esboço e legenda)}
+\subsection{Transformação local $U(1)$}
+\[
+\phi(x)\to e^{i\alpha(x)}\phi(x).
+\]
+Sem campo de gauge, $\partial_\mu\phi$ não transforma covariantemente; por isso definimos a derivada covariante:
+\[
+D_\mu = \partial_\mu + i e A_\mu,
+\]
+e exigimos que $A_\mu\to A_\mu - \frac{1}{e}\partial_\mu\alpha(x)$ para que
+\[
+D_\mu\phi \to e^{i\alpha(x)}D_\mu\phi.
+\]
+Lagrangiano gauge-invariante (escalares + Maxwell):
+\[
+\mathcal{L} = (D_\mu\phi)^*(D^\mu\phi) - m^2\phi^*\phi - \tfrac14 F_{\mu\nu}F^{\mu\nu},\qquad F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+\]
+\textbf{Legenda:} $A_\mu$ é o campo de gauge (potencial eletromagnético), $F_{\mu\nu}$ é a força (campo elétrico/magnético).
+
+\section{Exercícios resolvidos (passo a passo) --- preparo para a prova}
+{\bf Observação:} em todos os exercícios trabalho primeiramente em unidades naturais ($\hbar=c=1$) e só converto quando solicitado; as conversões usam
+\[
+1\ \mathrm{eV} = 1.602176634\times10^{-19}\ \mathrm{J}.
+\]
+
+\subsection{Exercício 1 (resolvido) — corrente de Noether para onda plana}
+\textbf{Enunciado:} para $\phi(x)=\phi_0 e^{-ip\cdot x}$ com amplitude $\phi_0$ real (escolha $\phi_0=1$ para simplicidade) e transformação $U(1)$, calcule $j^\mu$ e interprete fisicamente. Converta $j^0$ para unidades SI assumindo $p^0=E=1\ \mathrm{eV}$.
+
+\textbf{Solução:}
+\begin{enumerate}
+  \item Fórmula da corrente:
+  \[
+  j^\mu = i(\phi\partial^\mu\phi^* - \phi^*\partial^\mu\phi).
+  \]
+  \item Para $\phi=\phi_0 e^{-ip\cdot x}$ com $\phi_0$ real:
+  \[
+  \partial^\mu\phi = -i p^\mu\phi,\quad \partial^\mu\phi^* = +i p^\mu\phi^*.
+  \]
+  \item Substituindo:
+  \[
+  j^\mu = i\big(\phi(i p^\mu\phi^*) - \phi^*(-i p^\mu\phi)\big) = i(2i p^\mu|\phi|^2) = -2 p^\mu|\phi|^2.
+  \]
+  \item Escolhendo $\phi_0=1$ (portanto $|\phi|^2=1$) e $p^\mu=(E,\mathbf{p})$ com $E=1\ \mathrm{eV}$:
+  \[
+  j^\mu = -2 p^\mu = (-2E,\ -2\mathbf{p}).
+  \]
+  \item Componente temporal (densidade de carga) em unidades de eV:
+  \[
+  j^0 = -2E = -2\ \mathrm{eV}.
+  \]
+  \item Converter para SI (Joule): multiplicar por $1.602176634\times10^{-19}$:
+  \[
+  j^0_{\rm SI} = -2\times 1.602176634\times10^{-19}\ \mathrm{J} \approx -3.204\times10^{-19}\ \mathrm{J}.
+  \]
+\end{enumerate}
+
+\textbf{Interpretação física (pronta para relatório):}\\
+\emph{A corrente de Noether associada à invariância de fase global é proporcional ao quadrimomento do modo e à densidade $|\phi|^2$. A componente temporal $j^0$ representa a densidade de carga (para um campo com carga unitária). O sinal depende da convenção; fisicamente importa a conservação $\partial_\mu j^\mu=0$, ou seja, a quantidade total de carga (integral de $j^0$ em todo o espaço) é constante no tempo.}
+
+\vspace{6pt}
+\textbf{Observação sobre dimensões:} aqui tratamos $|\phi|^2$ adimensional por escolha de normalização (modo de exercício). Em análises físicas completas as unidades do campo devem ser tratadas consistentemente, mas o procedimento algébrico e a interpretação permanecem iguais.
+
+\subsection{Exercício 2 (resolvido) — tensor energia-momento para onda senoidal (1+1D simplificada)}
+\textbf{Enunciado:} dado $\phi(x,t)=A\sin(kx-\omega t)$ em 1+1 dimensões e Lagrangiano livre $\mathcal{L}=\tfrac12(\partial_t\phi)^2 - \tfrac12(\partial_x\phi)^2 - \tfrac12 m^2\phi^2$, calcule $T^{\mu\nu}$, verifique $\partial_\mu T^{\mu0}=0$ (conservação de energia), e obtenha a densidade de energia $T^{00}$ numericamente para $A=1$, $k=1\ \mathrm{m^{-1}}$, $m=0$ (modo massless), no instante $t=0$ e $x=0$. Converta o resultado para SI.
+
+\textbf{Solução:}
+\begin{enumerate}
+  \item Fórmula do tensor (canônico, para campo real):
+  \[
+  T^{\mu\nu} = \partial^\mu\phi\,\partial^\nu\phi - g^{\mu\nu}\mathcal{L}.
+  \]
+  Em 1+1D com sinal de métrica $g^{00}=1$, $g^{11}=-1$.
+  \item Derivadas da onda:
+  \[
+  \partial_t\phi = -\omega A\cos(kx-\omega t),\qquad \partial_x\phi = k A\cos(kx-\omega t).
+  \]
+  \item Densidade de energia (componente $T^{00}$):
+  \[
+  T^{00} = \tfrac12(\partial_t\phi)^2 + \tfrac12(\partial_x\phi)^2 + \tfrac12 m^2\phi^2.
+  \]
+  (para esse Lagrangiano a forma simplificada é a soma de energia cinética, energia de gradiente e energia de massa)
+  \item Substituindo $m=0$, $A=1$, $k=1\ \mathrm{m^{-1}}$, em $t=0$, $x=0$: $\cos(0)=1$.
+  \[
+  \partial_t\phi|_{0,0} = -\omega,\quad \partial_x\phi|_{0,0} = k.
+  \]
+  \item Para campo massless a relação de dispersão é $\omega = c k$. Em SI $c=\num{2.99792458e8}\ \mathrm{m/s}$, com $k=1\ \mathrm{m^{-1}}$:
+  \[
+  \omega = c k = \num{2.9979e8}\ \mathrm{s^{-1}}.
+  \]
+  \item Agora calcule $T^{00}$ (mantendo unidades SI para energia density):
+  \[
+  T^{00} = \tfrac12(\omega^2) + \tfrac12(k^2) = \tfrac12(\omega^2 + k^2).
+  \]
+  Atenção: em unidades naturais $\hbar=c=1$ as dimensões mudam; aqui estamos convertendo para SI \emph{apenas} pela relação $\omega=ck$. Para dar um valor em SI consistente precisamos assumir unidade de $\phi$; para ilustração pegamos $A$ sem dimensão e calculamos a quantidade numérica (unidade será \(\mathrm{(field\ units)}^2 \cdot \mathrm{s^{-2}}\)). Substituindo números:
+  \[
+  \omega^2 \approx (2.9979\times10^8)^2 \approx 8.9876\times10^{16}\ \mathrm{s^{-2}},\qquad k^2=1\ \mathrm{m^{-2}}.
+  \]
+  \[
+  T^{00} \approx \tfrac12(8.9876\times10^{16} + 1) \approx 4.4938\times10^{16}\ (\text{unidade: } \text{field}^2\cdot \mathrm{s}^{-2}).
+  \]
+\end{enumerate}
+
+\textbf{Interpretação física pronta:} \\
+\emph{O componente $T^{00}$ representa a densidade de energia local do campo. Para ondas eletromagnéticas ou campos físicos, a densidade inclui energia cinética (derivada temporal), energia de variação no espaço (gradiente) e termos de massa. A conservação $\partial_\mu T^{\mu0}=0$ garante que a energia total (integral espacial de $T^{00}$) é constante no tempo.}
+
+\textbf{Nota prática:} Em cálculos reais a unidade de $\phi$ é física e deve ser usada para obter Joules por metro cúbico; aqui mostramos procedimento e número escala para treinamento algebraico.
+
+\subsection{Exercício 3 (resolvido) — derivada covariante e invariância de gauge local}
+\textbf{Enunciado:} considere transformação local $\alpha(x)=\beta x$ com $\beta=0.05\ \mathrm{(length)^{-1}}$ (escolha de conveniência), campo escalar $\phi(x)$ e campo de gauge $A_\mu$. Mostre que, sem $A_\mu$, a Lagrangiana não é invariante e que a introdução da derivada covariante $D_\mu=\partial_\mu+i e A_\mu$ restaura invariância desde que $A_\mu$ transforme como $A_\mu\to A_\mu - \partial_\mu\alpha/e$.
+
+\textbf{Solução (passos lógicos):}
+\begin{enumerate}
+  \item Sem gauge: $\partial_\mu\phi\to \partial_\mu(e^{i\alpha(x)}\phi)=e^{i\alpha(x)}(\partial_\mu\phi + i (\partial_\mu\alpha)\phi)$. O termo adicional $i(\partial_\mu\alpha)\phi$ impede que $\partial_\mu\phi$ transforme na mesma forma simples.
+  \item Com covariante: defina $D_\mu\phi\equiv (\partial_\mu + i e A_\mu)\phi$. Sob transformação local:
+  \[
+  \phi\to e^{i\alpha(x)}\phi,\qquad A_\mu\to A_\mu - \frac{1}{e}\partial_\mu\alpha(x).
+  \]
+  \item Então
+  \[
+  D_\mu\phi \to (\partial_\mu + i e A_\mu - i\partial_\mu\alpha)\big(e^{i\alpha}\phi\big)
+  = e^{i\alpha}(\partial_\mu + i e A_\mu)\phi = e^{i\alpha} D_\mu\phi,
+  \]
+  ou seja, $D_\mu\phi$ transforma covariantemente e o termo $(D_\mu\phi)^*(D^\mu\phi)$ é invariante localmente.
+\end{enumerate}
+
+\textbf{Interpretação física pronta:} \\
+\emph{A necessidade do campo de gauge $A_\mu$ é puramente geométrica: para promover uma simetria global a local (dependente de $x$) é necessário introduzir uma conexão que compense as variações locais. Fisicamente isso representa a introdução de uma força mediada por $A_\mu$ (no caso $U(1)$, o campo eletromagnético).}
+
+\section{Checklist de assuntos para prova (resumo rápido)}
+\begin{itemize}
+  \item Saber derivar correntes de Noether a partir de variações de campos.
+  \item Interpretar $j^\mu$ e $T^{\mu\nu}$ fisicamente (densidade de carga, energia, momento).
+  \item Realizar verificações com ondas planas (modo útil para diagramas e propagadores).
+  \item Entender por que a invariância de gauge local exige introdução de $A_\mu$ e como $D_\mu$ transforma.
+  \item Saber converter entre unidades naturais e SI quando necessário (usar $1\ \mathrm{eV}=1.602\times10^{-19}\ \mathrm{J}$ e $\hbar c\simeq 197.326\ \mathrm{eV\cdot nm}$ se precisar ligar energia e comprimento).
+\end{itemize}
+
+\section{Referências rápidas (para revisão)}
+Livros sugeridos (português/inglês): Peskin \& Schroeder, Srednicki, Weinberg, Ryder. (Use-os para ver derivação canônica e convenções de sinais — a forma pode mudar por convenção, mas o método é o mesmo.)
+
+\end{document}
